@@ -1,0 +1,17 @@
+body {
+    background-color: aliceblue;
+    display: grid;
+    background-size: cover;
+    justify-content: center;
+    height: 100%;
+    font-size: 100%;
+    font-family: Verdana,sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.mytab{
+    margin: 30px 30px;
+}
