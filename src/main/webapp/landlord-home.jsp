@@ -33,7 +33,6 @@
             <img class="house.jpg" src="house.jpg"  width="1500" height="700">
 
             <div style="margin-top:20px;">
-                <h1>WELCOME !!!!! ${landlordusername}<br><br></h1>
             </div>
         </header>
 
