@@ -64,7 +64,7 @@ public class LoginLandlordServlet extends HttpServlet {
                         response.sendRedirect("landlord-home.jsp");
 
                     }else{
-                        out.println("HAHAHAHHA SALAH ");
+                        out.println("User not exist");
                     }
                 }
             }

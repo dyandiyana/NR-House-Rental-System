@@ -33,6 +33,7 @@
 
             out.println("Your Requested Data Is Deleted");
             conn.close();
+
         }
 
         catch (Exception e)
@@ -44,6 +45,10 @@
 
 
     %>
+
+    <jsp:forward page="landlord-login.jsp">
+
+    </jsp:forward>
     </body>
 
 </html>
