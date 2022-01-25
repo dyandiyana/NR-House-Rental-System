@@ -25,7 +25,7 @@
     <div class="container">
         <h3>MY PROFILE</h3>
 
-        <input type="number" name="landlordid" hidden>
+        <input type="number" name="landlordid"  value="${landlordid}" hidden>
 
         <div class="row">
             <div class="col-25">
@@ -82,11 +82,24 @@
             </div>
         </div>
 
-        <button type="submit" class="button button1" name="submit" onclick="document.getElementById('id01').style.display='block'"><a href="landlord-deleteProfile.jsp">DELETE</a></button>
-        <button type="submit" onclick="myFunction(); return false" class="button button1" name="submit" ><a href="landlord-updateProfile.jsp">UPDATE</a></button>
+        <button type="submit" class="button button1" name="submit" onclick="document.getElementById('id01').style.display='block'" value="deleteservlet"><a href="landlord-deleteProfile.jsp">DELETE</a> </button>
+        <button type="submit" onclick="myFunction(); return false" class="button button1" name="submit"  ><a href="landlord-updateProfile.jsp">UPDATE</a></button>
 
 
     </div>
+
+    <%
+        request.setAttribute("landlordid", request.getParameter("landlordid"));
+        request.setAttribute("landlordusername", request.getParameter("landlordusername"));
+        request.setAttribute("landlordpassword", request.getParameter("landlordpassword"));
+        request.setAttribute("landlordname", request.getParameter("landlordname"));
+        request.setAttribute("landlordemail", request.getParameter("landlordemail"));
+        request.setAttribute("landlordage", request.getParameter("landlordage"));
+        request.setAttribute("landlordphoneno", request.getParameter("landlordphoneno"));
+        request.setAttribute("landlordgender", request.getParameter("landlordgender"));
+
+    %>
+
 </form>
 </body>
 </html>
