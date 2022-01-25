@@ -15,7 +15,6 @@
 
     <%
         String landlordusername = request.getParameter("landlordusername");
-        System.out.println(landlordusername);
 
 
         try
@@ -28,7 +27,11 @@
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
             Statement stmt = conn.createStatement();
-            String sql = "delete from landlord where landlordusername='dee'";
+            String sql = "delete from landlord where landlordid=?";
+            PreparedStatement st = conn.prepareStatement(sql);
+
+            st.setInt(1, La);
+
             stmt.execute(sql);
 
             out.println("Your Requested Data Is Deleted");
@@ -48,7 +51,6 @@
 
     <jsp:forward page="landlord-login.jsp">
         <jsp:param name="test" value="test"/>
-
     </jsp:forward>
     </body>
 
