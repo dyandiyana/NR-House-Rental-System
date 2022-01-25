@@ -26,11 +26,11 @@ public class deleteServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         HttpSession session= request.getSession();
         out.println(request.getParameter("landlordid"));
-
+        int id = Integer.parseInt(request.getParameter("landlordid"));
 
         try
         {
-            int id = Integer.parseInt(request.getParameter("landlordid"));
+
             Class.forName("org.postgresql.Driver"); // ni stay
             String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com:5432/dcb70s908sasfa"; //ni url dri heroku database
             String user = "gpdkvocjaztxrw";
