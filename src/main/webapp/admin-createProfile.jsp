@@ -61,9 +61,9 @@
                 <label style="">GENDER</label>
             </div>
             <div class="col-75">
-                <input type="radio" id="male" name="admingender" placeholder="Male" >
+                <input type="radio" id="male" name="admingender" placeholder="Male" value="Male">
                 <label for="male">MALE</label><br>
-                <input type="radio" id="female" name="admingender" placeholder="Female" >
+                <input type="radio" id="female" name="admingender" placeholder="Female" value="Female">
                 <label for="female">FEMALE</label>
             </div>
         </div>
