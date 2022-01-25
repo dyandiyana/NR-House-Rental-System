@@ -43,13 +43,4 @@ public class deleteServlet extends HttpServlet {
     }
 
 
-    private void deleteUser(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        ld.deleteUser(id);
-        response.sendRedirect("list");
-    }
-
-
-
 }
