@@ -1,6 +1,5 @@
 package com.example.nrhouserentalsystem;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,8 +61,7 @@ public class LoginLandlordServlet extends HttpServlet {
                         session.setAttribute("landlordphoneno",res.getString(7));
                         session.setAttribute("landlordgender",res.getString(8));
 
-                        RequestDispatcher rd = request.getRequestDispatcher("landlord-viewProfile.jsp");
-                        rd.forward(request, response);
+                        response.sendRedirect("landlord-home.jsp");
 
                     }else{
                         out.println("HAHAHAHHA SALAH ");
