@@ -23,7 +23,7 @@
 <div class="container">
     <h3>MY PROFILE</h3>
 
-    <input type="number" name="landlordid"  value="${adminid}" hidden>
+    <input type="number" name="adminid"  value="${adminid}" hidden>
 
     <div class="row">
         <div class="col-25">
