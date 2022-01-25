@@ -16,49 +16,27 @@
 </head>
 
 <body>
-<div class="navbar">
-    <p>UiTM JASIN NON-RESIDENT HOUSE RENTAL SYSTEM</p>
-    <a href="#">LOGOUT</a>
-    <div class="dropdown">
-        <button class="dropbtn">PROFILE
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="admin-createProfile.jsp">CREATE ACCOUNT</a>
-            <a href="admin-viewProfile.jsp"class="active">VIEW ACCOUNT</a>
-        </div>
-    </div>
-    <a href="#">PAYMENT</a>
-    <div class="dropdown">
-        <button class="dropbtn">BOOKING
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-            <a href="#">BOOKING FORM</a>
-            <a href="#">LIST BOOKING</a>
-        </div>
-    </div>
-    <a href="#" >HOME</a>
-</div>
-
-
-<form action="" method="POST">
+<%@include file="admin-navbar.html"%>
+<form action="AdminUpdateServlet" method="POST">
     <div class="container">
         <h2>UPDATE MY ACCOUNT</h2>
+
+        <input type="number" name="adminid"  value="${adminid}" hidden>
+
         <div class="row">
             <div class="col-25">
                 <label style="">USERNAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="Username" placeholder="Enter your username" value="M.Kamalluddin">
+                <input type="text" name="adminusername" value="${adminusername}">
             </div>
         </div>
         <div class="row">
             <div class="col-25">
-                <label>PASSWORD</label>
+                <label style="">Password</label>
             </div>
             <div class="col-75">
-                <input type="password" name="password" placeholder="Enter your password" value="Kamal_9899">
+                <input type="text" name="adminpassword" value="${adminpassword}">
             </div>
         </div>
         <div class="row">
@@ -66,7 +44,7 @@
                 <label style="">FULL NAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="FullName" placeholder="Enter your full name" value="MOHD KAMALLUDDIN MOHKTAR">
+                <input type="text" name="adminname" value="${adminname}">
             </div>
         </div>
         <div class="row">
@@ -74,7 +52,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="email" placeholder="Enter your email" value="M.Kamal2344@gmail.com">
+                <input type="text" name="adminemail" value="${adminemail}">
             </div>
         </div>
         <div class="row">
@@ -82,9 +60,9 @@
                 <label style="">GENDER</label>
             </div>
             <div class="col-75">
-                <input type="radio" id="male" name="Gender" placeholder="Male" value="">
+                <input type="radio" id="male" name="admingender" value="${admingender}">
                 <label for="male">MALE</label><br>
-                <input type="radio" id="female" name="Gender" placeholder="Female" value="">
+                <input type="radio" id="female" name="admingender" value="${admingender}">
                 <label for="female">FEMALE</label>
             </div>
         </div>
@@ -93,7 +71,7 @@
                 <label style="">AGE</label>
             </div>
             <div class="col-75">
-                <input type="text" name="age" placeholder="Enter your age" value="40">
+                <input type="text" name="adminage" value="${adminage}">
             </div>
         </div>
         <div class="row">
@@ -101,11 +79,11 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="text" name="PhoneNumber" placeholder="Enter your phone number" value="0114567654">
+                <input type="text" name="adminphonenumber" value="${adminphonenumber}">
             </div>
         </div>
 
-        <button type="submit" class="button button1" name="submit" ><a href ="#">Submit</a></button><br><br>
+        <button type="submit" class="button button1" name="submit" >Submit</button><br><br>
     </div>
 </form>
 </body>
