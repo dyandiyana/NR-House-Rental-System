@@ -21,7 +21,7 @@
 <body>
 
 
-<form action="" method="POST">
+<form action="insertAdminProfileServlet" method="POST">
     <div class="container">
         <h2>CREATE ACCOUNT</h2>
         <div class="row">
