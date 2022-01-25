@@ -26,7 +26,7 @@ public class deleteServlet extends HttpServlet {
 
         try
         {
-
+            int id = Integer.parseInt(session.getAttribute("landlordid").toString());
             Class.forName("org.postgresql.Driver"); // ni stay
             String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com:5432/dcb70s908sasfa"; //ni url dri heroku database
             String user = "gpdkvocjaztxrw";
@@ -36,7 +36,7 @@ public class deleteServlet extends HttpServlet {
             Statement stmt = conn.createStatement();
             String sql = "delete from landlord where landlordid=?";
             PreparedStatement st = conn.prepareStatement(sql);
-            st.setInt(1, Integer.parseInt(session.getAttribute("landlordid").toString()));
+            st.setInt(1,id);
             stmt.execute(sql);
 
             int row= st.executeUpdate();
