@@ -16,6 +16,7 @@
 
     h1
     {
+        position: relative;
         text-align: center;
         color: white;
         margin-top:20px;
