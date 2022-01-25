@@ -22,6 +22,8 @@ public class LoginLandlordServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
+
 
         try{
             //  dlm parameter ni pastikan nama sama dalam form jsp name=""
@@ -45,7 +47,7 @@ public class LoginLandlordServlet extends HttpServlet {
                 System.out.println("Product Name: " + dm.getDatabaseProductName());
                 System.out.println("Product version: " + dm.getDatabaseProductVersion());
 
-                HttpSession session = request.getSession();
+
                 Statement statement = conn.createStatement();
                 ResultSet res = statement.executeQuery(sql);
 
@@ -74,6 +76,17 @@ public class LoginLandlordServlet extends HttpServlet {
         }catch(Exception e){
             e.printStackTrace();
         }
+
+        int id = Integer .parseInt(session.getAttribute("landlordid").toString());
+        String username = (String) session.getAttribute("landlordusername");
+        String password = (String) session.getAttribute("landlordpassword");
+        String name = (String) session.getAttribute("landlordname");
+        String email = (String) session.getAttribute("landlordemail");
+        String age = (String) session.getAttribute("landlordage");
+        String phone = (String) session.getAttribute("landlordphoneno");
+        String gender = (String) session.getAttribute("landlordgender");
+        landlord ld = new landlord(id,username,password,name,email,age,phone,gender);
+
 
     }
 }
