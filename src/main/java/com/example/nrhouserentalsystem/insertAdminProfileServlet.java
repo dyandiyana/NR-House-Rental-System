@@ -69,8 +69,8 @@ public class insertAdminProfileServlet extends HttpServlet {
             st.setString(3,Name);
             st.setString(4,Email);
             st.setString(5,Age);
-            st.setString(6,PhoneNo);
-            st.setString(7,Gender);
+            st.setString(6,Gender);
+            st.setString(7,PhoneNo);
             int row= st.executeUpdate();//return no of row effected
 
             if(row>0){
