@@ -83,6 +83,12 @@
 
     }
 
+    img {
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
 
 
     .Hcont {
@@ -279,7 +285,9 @@
 
     <div class="Hcont" >
         <a href="tenant-houseMerlimau.jsp">
-            <div class="housepic"></div>
+            <div class="housepic">
+            <img src="tenant-houseMerlimau1.jpg" >
+            </div>
             <div class="houseName">
                 <p class="name">Rumah Sewa Taman Merlimau</p>
                 <p class="price">RM800</p>
