@@ -61,7 +61,7 @@ public class LoginLandlordServlet extends HttpServlet {
                         session.setAttribute("landlordphoneno",res.getString(7));
                         session.setAttribute("landlordgender",res.getString(8));
 
-                        response.sendRedirect("landlord-viewProfile.jsp");
+                        response.sendRedirect("landlord-displayHouseList.jsp");
 
                     }else{
                         out.println("HAHAHAHHA SALAH ");
