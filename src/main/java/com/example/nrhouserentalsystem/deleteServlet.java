@@ -12,7 +12,7 @@ import com.example.nrhouserentalsystem.landlordDao;
 
 import static java.lang.System.out;
 
-@WebServlet(name = "deleteServlet", value = "/deleteServlet")
+@WebServlet("/")
 public class deleteServlet extends HttpServlet {
 
     private landlordDao ld;
@@ -22,6 +22,33 @@ public class deleteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String action = request.getServletPath();
+
+        try {
+            switch (action) {
+                case "/new":
+                    /*showNewForm(request, response);*/
+                    break;
+                case "/insert":
+                    /*insertUser(request, response);*/
+                    break;
+                case "/delete":
+                    deleteUser(request, response);
+                    break;
+                case "/edit":
+                    /*showEditForm(request, response);*/
+                    break;
+                case "/update":
+                    /*updateUser(request, response);*/
+                    break;
+                default:
+                    /*listUser(request, response);*/
+                    break;
+            }
+        } catch (SQLException ex) {
+            throw new ServletException(ex);
+        }
 
     }
 
@@ -40,6 +67,13 @@ public class deleteServlet extends HttpServlet {
 
     }
 
+
+    private void deleteUser(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        ld.deleteUser(id);
+        response.sendRedirect("list");
+    }
 
 
 
