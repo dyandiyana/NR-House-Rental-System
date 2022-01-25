@@ -20,13 +20,13 @@ public class insertAdminProfileServlet extends HttpServlet {
         HttpSession session = request.getSession(); // if nk wujudkan session mcm sir buat
 
         // tarik value dri form dalam jsp lalu kot javascript bawah tu
-        String Username = (String) session.getAttribute("landlordUsername");
-        String Password = (String) session.getAttribute("landlordPassword");
-        String Name = (String) session.getAttribute("landlordName");
-        String Email = (String) session.getAttribute("landlordEmail");
-        String Age = (String) session.getAttribute("landlordAge");
-        String Gender = (String) session.getAttribute("landlordGender");
-        String PhoneNo = (String) session.getAttribute("landordPhoneNo");
+        String Username = (String) session.getAttribute("adminusername");
+        String Password = (String) session.getAttribute("adminpassword");
+        String Name = (String) session.getAttribute("adminname");
+        String Email = (String) session.getAttribute("adminemail");
+        String Age = (String) session.getAttribute("adminage");
+        String Gender = (String) session.getAttribute("admingender");
+        String PhoneNo = (String) session.getAttribute("adminphonenumber");
 
 
         //masukkan value ke dlm java class StudentDetails

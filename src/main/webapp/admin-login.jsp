@@ -19,26 +19,33 @@
 <div class="header">
     <p>UiTM JASIN NON-RESIDENT HOUSE RENTAL SYSTEM</p>
 </div>
-<form action="" method="POST">
+<form action="LoginAdminServlet" method="POST">
     <div class="container">
         <h2>ADMIN LOGIN</h2>
         <div class="row">
             <div class="col-25">
+                <label style=""></label>
+            </div>
+            <div class="col-75">
+                <input type="number" name="adminid"  value="${adminid}" hidden>
+            </div>
+        </div>
+            <div class="col-25">
                 <label style="">Username</label>
             </div>
             <div class="col-75">
-                <input type="text" name="username" placeholder="Enter your username" value="">
+                <input type="text" name="adminusername" placeholder="Enter your username" value="">
             </div></div>
         <div class="row">
             <div class="col-25">
                 <label>Password</label>
             </div>
             <div class="col-75">
-                <input type="password" name="adminPassword" placeholder="Your password" value="">
+                <input type="password" name="adminpassword" placeholder="Your password" value="">
             </div>
         </div>
         <p>Don't have an account?</p>
-        <button type="submit" class="button button1" name="submit" ><a href ="Admin-listhouse.jsp">Login</a></button>
+        <button type="submit" class="button button1" name="submit" >Login</button>
 
         <button type="submit" class="button2 button1 " name="submit" ><a href ="admin-createProfile.jsp">Sign up</a></button><br><br>
 
