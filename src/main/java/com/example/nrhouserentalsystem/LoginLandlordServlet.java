@@ -61,15 +61,7 @@ public class LoginLandlordServlet extends HttpServlet {
                         session.setAttribute("landlordphoneno",res.getString(7));
                         session.setAttribute("landlordgender",res.getString(8));
 
-                        int id = Integer.parseInt(res.getString("1"));
-                        String username = res.getString("2");
-                        String password = res.getString("2");
-                        String name = res.getString("2");
-                        String email = res.getString("2");
-                        String age = res.getString("2");
-                        String phone = res.getString("2");
-                        String gender = res.getString("2");
-                        landlord Landlord = new landlord(id, username, password, name, email, age, phone,gender);
+
 
                         response.sendRedirect("landlord-home.jsp");
 
