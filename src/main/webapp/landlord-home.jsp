@@ -14,6 +14,12 @@
         font-family: "Raleway", Arial, Helvetica, sans-serif
     }
 
+    h1
+    {
+        text-align: center;
+
+    }
+
 
 </style>
 <body class="w3-light-grey">
@@ -23,5 +29,8 @@
         <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
             <img class="house.jpg" src="house.jpg"  width="1500" height="700">
         </header>
+
+        <h1>WELCOME !!!!! ${landlordusername}<br><br><h1>
+
 </body>
 </html>
