@@ -47,6 +47,7 @@
     %>
 
     <jsp:forward page="landlord-login.jsp">
+        <jsp:param name="test" value="test"/>
 
     </jsp:forward>
     </body>
