@@ -22,7 +22,7 @@
 </div>
 
 
-<form action="UpdateLandlordServlet" method="POST">
+<form action="LandlordUpdateServlet" method="POST">
 
     <div class="container">
         <h2>UPDATE MY ACCOUNT</h2>

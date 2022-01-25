@@ -19,7 +19,7 @@
 
 
 
-<form action="InsertLandlordProfileServlet" method="post">
+<form action="LandlordSignupServlet" method="post">
     <div class="container">
         <h2>CREATE ACCOUNT</h2>
         <div class="row">

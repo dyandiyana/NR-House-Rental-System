@@ -12,8 +12,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-@WebServlet(name = "UpdateLandlordServlet", value = "/UpdateLandlordServlet")
-public class UpdateLandlordServlet extends HttpServlet {
+@WebServlet(name = "LandlordUpdateServlet", value = "/LandlordUpdateServlet")
+public class LandlordUpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

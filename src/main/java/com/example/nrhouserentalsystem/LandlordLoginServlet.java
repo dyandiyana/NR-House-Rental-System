@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet(name = "LoginLandlordServlet", value = "/LoginLandlordServlet")
-public class LoginLandlordServlet extends HttpServlet {
+@WebServlet(name = "LandlordLoginServlet", value = "/LandlordLoginServlet")
+public class LandlordLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -85,7 +85,7 @@ public class LoginLandlordServlet extends HttpServlet {
         String age = (String) session.getAttribute("landlordage");
         String phone = (String) session.getAttribute("landlordphoneno");
         String gender = (String) session.getAttribute("landlordgender");
-        landlord ld = new landlord(id,username,password,name,email,age,phone,gender);
+        Landlord ld = new Landlord(id,username,password,name,email,age,phone,gender);
 
 
     }

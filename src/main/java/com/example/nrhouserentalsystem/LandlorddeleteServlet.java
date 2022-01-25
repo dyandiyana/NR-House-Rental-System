@@ -4,20 +4,13 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.sql.*;
-import java.util.List;
-import com.example.nrhouserentalsystem.landlordDao;
 
-import static java.lang.System.out;
+@WebServlet(name = "LandlorddeleteServlet", value = "/LandlorddeleteServlet")
+public class LandlorddeleteServlet extends HttpServlet {
 
-@WebServlet(name = "deleteServlet", value = "/deleteServlet")
-public class deleteServlet extends HttpServlet {
-
-    private landlordDao ld;
+    private LandlordDao ld;
     public void init() {
-        ld = new landlordDao();
+        ld = new LandlordDao();
     }
 
     @Override

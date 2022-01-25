@@ -19,7 +19,7 @@
 <div class="header">
     <p>UiTM JASIN NON-RESIDENT HOUSE RENTAL SYSTEM</p>
 </div>
-<form action="/LoginLandlordServlet" method="POST">
+<form action="/LandlordLoginServlet" method="POST">
     <div class="container">
         <h2>LANDLORD LOGIN</h2>
         <div class="row">

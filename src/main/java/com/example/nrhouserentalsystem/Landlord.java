@@ -1,6 +1,6 @@
 package com.example.nrhouserentalsystem;
 
-public class landlord {
+public class Landlord {
 
     public Integer landlordId;
     public String landlordUsername;
@@ -11,7 +11,7 @@ public class landlord {
     public String landlordPhoneNo;
     public String landlordGender;
 
-    public landlord(Integer landlordId, String landlordUsername, String landlordPassword, String landlordName, String landlordEmail, String landlordAge, String landlordPhoneNo, String landlordGender) {
+    public Landlord(Integer landlordId, String landlordUsername, String landlordPassword, String landlordName, String landlordEmail, String landlordAge, String landlordPhoneNo, String landlordGender) {
         this.landlordId = landlordId;
         this.landlordUsername = landlordUsername;
         this.landlordPassword = landlordPassword;

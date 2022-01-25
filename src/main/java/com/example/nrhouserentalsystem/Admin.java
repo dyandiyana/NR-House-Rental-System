@@ -1,4 +1,4 @@
-package com.Model;
+package com.example.nrhouserentalsystem;
 
 public class Admin {
     public String id;

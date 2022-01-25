@@ -12,8 +12,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-@WebServlet(name = "InsertLandlordProfileServlet", value = "/InsertLandlordProfileServlet")
-public class InsertLandlordProfileServlet extends HttpServlet {
+@WebServlet(name = "LandlordSignupServlet", value = "/LandlordSignupServlet")
+public class LandlordSignupServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
