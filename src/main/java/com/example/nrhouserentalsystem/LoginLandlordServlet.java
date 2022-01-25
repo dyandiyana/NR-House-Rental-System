@@ -31,9 +31,9 @@ public class LoginLandlordServlet extends HttpServlet {
             String lPassword = request.getParameter("landlordPassword");
 
             Class.forName("org.postgresql.Driver"); // ni stay
-            String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com:5432/d6u31lk8tofpbt"; //ni url dri heroku database
-            String user = "nhydysucefvvzn"; //ni user dri heroku database
-            String pass = "d91c6a95779ab44ec2939ae0225389a20d7129541e10791714dbf4f165e0d078"; //ni password dri heroku database
+            String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com:5432/dcb70s908sasfa"; //ni url dri heroku database
+            String user = "gpdkvocjaztxrw"; //ni user dri heroku database
+            String pass = "dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"; //ni password dri heroku database
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
             String sql  ="SELECT * from landlord";
