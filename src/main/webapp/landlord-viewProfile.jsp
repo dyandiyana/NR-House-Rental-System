@@ -32,7 +32,7 @@
                 <label>USERNAME</label>
             </div>
             <div class="col-75">
-                <label><%= (String)request.getAttribute("landlordusername")%></label>
+                <label>${landlordusername}</label>
             </div>
         </div>
 
@@ -41,7 +41,7 @@
                 <label>FULL NAME</label>
             </div>
             <div class="col-75">
-                <label><%= (String)request.getAttribute("landlordname")%></label>
+                <label>${landlordname}</label>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <label><%= (String)request.getAttribute("landlordemail")%></label>
+                <label>${landlordemail}</label>
             </div>
         </div>
 
@@ -61,7 +61,7 @@
                 <label>AGE</label>
             </div>
             <div class="col-75">
-                <label><%= (String)request.getAttribute("landlordage")%></label>
+                <label>${landlordage}</label>
             </div>
         </div>
 
@@ -70,7 +70,7 @@
                 <label>PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <label><%= (String)request.getAttribute("landlordphonenumber")%></label>
+                <label>${landlordphoneno}</label>
             </div>
         </div>
         <div class="row">
@@ -78,7 +78,7 @@
                 <label>GENDER</label>
             </div>
             <div class="col-75">
-                <label><%= (String)request.getAttribute("landlordgender")%></label>
+                <label>${landlordgender}</label>
             </div>
         </div>
 
