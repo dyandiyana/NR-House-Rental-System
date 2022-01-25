@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 
-@WebServlet(name = "LoginAdminServlet", value = "/LoginAdminServlet")
-public class LoginAdminServlet extends HttpServlet {
+@WebServlet(name = "AdminLoginServlet", value = "/AdminLoginServlet")
+public class AdminLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -64,7 +64,7 @@ public class LoginAdminServlet extends HttpServlet {
                         response.sendRedirect("Admin-listhouse.jsp");
 
                     }else{
-                        out.println("HAHAHAHHA SALAH ");
+                        out.println("User Not Exist");
                     }
                 }
             }
