@@ -18,6 +18,7 @@
 <body>
 
 <%@include file="admin-navbar.html"%>
+<form action="" method="post">
 
 <div class="container">
     <h3>MY PROFILE</h3>
@@ -83,5 +84,6 @@
 
 
 </div>
+</form>
 </body>
 </html>
