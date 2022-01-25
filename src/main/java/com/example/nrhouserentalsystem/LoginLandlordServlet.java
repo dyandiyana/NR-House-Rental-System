@@ -77,7 +77,7 @@ public class LoginLandlordServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        int id = Integer .parseInt(session.getAttribute("landlordid").toString());
+        int id = Integer.parseInt(session.getAttribute("landlordid").toString());
         String username = (String) session.getAttribute("landlordusername");
         String password = (String) session.getAttribute("landlordpassword");
         String name = (String) session.getAttribute("landlordname");
