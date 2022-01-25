@@ -19,7 +19,6 @@
         position: relative;
         text-align: center;
         color: white;
-        margin-top:20px;
 
 
     }
@@ -32,8 +31,10 @@
         <!-- Header -->
         <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
             <img class="house.jpg" src="house.jpg"  width="1500" height="700">
-            <h1>WELCOME !!!!! ${landlordusername}<br><br></h1>
 
+            <div style="margin-top:20px;">
+                <h1>WELCOME !!!!! ${landlordusername}<br><br></h1>
+            </div>
         </header>
 
 
