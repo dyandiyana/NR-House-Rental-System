@@ -37,9 +37,9 @@ public class deleteServlet extends HttpServlet {
             String sql = "delete from landlord where landlordid=?";
             PreparedStatement st = conn.prepareStatement(sql);
             st.setInt(1, Integer.parseInt(session.getAttribute("landlordid").toString()));
-
-
             stmt.execute(sql);
+
+            int row= st.executeUpdate();
 
             out.println("Your Requested Data Is Deleted");
             conn.close();
