@@ -4,7 +4,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,18 +21,8 @@ public class deleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
-        PrintWriter out = response.getWriter();
+        HttpSession session= request.getSession();
 
-        int id = Integer.parseInt(session.getAttribute("landlordid").toString());
-        String username = (String) session.getAttribute("landlordusername");
-        String password = (String) session.getAttribute("landlordpassword");
-        String name = (String) session.getAttribute("landlordname");
-        String email = (String) session.getAttribute("landlordemail");
-        String age = (String) session.getAttribute("landlordage");
-        String phone = (String) session.getAttribute("landlordphoneno");
-        String gender = (String) session.getAttribute("landlordgender");
-        landlord Landlord = new landlord(id, username, password, name, email, age, phone, gender);
 
         try
         {
@@ -47,8 +36,8 @@ public class deleteServlet extends HttpServlet {
             Statement stmt = conn.createStatement();
             String sql = "delete from landlord where landlordid=?";
             PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, Integer.parseInt(session.getAttribute("landlordid").toString()));
 
-            st.setInt(1, Landlord.getLandlordId());
 
             stmt.execute(sql);
 
@@ -62,7 +51,6 @@ public class deleteServlet extends HttpServlet {
             out.println("Error: " + e.toString());
 
         }
-
 
     }
 }
