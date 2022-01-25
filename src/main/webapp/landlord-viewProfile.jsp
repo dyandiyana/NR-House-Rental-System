@@ -19,6 +19,7 @@
 </head>
 
 <body>
+<%@include file="landlord-navbar.html"%>
 <form action="" method="post">
 
     <div class="container">
