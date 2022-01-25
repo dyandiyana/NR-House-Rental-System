@@ -4,6 +4,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,12 +23,14 @@ public class deleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        PrintWriter out = response.getWriter();
         HttpSession session= request.getSession();
+        out.println(request.getParameter("landlordid"));
 
 
         try
         {
-            int id = Integer.parseInt(session.getAttribute("landlordid").toString());
+            int id = Integer.parseInt(request.getParameter("landlordid"));
             Class.forName("org.postgresql.Driver"); // ni stay
             String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com:5432/dcb70s908sasfa"; //ni url dri heroku database
             String user = "gpdkvocjaztxrw";
@@ -41,12 +45,16 @@ public class deleteServlet extends HttpServlet {
 
             int row= st.executeUpdate();
 
-            out.println("Your Requested Data Is Deleted");
+            if(row>0)
+            {
+                out.println("Your Requested Data Is Deleted");
+            }else{
+                out.println("Your Requested Data Is not Deleted");
+            }
+
             conn.close();
 
-        }
-
-        catch (Exception e)
+        }catch (Exception e)
         {
             out.println("Error: " + e.toString());
 
