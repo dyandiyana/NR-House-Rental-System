@@ -27,10 +27,9 @@
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
             Statement stmt = conn.createStatement();
-            String sql = "delete from landlord where landlordid=?";
+            String sql = "delete from landlord where landlordusername='dee'";
             PreparedStatement st = conn.prepareStatement(sql);
 
-            st.setInt(1, La);
 
             stmt.execute(sql);
 

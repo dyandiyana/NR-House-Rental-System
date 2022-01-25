@@ -82,11 +82,12 @@
             </div>
         </div>
 
-        <button type="submit" class="button button1" name="submit" onclick="document.getElementById('id01').style.display='block'" ><a href="landlord-deleteProfile.jsp">DELETE</a> </button>
+        <button type="submit" class="button button1" name="submit" onclick="document.getElementById('id01').style.display='block'"><a href="landlord-deleteProfile.jsp">DELETE</a> </button>
         <button type="submit" onclick="myFunction(); return false" class="button button1" name="submit"  ><a href="landlord-updateProfile.jsp">UPDATE</a></button>
 
 
     </div>
+
 
 
 </form>
