@@ -17,6 +17,7 @@
     h1
     {
         text-align: center;
+        color: white;
 
     }
 
@@ -28,9 +29,10 @@
         <!-- Header -->
         <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
             <img class="house.jpg" src="house.jpg"  width="1500" height="700">
+            <h1>WELCOME !!!!! ${landlordusername}<br><br><h1>
+
         </header>
 
-        <h1>WELCOME !!!!! ${landlordusername}<br><br><h1>
 
 </body>
 </html>
