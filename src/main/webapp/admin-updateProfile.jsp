@@ -36,7 +36,7 @@
                 <label style="">Password</label>
             </div>
             <div class="col-75">
-                <input type="text" name="adminpassword" value="${adminpassword}">
+                <input type="password" name="adminpassword" value="${adminpassword}">
             </div>
         </div>
         <div class="row">
