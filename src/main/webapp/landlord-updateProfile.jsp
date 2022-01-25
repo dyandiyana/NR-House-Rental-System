@@ -22,15 +22,24 @@
 </div>
 
 
-<form action="" method="POST">
+<form action="UpdateLandlordServlet" method="POST">
+
     <div class="container">
         <h2>UPDATE MY ACCOUNT</h2>
+        <div class="row">
+            <div class="col-25">
+                <label style=""></label>
+            </div>
+            <div class="col-75">
+                <input type="number" name="landlordid"  value="${landlordid}" hidden>
+            </div>
+        </div>
         <div class="row">
             <div class="col-25">
                 <label style="">USERNAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="Username" placeholder="Enter your username" value="Zaitul_Farhana00">
+                <input type="text" name="landlordusername"  value="${landlordusername}">
             </div>
         </div>
         <div class="row">
@@ -38,7 +47,7 @@
                 <label>PASSWORD</label>
             </div>
             <div class="col-75">
-                <input type="password" name="password" placeholder="Enter your password" value="Farhana_0911">
+                <input type="password" name="landlordpassword"  value="${landlordpassword}">
             </div>
         </div>
         <div class="row">
@@ -46,7 +55,7 @@
                 <label style="">FULL NAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="FullName" placeholder="Enter your full name" value="Zaitul Farhna Md Esa">
+                <input type="text" name="landlordname"  value="${landlordname}">
             </div>
         </div>
         <div class="row">
@@ -54,26 +63,16 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="email" placeholder="Enter your email" value="z.farhana21@gamil.com">
+                <input type="text" name="landlordemail"  value="${landlordemail}">
             </div>
         </div>
-        <div class="row">
-            <div class="col-25">
-                <label style="">GENDER</label>
-            </div>
-            <div class="col-75">
-                <input type="radio" id="male" name="Gender" placeholder="Male" value="">
-                <label for="male">MALE</label><br>
-                <input type="radio" id="female" name="Gender" placeholder="Female" value="">
-                <label for="female">FEMALE</label>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-25">
                 <label style="">AGE</label>
             </div>
             <div class="col-75">
-                <input type="text" name="age" placeholder="Enter your age" value="38">
+                <input type="text" name="landlordage" value="${landlordage}">
             </div>
         </div>
         <div class="row">
@@ -81,11 +80,22 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="text" name="PhoneNumber" placeholder="Enter your phone number" value="0114567654">
+                <input type="text" name="landlordPhoneNo"  value="${landlordphoneno}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label style="">GENDER</label>
+            </div>
+            <div class="col-75">
+                <input type="radio" id="male" name="landlordgender" placeholder="Male" value="${landlordgender}">
+                <label for="male">MALE</label><br>
+                <input type="radio" id="female" name="landlordgender" placeholder="Female" value="${landlordgender}">
+                <label for="female">FEMALE</label>
             </div>
         </div>
 
-        <button type="submit" class="button button1" name="submit" ><a href ="#">Submit</a></button><br><br>
+        <button type="submit" class="button button1" name="submit" >Submit</button><br><br>
     </div>
 </form>
 </body>
