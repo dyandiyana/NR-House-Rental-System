@@ -36,7 +36,7 @@ public class LoginAdminServlet extends HttpServlet {
             String pass = "dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"; //ni password dri heroku database
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
-            String sql  ="SELECT * from landlord";
+            String sql  ="SELECT * from admin";
 
             if (conn != null){
                 DatabaseMetaData dm = conn.getMetaData();
