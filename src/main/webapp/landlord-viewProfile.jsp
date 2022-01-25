@@ -86,7 +86,7 @@
             request.setAttribute("landlordid", request.getParameter("landlordid"));
         %>
 
-        <button type="submit" class="button button1" name="submit" onclick="form.action='deleteServlet'">DELETE </button>
+        <button type="submit" class="button button1" name="submit" onclick="form.action='deleteServlet'">DELETE</button>
         <button type="submit" onclick="myFunction(); return false" class="button button1" name="submit"  ><a href="landlord-updateProfile.jsp">UPDATE</a></button>
 
 
