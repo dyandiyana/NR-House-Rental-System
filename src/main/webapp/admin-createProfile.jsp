@@ -9,7 +9,7 @@
 <%@page import="java.sql.DriverManager" %>
 <%@page import="java.sql.PreparedStatement" %>
 <%@page import="java.sql.Connection" %>
-<%@ page import="com.Model.Admin" %>
+<%@ page import="com.example.nrhouserentalsystem.Admin" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,7 +130,7 @@
         stat.executeUpdate();
 
         String id = "select * from admin where adminid = (select max(adminid) from admin);";
-        Admin admin = new Admin(id,username,password,fullname,email,gender,age,phonenumber);
+        /*Admin admin = new Admin(id,username,password,fullname,email,gender,age,phonenumber);*/
         response.sendRedirect("Admin-listhouse.jsp");
 
     }
