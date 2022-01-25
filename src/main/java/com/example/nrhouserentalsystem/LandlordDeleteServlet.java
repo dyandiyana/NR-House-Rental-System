@@ -5,12 +5,12 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "LandlorddeleteServlet", value = "/LandlorddeleteServlet")
-public class LandlorddeleteServlet extends HttpServlet {
+@WebServlet(name = "LandlordDeleteServlet", value = "/LandlordDeleteServlet")
+public class LandlordDeleteServlet extends HttpServlet {
 
-    private LandlordDao ld;
+    private LandlordDeleteDao ld;
     public void init() {
-        ld = new LandlordDao();
+        ld = new LandlordDeleteDao();
     }
 
     @Override
