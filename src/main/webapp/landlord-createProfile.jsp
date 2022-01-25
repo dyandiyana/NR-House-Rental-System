@@ -19,7 +19,7 @@
 
 
 
-<form action="" method="POST">
+<form action="InsertLandlordProfileServlet" method="POST">
     <div class="container">
         <h2>CREATE ACCOUNT</h2>
         <div class="row">
@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <button type="submit" class="button button1" name="submit" ><a href ="landlord-viewProfile.jsp">Submit</a></button><br><br>
+        <button type="submit" class="button button1" name="submit" >Submit</button><br><br>
     </div>
 </form>
 <body>
