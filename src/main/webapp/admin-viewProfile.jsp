@@ -21,6 +21,9 @@
 
 <div class="container">
     <h3>MY PROFILE</h3>
+
+    <input type="number" name="landlordid"  value="${adminid}" hidden>
+
     <div class="row">
         <div class="col-25">
             <label>USERNAME</label>
@@ -75,8 +78,8 @@
     </div>
 
 
-    <button type="submit" onclick="myFunction(); return false" class="button button1" name="submit" ><a href="admin-updateProfile.jsp">UPDATE</a></button>
-    <button type="submit" class="button button1" name="submit" onclick="document.getElementById('id01').style.display='block'"><a href="#">DELETE</a></button>
+    <button type="submit"  class="button button1" name="submit" ><a href="admin-updateProfile.jsp">UPDATE</a></button>
+    <button type="submit" class="button button1" name="submit" onclick="form.action='AdminDeleteServlet'">DELETE</button>
 
 
 </div>
