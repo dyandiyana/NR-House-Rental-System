@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HOUSE RENTAL SYSTEM</title>
+    <title>hOUSE RENTAL SYSTEM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="admin-updateProfile.css">
     <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
