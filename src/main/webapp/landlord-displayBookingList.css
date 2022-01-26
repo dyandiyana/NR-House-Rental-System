@@ -1,11 +1,7 @@
 body {
     background-color: aliceblue;
-    display: grid;
-    background-size: cover;
-    justify-content: center;
-    height: 100%;
-    font-size: 100%;
     font-family: Verdana,sans-serif;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -15,3 +11,193 @@ h1 {
 .mytab{
     margin: 30px 30px;
 }
+
+.titlebg{
+    margin: 20px 10px;
+}
+
+table, td, th{
+    border: 1px solid black;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    object-position: center;
+}
+
+.container{
+    margin: 20px 30px;
+}
+
+.w3-container button{
+    padding:5px 5px;
+    margin: 5px 5px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
+.w3-container button:hover{
+    padding:5px 5px;
+    margin: 5px 5px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: #f44336;
+}
+
+/*popup Tenancy details start*/
+
+.overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.popup {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.popup h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+    width: 100%;
+    background-color: #f44336;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popup .close:hover {
+    background-color: #d53929;
+    color:white;
+}
+
+
+.content input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+/*popup Tenancy details end*/
+
+/* Popup question mark*/
+.popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+    cursor: pointer;
+}
+
+.popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* The Close Button */
+.close2 {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+    float: left;
+    width: 40%;
+    margin: 10px;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+    background-color: #ccc;
+    color: black;
+    padding: 10px 10px;
+    margin: 5px 5px;
+    border:none;
+    cursor: pointer;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+    background-color: #f44336;
+    padding: 10px 10px;
+    margin: 5px 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Add padding and center-align text to the container */
+.cont {
+    padding: 16px;
+    text-align: center;
+}
+
+.popup2 {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+

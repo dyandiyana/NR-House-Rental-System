@@ -1,0 +1,186 @@
+
+body {
+    background-image: url('https://i.pinimg.com/736x/9c/d3/a7/9cd3a7847066e13f1e400d93d004281d--home-painting-ideas-interior-painting.jpg');
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    height: 220vh;
+    font-size: 100%;
+    font-family: Verdana,sans-serif;
+}
+
+
+.topic {
+    background-color: white;
+    width: 60rem;
+    color: black;
+    z-index: 2;
+    margin-top:50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+.topic p{
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.sbt{
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+}
+
+.sbt .block {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color:#007bff;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.block:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.c2{
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.c1{
+    margin-right: 5px;
+}
+
+
+form {
+    padding: 25px 30px;
+}
+
+.toinline{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin:20px 0 12px 0;
+}
+
+.toinline .input-box,
+.toinline .thedetails{
+    margin-bottom: 15px;
+    width:calc(100% /2 - 20px);
+}
+
+.toinline .input-box label,
+.toinline .thedetails .tenantnum,
+.datepub{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.toinline .input-box input,select{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    padding-left:15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.toinline .input-box input:focus,
+.toinline .input-box input:valid {
+  border-color: #007bff;
+}
+
+form .available-detail .thetopic,
+form .wifi-detail .thetopic{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+.tintedbg{
+    width: 60rem;
+    height: 185vh;
+    box-shadow: 0 0 1rem 0 rgba( 0, 0, 0, .2);
+    border-radius: 15px;
+    position: relative;
+    background: inherit;
+    overflow: auto;
+    z-index: 1;
+    margin:auto;
+}
+
+.tintedbg:before{
+    content: "";
+    position: absolute;
+    background: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    filter: blur(10px);
+    margin: -20px;
+    z-index: -1;
+
+}
+
+stack-top {
+    content: "";
+    z-index: 9;
+    margin: 20px;
+    background-colour: white;
+    border-radius: 50%;
+}
+
+.textarea {
+    resize: none;
+}
+
+.quantity input {
+    border: 1px solid white;
+    width: 100px;
+    height:45px;
+    font-size: 20px;
+    color:black;
+}
+
+.quantity {
+    display:inline-flex;
+}
+
+.quantity button {
+    width: 45px;
+    height:45px;
+    border: 1px solid white;
+    color: white;
+    border-radius: 0;
+    background: #007bff;
+    cursor: pointer;
+}
+
+.quantity img {
+    margin-right: 10px;
+    margin-left: 60px;
+}
+
+.bgd {
+    background-color: lightgrey;
+    text-align: center;
+    color:  #007bff;
+    width: 65rem;
+    height: 1cm;
+    padding: 5px 10px;
+}
+
+
