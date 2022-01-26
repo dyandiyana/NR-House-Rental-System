@@ -17,28 +17,29 @@
 
 
 <div class="column">
+    <a href="tenant-login.jsp">
     <div class="container">
-        <a href="tenant-login.jsp">
             <h3>TENANT</h3>
-        </a>
     </div>
+    </a>
 </div>
 
 
 <div class="column">
+    <a href="landlord-login.jsp">
     <div class="container1">
-        <a href="landlord-login.jsp">
             <h3>LANDLORD</h3>
-        </a>
     </div>
+    </a>
 </div>
 
 <div class="column">
+    <a href="admin-login.jsp">
     <div class="container2">
-        <a href="admin-login.jsp">
+        <
             <h3>ADMIN</h3>
-        </a>
     </div>
+    </a>
 </div>
 
 </body>
