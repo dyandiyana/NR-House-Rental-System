@@ -61,7 +61,7 @@
             </div>
             <div class="col-75">
                 <%
-                    if (request.getAttribute("admingender").equals("Male")){
+                    if (request.getAttribute("admingender") == "Male"){
                 %>
                 <input type="radio" id="male" name="admingender" value="Male" checked>
                 <label for="male">MALE</label><br>
