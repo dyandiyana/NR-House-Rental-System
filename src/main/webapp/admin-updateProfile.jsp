@@ -62,7 +62,7 @@
             <div class="col-75">
                 <%
                     String gender = request.getParameter("admingender");
-                    if (gender == "Male"){
+                    if (gender.equals("Male")){
                 %>
                 <input type="radio" id="male" name="admingender" value="Male" checked>
                 <label for="male">MALE</label><br>
@@ -71,7 +71,7 @@
 
                 <%
                     }
-                    else if(gender == "Female"){
+                    else if(gender.equals("Female")){
                 %>
                 <input type="radio" id="male" name="admingender" value="Male">
                 <label for="male">MALE</label><br>
