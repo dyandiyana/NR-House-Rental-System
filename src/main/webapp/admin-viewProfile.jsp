@@ -56,7 +56,7 @@
             <label>GENDER</label>
         </div>
         <div class="col-75">
-            <input type="number" name="admingender"  value="${admingender}" hidden>
+            <input type="text" name="admingender"  value="${admingender}" hidden>
             <label>${admingender}</label>
         </div>
     </div>
@@ -80,7 +80,7 @@
     </div>
 
 
-    <button type="submit"  class="button button1" name="submit" ><a href="admin-updateProfile.jsp">UPDATE</a></button>
+    <button type="submit"  class="button button1" name="submit" onclick="form.action='admin-updateProfile.jsp'">UPDATE</button>
     <button type="submit" class="button button1" name="submit" onclick="form.action='AdminDeleteServlet'">DELETE</button>
 
 
