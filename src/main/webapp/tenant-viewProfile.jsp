@@ -65,7 +65,7 @@
         </div>
         <div class="col-75">
             <label>${tenantgender}</label>
-            <input type="text" name="tenangender"  value="${tenantgender}" hidden>
+            <input type="text" name="tenantgender"  value="${tenantgender}" hidden>
         </div>
     </div>
 
