@@ -71,7 +71,7 @@
 
                 <%
                     }
-                    else{
+                    else if(gender == "Female"){
                 %>
                 <input type="radio" id="male" name="admingender" value="Male">
                 <label for="male">MALE</label><br>
