@@ -18,6 +18,9 @@
 <body>
 
 <%@include file="tenant-navbar.html"%>
+<form action="" method="post">
+
+    <input type="number" name="tenantid"  value="${tenantid}" hidden>
 
 <div class="container">
     <h3>MY PROFILE</h3>
@@ -26,7 +29,7 @@
             <label>USERNAME</label>
         </div>
         <div class="col-75">
-            <label>2021125745</label>
+            <label>${tenantusername}</label>
         </div>
     </div>
     <div class="row">
@@ -34,7 +37,7 @@
             <label>PASSWORD</label>
         </div>
         <div class="col-75">
-            <label>123456</label>
+            <label>${tenantpassword}</label>
         </div>
     </div>
 
@@ -43,7 +46,7 @@
             <label>FULL NAME</label>
         </div>
         <div class="col-75">
-            <label>NUR WALIUDDIN MD SHAARI</label>
+            <label>${tenantname}</label>
         </div>
     </div>
 
@@ -52,7 +55,7 @@
             <label>EMAIL</label>
         </div>
         <div class="col-75">
-            <label>nurwaliuddin0719@gmail.com</label>
+            <label>${tenantemail}</label>
         </div>
     </div>
 
@@ -61,7 +64,8 @@
             <label>GENDER</label>
         </div>
         <div class="col-75">
-            <label>MALE</label>
+            <label>${tenantgender}</label>
+            <input type="text" name="tenangender"  value="${tenantgender}" hidden>
         </div>
     </div>
 
@@ -70,7 +74,7 @@
             <label>AGE</label>
         </div>
         <div class="col-75">
-            <label>21</label>
+            <label>${tenantage}</label>
         </div>
     </div>
 
@@ -79,13 +83,13 @@
             <label>PHONE NUMBER</label>
         </div>
         <div class="col-75">
-            <label>0106612401</label>
+            <label>${tenantphoneno}</label>
         </div>
     </div>
 
 
-    <button type="submit" onclick="myFunction(); return false" class="button button1" name="submit" ><a href="tenant-updateProfile.jsp">UPDATE</a></button>
-    <button type="submit" onclick="myFunction2(); return false" class="button button1" name="submit" >DELETE</a></button>
+    <button type="submit" class="button button1" name="submit" onclick="form.action='tenant-updateProfile.jsp'">UPDATE</button>
+    <button type="submit"  class="button button1" name="submit" >DELETE</button>
 
   
     <script type="text/javaScript">
@@ -95,5 +99,6 @@
 						}
 					</script>	
 </div>
+</form>
 </body>
 </html>

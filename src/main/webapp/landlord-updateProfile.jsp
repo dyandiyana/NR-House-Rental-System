@@ -16,10 +16,8 @@
 </head>
 
 <body>
-<div class="navbar">
+
     <%@include file="landlord-navbar.html"%>
-    </div>
-</div>
 
 
 <form action="LandlordUpdateServlet" method="POST">
@@ -111,6 +109,7 @@
             </div>
         </div>
 
+        <button type="button" class="button button2" onclick="form.action='landlord-viewProfile.jsp'">Back</button>
         <button type="submit" class="button button1" name="submit" >Submit</button><br><br>
     </div>
 </form>

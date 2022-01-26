@@ -27,7 +27,7 @@
                 <label style="">USERNAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="Username" placeholder="Enter your username" value="2018682608">
+                <input type="text" name="tenantusernamew"  value="${tenantusername}">
             </div>
         </div>
         <div class="row">
@@ -35,7 +35,7 @@
                 <label>PASSWORD</label>
             </div>
             <div class="col-75">
-                <input type="password" name="password" placeholder="Enter your password" value="0987654321">
+                <input type="password" name="tenantpassword" value="${tenantpassword}" >
             </div>
         </div>
         <div class="row">
@@ -43,7 +43,7 @@
                 <label style="">FULL NAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="FullName" placeholder="Enter your full name" value="MUHAMMAD BAKHTIAR SHAKBAN">
+                <input type="text" name="tenantname" value="${tenantname}">
             </div>
         </div>
         <div class="row">
@@ -51,7 +51,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="email" placeholder="Enter your email" value="2021125745@student.uitm.edu.my">
+                <input type="text" name="tenantemail"  value="${tenantemail}">
             </div>
         </div>
         <div class="row">
@@ -59,10 +59,26 @@
                 <label style="">GENDER</label>
             </div>
             <div class="col-75">
-                <input type="radio" id="male" name="Gender" placeholder="Male" value="">
+                <%
+                    String gender = request.getParameter("tenantgender");
+                    if (gender.equals("Male")){
+                %>
+                <input type="radio" id="male" name="tenantgender" value="Male" checked>
                 <label for="male">MALE</label><br>
-                <input type="radio" id="female" name="Gender" placeholder="Female" value="">
+                <input type="radio" id="female" name="tenantgender" value="Female">
                 <label for="female">FEMALE</label>
+
+                <%
+                }
+                else if(gender.equals("Female")){
+                %>
+                <input type="radio" id="male" name="tenantgender" value="Male">
+                <label for="male">MALE</label><br>
+                <input type="radio" id="female" name="tenantgender" value="Female" checked>
+                <label for="female">FEMALE</label>
+                <%
+                    }
+                %>
             </div>
         </div>
         <div class="row">
@@ -70,7 +86,7 @@
                 <label style="">AGE</label>
             </div>
             <div class="col-75">
-                <input type="text" name="age" placeholder="Enter your age" value="18">
+                <input type="text" name="tenantage" value="${tenantage}">
             </div>
         </div>
         <div class="row">
@@ -78,12 +94,12 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="text" name="PhoneNumber" placeholder="Enter your phone number" value="0195183243">
+                <input type="text" name="tenantphoneno" value="${tenantphoneno}">
             </div>
         </div>
       
-        <button type="submit" class="button button2" name="submit" ><a href ="tenant-viewProfile.jsp">Back</a></button>
-        <button type="submit" class="button button1" name="submit" ><a href ="tenant-viewProfile.jsp">Submit</a></button><br><br>
+        <button type="button" class="button button2" onclick="form.action='tenant-viewProfile.jsp'">Back</button>
+        <button type="submit" class="button button1" name="submit" onclick="form.action='TenantUpdateServlet'">Update</button><br><br>
 
     </div>
 </form>
