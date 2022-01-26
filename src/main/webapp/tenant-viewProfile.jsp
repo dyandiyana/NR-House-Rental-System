@@ -89,7 +89,7 @@
 
 
     <button type="submit" class="button button1" name="submit" onclick="form.action='tenant-updateProfile.jsp'">UPDATE</button>
-    <button type="submit"  class="button button1" name="submit" >DELETE</button>
+    <button type="submit"  class="button button1" name="submit" onclick="form.action='TenantDeleteServlet'" >DELETE</button>
 
 
 </div>
