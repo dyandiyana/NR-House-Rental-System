@@ -22,6 +22,7 @@
 <form action="" method="POST">
     <div class="container">
         <h2>UPDATE MY PROFILE</h2>
+        <input type="text" name="tenantid" value="${tenantid}" hidden>
         <div class="row">
             <div class="col-25">
                 <label style="">USERNAME</label>
