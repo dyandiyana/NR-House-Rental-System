@@ -12,8 +12,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-@WebServlet(name = "insertAdminProfileServlet", value = "/insertAdminProfileServlet")
-public class insertAdminProfileServlet extends HttpServlet {
+@WebServlet(name = "AdminSignupServlet", value = "/AdminSignupServlet")
+public class AdminSignupServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

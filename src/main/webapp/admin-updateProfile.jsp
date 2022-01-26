@@ -60,10 +60,26 @@
                 <label style="">GENDER</label>
             </div>
             <div class="col-75">
-                <input type="radio" id="male" name="admingender" value="${admingender}">
+                <%
+                    if (request.getAttribute("admingender").equals("Male")){
+                %>
+                <input type="radio" id="male" name="admingender" value="Male" checked>
                 <label for="male">MALE</label><br>
-                <input type="radio" id="female" name="admingender" value="${admingender}">
+                <input type="radio" id="female" name="admingender" value="Female">
                 <label for="female">FEMALE</label>
+
+                <%
+                    }
+                    else{
+                %>
+                <input type="radio" id="male" name="admingender" value="Male">
+                <label for="male">MALE</label><br>
+                <input type="radio" id="female" name="admingender" value="Female" checked>
+                <label for="female">FEMALE</label>
+                <%
+                    }
+                %>
+
             </div>
         </div>
         <div class="row">
