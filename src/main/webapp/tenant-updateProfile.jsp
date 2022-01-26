@@ -28,7 +28,7 @@
                 <label style="">USERNAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantusernamew"  value="${tenantusername}">
+                <input type="text" name="tenantusername"  value="${tenantusername}">
             </div>
         </div>
         <div class="row">

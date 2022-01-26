@@ -91,13 +91,7 @@
     <button type="submit" class="button button1" name="submit" onclick="form.action='tenant-updateProfile.jsp'">UPDATE</button>
     <button type="submit"  class="button button1" name="submit" >DELETE</button>
 
-  
-    <script type="text/javaScript">
-						function myFunction2()
-						{	
-							confirm("Are you sure you want to delete your profile?");
-						}
-					</script>	
+
 </div>
 </form>
 </body>
