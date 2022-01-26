@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Objects" %><%--
   Created by IntelliJ IDEA.
   User: wala wala
   Date: 1/2/2022
@@ -62,7 +62,7 @@
             <div class="col-75">
                 <%
                     String gender = (String) request.getAttribute("admingender");
-                    if (gender == "Male"){
+                    if (Objects.equals(gender, "Male")){
                 %>
                 <input type="radio" id="male" name="admingender" value="Male" checked>
                 <label for="male">MALE</label><br>
@@ -71,7 +71,7 @@
 
                 <%
                     }
-                    else if(gender == "Female"){
+                    else if(Objects.equals(gender, "Female")){
                 %>
                 <input type="radio" id="male" name="admingender" value="Male">
                 <label for="male">MALE</label><br>
