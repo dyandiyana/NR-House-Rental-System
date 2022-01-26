@@ -17,7 +17,7 @@
 
 <body>
 
-<form action="" method="POST">
+<form action="TenantSignupServlet" method="POST">
     <div class="container">
         <h2>CREATE ACCOUNT</h2>
         <div class="row">
@@ -25,7 +25,7 @@
                 <label style="">USERNAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="Username" placeholder="Enter your username" value="">
+                <input type="text" name="tenantusername" placeholder="Enter your username" value="">
             </div>
         </div>
         <div class="row">
@@ -33,7 +33,7 @@
                 <label>PASSWORD</label>
             </div>
             <div class="col-75">
-                <input type="password" name="password" placeholder="Enter your password" value="">
+                <input type="password" name="tenantpassword" placeholder="Enter your password" value="">
             </div>
         </div>
         <div class="row">
@@ -41,7 +41,7 @@
                 <label style="">FULL NAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="FullName" placeholder="Enter your full name" value="">
+                <input type="text" name="tenantname" placeholder="Enter your full name" value="">
             </div>
         </div>
         <div class="row">
@@ -49,7 +49,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="email" placeholder="Enter your email" value="">
+                <input type="text" name="tenantemail" placeholder="Enter your email" value="">
             </div>
         </div>
         <div class="row">
@@ -57,9 +57,9 @@
                 <label style="">GENDER</label>
             </div>
             <div class="col-75">
-                <input type="radio" id="male" name="Gender" placeholder="Male" value="">
+                <input type="radio" id="male" name="tenantgender"  value="Male">
                 <label for="male">MALE</label><br>
-                <input type="radio" id="female" name="Gender" placeholder="Female" value="">
+                <input type="radio" id="female" name="tenantgender" value="Male">
                 <label for="female">FEMALE</label>
             </div>
         </div>
@@ -68,7 +68,7 @@
                 <label style="">AGE</label>
             </div>
             <div class="col-75">
-                <input type="text" name="age" placeholder="Enter your age" value="">
+                <input type="text" name="tenantage" placeholder="Enter your age" value="">
             </div>
         </div>
         <div class="row">
@@ -76,12 +76,12 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="text" name="PhoneNumber" placeholder="Enter your phone number" value="">
+                <input type="text" name="tenantphoneno" placeholder="Enter your phone number" value="">
             </div>
         </div>
 
-        <button type="submit" class="button button1" name="submit" ><a href ="tenant-viewProfile.jsp">Submit</a></button><br><br>
+        <button type="submit" class="button button1" name="submit" >Submit</button><br><br>
     </div>
 </form>
-<body>
+</body>
 </html>
