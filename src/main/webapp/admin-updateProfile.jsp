@@ -61,7 +61,7 @@
             </div>
             <div class="col-75">
                 <%
-                    String gender = (String) request.getAttribute("admingender");
+                    String gender = request.getParameter("admingender");
                     if (gender == "Male"){
                 %>
                 <input type="radio" id="male" name="admingender" value="Male" checked>
