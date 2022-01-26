@@ -78,6 +78,7 @@
                 <label>GENDER</label>
             </div>
             <div class="col-75">
+                <input type="text" name="landlordgender"  value="${landlordgender}" hidden>
                 <label>${landlordgender}</label>
             </div>
         </div>
@@ -87,7 +88,7 @@
         %>
 
         <button type="submit" class="button button1" name="submit" onclick="form.action='LandlordDeleteServlet'">DELETE</button>
-        <button type="submit" onclick="myFunction(); return false" class="button button1" name="submit"  ><a href="landlord-updateProfile.jsp">UPDATE</a></button>
+        <button type="submit"  class="button button1" name="submit" onclick="form.action='landlord-updateProfile.jsp'"  >UPDATE</button>
 
 
     </div>

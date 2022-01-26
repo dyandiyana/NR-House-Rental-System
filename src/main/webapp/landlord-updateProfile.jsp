@@ -88,10 +88,26 @@
                 <label style="">GENDER</label>
             </div>
             <div class="col-75">
-                <input type="radio" id="male" name="landlordgender" placeholder="Male" value="${landlordgender}">
+                <%
+                    String gender = request.getParameter("landlordgender");
+                    if (gender.equals("Male")){
+                %>
+                <input type="radio" id="male" name="landlordgender" value="Male" checked>
                 <label for="male">MALE</label><br>
-                <input type="radio" id="female" name="landlordgender" placeholder="Female" value="${landlordgender}">
+                <input type="radio" id="female" name="landlordgender" value="Female">
                 <label for="female">FEMALE</label>
+
+                <%
+                }
+                else if(gender.equals("Female")){
+                %>
+                <input type="radio" id="male" name="landlordgender" value="Male">
+                <label for="male">MALE</label><br>
+                <input type="radio" id="female" name="landlordgender" value="Female" checked>
+                <label for="female">FEMALE</label>
+                <%
+                    }
+                %>
             </div>
         </div>
 
