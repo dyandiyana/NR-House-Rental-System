@@ -36,7 +36,6 @@
 <div class="column">
     <a href="admin-login.jsp">
     <div class="container2">
-        <
             <h3>ADMIN</h3>
     </div>
     </a>

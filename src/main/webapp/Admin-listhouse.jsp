@@ -125,6 +125,32 @@
     </a>
   </div>
 
+  <div class="Hcont">
+    <a href="">
+      <div class="housepic"></div>
+      <div class="houseName">
+        <p class="name">Rumah Minangkabau</p>
+        <p class="price">RM800</p>
+        <p ><i class="fa fa-bed"></i> <i class="fa fa-bath"></i> </i> <i class="fa fa-wifi"></i></p>
+        <p class="status">Available</p>
+
+      </div>
+    </a>
+  </div>
+
+  <div class="Hcont">
+    <a href="">
+      <div class="housepic"></div>
+      <div class="houseName">
+        <p class="name">Rumah Minangkabau</p>
+        <p class="price">RM800</p>
+        <p ><i class="fa fa-bed"></i> <i class="fa fa-bath"></i> </i> <i class="fa fa-wifi"></i></p>
+        <p class="status">Available</p>
+
+      </div>
+    </a>
+  </div>
+
 
 
 
