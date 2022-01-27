@@ -70,6 +70,17 @@ public class LandlordUpdateServlet extends HttpServlet {
             if(row>0){
                 out.println("Record update insertedd");
 
+                request.removeAttribute("landlordid");
+                request.removeAttribute("landlordusername");
+                request.removeAttribute("landlordpassword");
+                request.removeAttribute("landlordname");
+                request.removeAttribute("landlordemail");
+                request.removeAttribute("landlordage");
+                request.removeAttribute("landlordphoneno");
+                request.removeAttribute("landlordgender");
+
+
+
                 request.setAttribute("landlordid",lId);
                 request.setAttribute("landlordusername",lUsername );
                 request.setAttribute("landlordpassword", lPassword);
