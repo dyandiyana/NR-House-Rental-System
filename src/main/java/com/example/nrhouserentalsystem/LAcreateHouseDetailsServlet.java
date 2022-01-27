@@ -4,10 +4,7 @@ package com.example.nrhouserentalsystem;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +18,7 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-
+//
 //        try{
 //            HttpSession session = request.getSession();
 //
@@ -49,6 +46,11 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        HttpSession session = request.getSession();
+        String sdIDV = (String) session.getAttribute("LAid");
+        int landid = Integer.parseInt(sdIDV);
+
+
         //picture upload
         Part f=request.getPart("hPic");
         String imageFileName=f.getSubmittedFileName();
@@ -62,7 +64,6 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
 //        System.out.println("my file need upload" + file2);
 
        try{
-
 
            String hName    = request.getParameter("hName");
            Double hMP     = Double.parseDouble(request.getParameter("Pricepm"));
@@ -113,7 +114,7 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
            PreparedStatement st;
-           String query="insert into housedetails(housename,housemonthlyprice,houseaddress,houselocation,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,housepicname,landlordid) values(?,?,?,?,localtimestamp,?,?,?,?,?,?,?,?,?,?,1)";
+           String query="insert into housedetails(housename,housemonthlyprice,houseaddress,houselocation,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,housepicname,landlordid) values(?,?,?,?,localtimestamp,?,?,?,?,?,?,?,?,?,?,?)";
            st = conn.prepareStatement(query);
                st.setString(1,hName);
                st.setDouble(2,hMP);
@@ -129,6 +130,7 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
                st.setInt(12,hWM);
                st.setString(13,desc);
                st.setString(14,imageFileName);
+               st.setInt(15,landid);
 
 
                int row= st.executeUpdate();//return no of row effected
