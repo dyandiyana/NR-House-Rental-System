@@ -51,9 +51,9 @@ public class LAdisplayMoreDetailsServlet extends HttpServlet {
 
 
             Class.forName("org.postgresql.Driver"); // ni stay
-            String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com:5432/dcb70s908sasfa";
-            String user = "gpdkvocjaztxrw";
-            String pass = "dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5";
+            String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com:5432/dcb70s908sasfa"; //ni url dri heroku database
+            String user = "gpdkvocjaztxrw"; //ni user dri heroku database
+            String pass = "dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"; //ni password dri heroku database
             Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
 
