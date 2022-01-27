@@ -53,5 +53,16 @@
 
     </div>
 </form>
+
+<%
+    String mytext = request.getParameter("landlordUsername");
+
+    if(mytext == null){
+
+    }
+    else{
+        session.setAttribute("landsrnm",request.getParameter("landlordUsername"));
+    }
+%>
 </body>
 </html>

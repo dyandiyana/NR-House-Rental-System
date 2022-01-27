@@ -47,8 +47,7 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         HttpSession session = request.getSession();
-        String sdIDV = (String) session.getAttribute("LAid");
-        int landid = Integer.parseInt(sdIDV);
+        String Landusrnm = (String) session.getAttribute("landsrnm");
 
 
         //picture upload
@@ -115,7 +114,7 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
            PreparedStatement st;
-           String query="insert into housedetails(housename,housemonthlyprice,houseaddress,houselocation,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,housepicname,landlordid) values(?,?,?,?,localtimestamp,?,?,?,?,?,?,?,?,?,?,19)";
+           String query="insert into housedetails(housename,housemonthlyprice,houseaddress,houselocation,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,housepicname,landlordid) values(?,?,?,?,localtimestamp,?,?,?,?,?,?,?,?,?,?,(SELECT landlordid from landlord where landllordusername = ?))";
            st = conn.prepareStatement(query);
                st.setString(1,hName);
                st.setDouble(2,hMP);
@@ -131,6 +130,7 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
                st.setInt(12,hWM);
                st.setString(13,desc);
                st.setString(14,imageFileName);
+               st.setString(15,Landusrnm);
 
 
                int row= st.executeUpdate();//return no of row effected
