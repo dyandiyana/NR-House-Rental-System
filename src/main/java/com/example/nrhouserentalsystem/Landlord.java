@@ -1,6 +1,6 @@
 package com.example.nrhouserentalsystem;
 
-public class Landlord {
+public class Landlord implements java.io.Serializable {
 
     public Integer landlordId;
     public String landlordUsername;
@@ -11,6 +11,9 @@ public class Landlord {
     public String landlordPhoneNo;
     public String landlordGender;
 
+    public Landlord(){
+
+    }
     public Landlord(Integer landlordId, String landlordUsername, String landlordPassword, String landlordName, String landlordEmail, String landlordAge, String landlordPhoneNo, String landlordGender) {
         this.landlordId = landlordId;
         this.landlordUsername = landlordUsername;

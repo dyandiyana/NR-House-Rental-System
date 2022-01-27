@@ -52,17 +52,6 @@
         <button type="submit" class="button2 button1 " name="submit" ><a href ="landlord-createProfile.jsp">Sign up</a></button><br><br>
 
     </div>
-
-    <%
-    String mytext = request.getParameter("landlordid");
-
-    if(mytext == null){
-
-    }
-    else{
-    session.setAttribute("LAid",request.getParameter("landlordid"));
-    }
-    %>
 </form>
 </body>
 </html>

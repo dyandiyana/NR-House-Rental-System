@@ -93,6 +93,18 @@
 
     </div>
 
+    <%
+        String mytext = request.getParameter("landlordid");
+
+        if(mytext == null){
+
+        }
+        else{
+            session.setAttribute("LAid",request.getParameter("landlordid"));
+
+        }
+    %>
+
 
 
 </form>
