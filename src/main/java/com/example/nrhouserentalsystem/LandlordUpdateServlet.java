@@ -25,7 +25,7 @@ public class LandlordUpdateServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        HttpSession session = request.getSession();
+
 
         int lId= Integer.parseInt(request.getParameter("landlordid"));
         String lUsername = request.getParameter("landlordusername");
@@ -72,14 +72,6 @@ public class LandlordUpdateServlet extends HttpServlet {
             if(row>0){
                 out.println("Record update insertedd");
 
-                session.removeAttribute("landlordid");
-                session.removeAttribute("landlordusername");
-                session.removeAttribute("landlordpassword");
-                session.removeAttribute("landlordname");
-                session.removeAttribute("landlordemail");
-                session.removeAttribute("landlordage");
-                session.removeAttribute("landlordphoneno");
-                session.removeAttribute("landlordgender");
 
 
 
@@ -89,7 +81,7 @@ public class LandlordUpdateServlet extends HttpServlet {
                 request.setAttribute("landlordname", lName);
                 request.setAttribute("landlordemail", lEmail);
                 request.setAttribute("landlordage", lAge);
-                request.setAttribute("landlordphoneno", lPhoneNo);
+                request.setAttribute("landlordphonenumber", lPhoneNo);
                 request.setAttribute("landlordgender",lGender);
 
                 RequestDispatcher rd = request.getRequestDispatcher("landlord-viewProfile.jsp");
