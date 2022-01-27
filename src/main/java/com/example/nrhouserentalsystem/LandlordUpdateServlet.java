@@ -25,6 +25,7 @@ public class LandlordUpdateServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
 
 
         int lId= Integer.parseInt(request.getParameter("landlordid"));
@@ -72,17 +73,25 @@ public class LandlordUpdateServlet extends HttpServlet {
             if(row>0){
                 out.println("Record update insertedd");
 
+                session.removeAttribute("landlordid");
+                session.removeAttribute("landlordusername");
+                session.removeAttribute("landlordpassword");
+                session.removeAttribute("landlordname");
+                session.removeAttribute("landlordemail");
+                session.removeAttribute("landlordage");
+                session.removeAttribute("landlordphonenumber");
+                session.removeAttribute("landlordgender");
 
 
 
-                request.setAttribute("landlordid",lId);
-                request.setAttribute("landlordusername",lUsername );
-                request.setAttribute("landlordpassword", lPassword);
-                request.setAttribute("landlordname", lName);
-                request.setAttribute("landlordemail", lEmail);
-                request.setAttribute("landlordage", lAge);
-                request.setAttribute("landlordphonenumber", lPhoneNo);
-                request.setAttribute("landlordgender",lGender);
+                session.setAttribute("landlordid",lId);
+                session.setAttribute("landlordusername",lUsername );
+                session.setAttribute("landlordpassword", lPassword);
+                session.setAttribute("landlordname", lName);
+                session.setAttribute("landlordemail", lEmail);
+                session.setAttribute("landlordage", lAge);
+                session.setAttribute("landlordphonenumber", lPhoneNo);
+                session.setAttribute("landlordgender",lGender);
 
                 RequestDispatcher rd = request.getRequestDispatcher("landlord-viewProfile.jsp");
                 rd.forward(request, response);
