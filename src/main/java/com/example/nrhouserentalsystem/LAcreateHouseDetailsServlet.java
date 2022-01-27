@@ -52,7 +52,7 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
         //picture upload
         Part f=request.getPart("hPic");
         String imageFileName=f.getSubmittedFileName();
-        File file = new File("C:/Users/Public/LAB EXERCISE/nonresident/src/main/webapp/images/" + imageFileName);
+        File file = new File("C:/Users/Public/LAB EXERCISE/NR-House-Rental-System/src/main/webapp/images/" + imageFileName);
         System.out.println("my file need upload" + file);
 
         //agree file upload
@@ -107,9 +107,9 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
 
            try {
            Class.forName("org.postgresql.Driver");
-           String dbURL = "jdbc:postgresql://ec2-44-194-101-60.compute-1.amazonaws.com:5432/d2us57cbf117bh";
-           String user = "rnscsqosqdtcmz";
-           String pass = "0b201fb2e59025b780ce0b4148e508b6747fbaf77f6e8cedc675ee4dbc44638a";
+           String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com:5432/dcb70s908sasfa";
+           String user = "gpdkvocjaztxrw";
+           String pass = "dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5";
            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
            PreparedStatement st;
