@@ -93,17 +93,17 @@
 
     </div>
 
-    <%
-        String mytext = request.getParameter("landlordid");
+<%--    <%--%>
+<%--        String mytext = request.getParameter("landlordid");--%>
 
-        if(mytext == null){
+<%--        if(mytext == null){--%>
 
-        }
-        else{
-            session.setAttribute("LAid",request.getParameter("landlordid"));
+<%--        }--%>
+<%--        else{--%>
+<%--            session.setAttribute("LAid",request.getParameter("landlordid"));--%>
 
-        }
-    %>
+<%--        }--%>
+<%--    %>--%>
 
 
 

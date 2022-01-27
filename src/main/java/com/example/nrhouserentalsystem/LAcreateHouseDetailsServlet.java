@@ -15,23 +15,23 @@ import java.sql.PreparedStatement;
 public class LAcreateHouseDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-
-       try{
-        HttpSession session = request.getSession();
-        String sdIDV = (String) session.getAttribute("LAid");
-        int landid = Integer.parseInt(sdIDV);
-
-            Landlord sd = new Landlord();
-            sd.setLandlordId(landid);
-
-
-            out.println("</body></html>");
-        }catch(Exception e){
-            out.println(e);
-        }
+//
+//        response.setContentType("text/html");
+//        PrintWriter out = response.getWriter();
+//
+//       try{
+//        HttpSession session = request.getSession();
+//        String sdIDV = (String) session.getAttribute("LAid");
+//        int landid = Integer.parseInt(sdIDV);
+//
+//            Landlord sd = new Landlord();
+//            sd.setLandlordId(landid);
+//
+//
+//            out.println("</body></html>");
+//        }catch(Exception e){
+//            out.println(e);
+//        }
     }
 
     @Override
@@ -104,7 +104,7 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
            Connection conn = DriverManager.getConnection(dbURL, user, pass);
 
            PreparedStatement st;
-           String query="insert into housedetails(housename,housemonthlyprice,houseaddress,houselocation,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,housepicname,landlordid) values(?,?,?,?,localtimestamp,?,?,?,?,?,?,?,?,?,?,?)";
+           String query="insert into housedetails(housename,housemonthlyprice,houseaddress,houselocation,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,housepicname,landlordid) values(?,?,?,?,localtimestamp,?,?,?,?,?,?,?,?,?,?,19)";
            st = conn.prepareStatement(query);
                st.setString(1,hName);
                st.setDouble(2,hMP);
