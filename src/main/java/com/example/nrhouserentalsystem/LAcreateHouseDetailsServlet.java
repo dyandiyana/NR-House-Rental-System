@@ -15,17 +15,24 @@ import java.sql.PreparedStatement;
 public class LAcreateHouseDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
+
 //        response.setContentType("text/html");
 //        PrintWriter out = response.getWriter();
 //
-//       try{
-//        HttpSession session = request.getSession();
-//        String sdIDV = (String) session.getAttribute("LAid");
-//        int landid = Integer.parseInt(sdIDV);
+//        try{
+//            HttpSession session = request.getSession();
 //
-//            Landlord sd = new Landlord();
-//            sd.setLandlordId(landid);
+//
+//            String sdIDV = (String) session.getAttribute("sdid");
+//            String sdhMPV = (String) session.getAttribute("sdName");
+//            String SdEmailV = (String) session.getAttribute("sdEmail");
+//            String PhoneNumV = (String) session.getAttribute("sdPnum");
+//
+//            StudentDetails sd = new StudentDetails(sdIDV,sdhMPV,SdEmailV,PhoneNumV);
+//            sd.getStudid();
+//            sd.getStuname();
+//            sd.getEmail();
+//            sd.getPhonenum();
 //
 //
 //            out.println("</body></html>");
@@ -39,13 +46,16 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        HttpSession session = request.getSession();
+        String sdIDV = (String) session.getAttribute("LAid");
+        int landid = Integer.parseInt(sdIDV);
+
+
         //picture upload
         Part f=request.getPart("hPic");
         String imageFileName=f.getSubmittedFileName();
-        File file = new File("C:/Users/Public/LAB EXERCISE/NR-House-Rental-System/src/main/webapp/images/" + imageFileName);
+        File file = new File("C:/Users/Public/LAB EXERCISE/nonresident/src/main/webapp/images/" + imageFileName);
         System.out.println("my file need upload" + file);
-
-        int landid = Integer.parseInt( request.getParameter("landlordId"));
 
         //agree file upload
 //        Part agree =request.getPart("hAgree");
@@ -54,6 +64,7 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
 //        System.out.println("my file need upload" + file2);
 
        try{
+
 
            String hName    = request.getParameter("hName");
            Double hMP     = Double.parseDouble(request.getParameter("Pricepm"));
@@ -120,7 +131,6 @@ public class LAcreateHouseDetailsServlet extends HttpServlet {
                st.setInt(12,hWM);
                st.setString(13,desc);
                st.setString(14,imageFileName);
-               st.setInt(15,landid);
 
 
                int row= st.executeUpdate();//return no of row effected
