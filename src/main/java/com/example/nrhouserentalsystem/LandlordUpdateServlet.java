@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -24,6 +25,7 @@ public class LandlordUpdateServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
 
         int lId= Integer.parseInt(request.getParameter("landlordid"));
         String lUsername = request.getParameter("landlordusername");
@@ -70,14 +72,14 @@ public class LandlordUpdateServlet extends HttpServlet {
             if(row>0){
                 out.println("Record update insertedd");
 
-                request.removeAttribute("landlordid");
-                request.removeAttribute("landlordusername");
-                request.removeAttribute("landlordpassword");
-                request.removeAttribute("landlordname");
-                request.removeAttribute("landlordemail");
-                request.removeAttribute("landlordage");
-                request.removeAttribute("landlordphoneno");
-                request.removeAttribute("landlordgender");
+                session.removeAttribute("landlordid");
+                session.removeAttribute("landlordusername");
+                session.removeAttribute("landlordpassword");
+                session.removeAttribute("landlordname");
+                session.removeAttribute("landlordemail");
+                session.removeAttribute("landlordage");
+                session.removeAttribute("landlordphoneno");
+                session.removeAttribute("landlordgender");
 
 
 
@@ -87,7 +89,7 @@ public class LandlordUpdateServlet extends HttpServlet {
                 request.setAttribute("landlordname", lName);
                 request.setAttribute("landlordemail", lEmail);
                 request.setAttribute("landlordage", lAge);
-                request.setAttribute("landlordphonenumber", lPhoneNo);
+                request.setAttribute("landlordphoneno", lPhoneNo);
                 request.setAttribute("landlordgender",lGender);
 
                 RequestDispatcher rd = request.getRequestDispatcher("landlord-viewProfile.jsp");
