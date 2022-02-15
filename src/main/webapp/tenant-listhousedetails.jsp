@@ -51,10 +51,10 @@
         <div class="topic">${result.housename}</div>
 
 
-        <form action="" method="post" id="theForm">
+        <form method="post" id="theForm">
             <div>
-                <input type="hidden" name="hid" value="${result.houseid}" >
-                <input type="hidden" name="landid" value="${result.landlordid}" >
+                <input type="hidden" name="houseid" value="${result.houseid}" >
+                <input type="hidden" name="landlordid" value="${result.landlordid}" >
                 <input type="hidden" name="tenantid" value="${tenant.tenantId}">
                 <input type="hidden" name="action" value="create">
             </div>
