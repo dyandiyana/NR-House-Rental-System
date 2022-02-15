@@ -68,17 +68,20 @@ public class BookingServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        int id = Integer.parseInt(request.getParameter("tenantid"));
+        int tenantid = Integer.parseInt(request.getParameter("tenantid"));
         int houseid = Integer.parseInt(request.getParameter("houseid"));
+        int landlordid  =Integer.parseInt(request.getParameter("landlordid"));
 
 
         Tenant tenant = new Tenant();
         House house = new House();
+        Landlord landlord = new Landlord();
 
-        tenant.setTenantId(id);
+        tenant.setTenantId(tenantid);
         house.setHouseid(houseid);
+        landlord.setLandlordId(landlordid);
 
-        bd.create(tenant, house);
+        bd.create(tenant, house, landlord);
         response.sendRedirect("tenant-listBooking.jsp");
     }
 

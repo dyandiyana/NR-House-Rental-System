@@ -32,13 +32,14 @@ public class BookingDao {
         return connection;
     }
 
-    public void create(Tenant tenant, House house) throws Exception{
+    public void create(Tenant tenant, House house, Landlord landlord) throws Exception{
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("insert into BOOKINGDETAILS(TENANTID,HOUSEID) values(?,?)");)
+             PreparedStatement preparedStatement = connection.prepareStatement("insert into BOOKINGDETAILS(TENANTID,HOUSEID,landlordid) values(?,?,?)");)
         {
 
             preparedStatement.setInt(1, tenant.getTenantId());
             preparedStatement.setInt(2, house.getHouseid());
+            preparedStatement.setInt(2, landlord.getLandlordId());
 
             out.println(preparedStatement);
             preparedStatement.executeUpdate();
