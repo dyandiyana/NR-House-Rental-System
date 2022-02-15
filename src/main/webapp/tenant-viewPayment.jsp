@@ -25,10 +25,10 @@
 
 %>
 <sql:setDataSource var="ic"
-                   driver="oracle.jdbc.driver.OracleDriver"
-                   url="jdbc:oracle:thin:@localhost:1521:XE"
-                   user = "RENTALSYSTEM"
-                   password="system"/>
+                   driver="org.postgresql.Driver"
+                   url="jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"
+                   user="gpdkvocjaztxrw"
+                   password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
 
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="clsid" value="<%=tenantid%>"/>
