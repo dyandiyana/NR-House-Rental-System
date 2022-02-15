@@ -132,7 +132,6 @@ public class AdminServlet extends HttpServlet {
                         session.setAttribute("adminpassword", res.getString(3));
                         session.setAttribute("adminname", res.getString(4));
                         session.setAttribute("adminemail", res.getString(5));
-                        session.setAttribute("supervisorid", res.getInt(6));
 
                         response.sendRedirect("Admin-listhouse.jsp");
 
