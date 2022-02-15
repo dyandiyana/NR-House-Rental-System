@@ -28,6 +28,7 @@
 </head>
 <body>
 
+<%@include file="tenant-navbar.html"%>
 
 <sql:setDataSource var="ic"
                    driver="org.postgresql.Driver"
@@ -52,11 +53,13 @@
 
         <form action="" method="post" id="theForm">
             <div>
-                <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
-                <input type="number" id="landid" name="landid" value="${result.landlordid}" hidden/>
+                <input type="hidden" name="hid" value="${result.houseid}" >
+                <input type="hidden" name="landid" value="${result.landlordid}" >
+                <input type="hidden" name="tenantid" value="${tenant.tenantId}">
+                <input type="hidden" name="action" value="create">
             </div>
             <div class="mybtn">
-                <button formaction="tenant-createBooking.jsp" type="submit">Book Now</button>
+                <button formaction="BookingServlet" onclick="return confirm('Confirm book this rental house?');" type="submit">Book Now</button>
             </div>
         </form>
 
