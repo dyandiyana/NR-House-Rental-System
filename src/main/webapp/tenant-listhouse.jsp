@@ -43,7 +43,7 @@
 
         <c:set var="houseid" scope="application" value="${result.houseid}"/>
 
-                <form action="TenantViewMoreHouseServlet" method="post">
+                <form action="tenant-listhousedetails.jsp" method="post">
 
                 <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
 
