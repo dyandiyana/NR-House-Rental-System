@@ -44,7 +44,7 @@
 </sql:query>
 
 
-<div class="container">
+<div class="container" style="width: auto;">
 
     <table id = "myTable">
 
