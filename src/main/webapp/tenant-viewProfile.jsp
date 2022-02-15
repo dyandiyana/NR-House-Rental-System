@@ -92,7 +92,7 @@
 
 
     <button type="submit" class="button button1" name="submit" onclick="form.action='tenant-updateProfile.jsp'">UPDATE</button>
-    <button type="submit"  class="button button1" name="submit" onclick="form.action='TenantServlet'" >DELETE</button>
+    <button type="submit"  class="button button1" name="submit" formaction="TenantServlet" onclick="return confirm('Confirm update your profile?');" >DELETE</button>
 
 
 </div>

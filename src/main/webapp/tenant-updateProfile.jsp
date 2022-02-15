@@ -52,7 +52,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantemail"  value="${tenantemail}">
+                <input type="text" name="tenantemail"  value="${tenantEmail}">
             </div>
         </div>
         <div class="row">
@@ -102,7 +102,7 @@
         <input type="hidden" name="action" value="update">
       
         <button type="button" class="button button2" onclick="form.action='tenant-viewProfile.jsp'">Back</button>
-        <button type="submit" class="button button1" name="submit" onclick="form.action='TenantUpdateServlet'">Update</button><br><br>
+        <button type="submit" class="button button1" name="submit" formaction="TenantServlet" onclick="return confirm('Confirm update your profile?');">Update</button><br><br>
 
     </div>
 </form>
