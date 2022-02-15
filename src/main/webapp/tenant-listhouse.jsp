@@ -43,7 +43,7 @@
 
         <c:set var="houseid" scope="application" value="${result.houseid}"/>
 
-                <form action="tenant-listhousedetails.jsp" method="post">
+                <form  method="post">
 
                 <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
 
@@ -86,7 +86,7 @@
 
 
                 <div class="myLink">
-                    <button style="margin-left: 3%;" type="submit">View More</button>
+                    <button style="margin-left: 3%;" type="submit" formaction="tenant-listhousedetails.jsp">View More</button>
                 </div>
             </form>
         </div>
