@@ -105,7 +105,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">House Availability</td>
-                                    <td colspan="3">${result.HOUSEAVAILIBILITY}</td>
+                                    <td colspan="3">${result.houseavailability}</td>
                                 </tr>
 
                                 <tr>
