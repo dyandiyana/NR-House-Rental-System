@@ -129,6 +129,7 @@ public class TenantServlet extends HttpServlet {
                         tenant.setTenantPhoneNo(res.getString(7));
                         tenant.setTenantGender(res.getString(8));
 
+                        session.setAttribute("tenantid", tenant.getTenantId());
                         session.setAttribute("tenant", tenant);
                         response.sendRedirect("tenant-homepage.jsp");
 

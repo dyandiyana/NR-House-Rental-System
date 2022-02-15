@@ -39,7 +39,7 @@ public class BookingDao {
 
             preparedStatement.setInt(1, tenant.getTenantId());
             preparedStatement.setInt(2, house.getHouseid());
-            preparedStatement.setInt(2, landlord.getLandlordId());
+            preparedStatement.setInt(3, landlord.getLandlordId());
 
             out.println(preparedStatement);
             preparedStatement.executeUpdate();
