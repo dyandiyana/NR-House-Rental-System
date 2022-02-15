@@ -16,7 +16,7 @@ public class TenantDao {
     protected Connection getConnection() {
         Connection connection = null;
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Class.forName("org.postgresql.Driver");
             connection= DriverManager.getConnection(dbURL, user, pass);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
