@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%--
   Created by IntelliJ IDEA.
   User: TOSHIBA
@@ -18,23 +20,38 @@
 <body>
 
 <%@include file="tenant-navbar.html"%>
+<%
+    int tenantid = Integer.parseInt(session.getAttribute("tenantid").toString());
+
+%>
+<sql:setDataSource var="ic"
+                   driver="oracle.jdbc.driver.OracleDriver"
+                   url="jdbc:oracle:thin:@localhost:1521:XE"
+                   user = "RENTALSYSTEM"
+                   password="system"/>
+
+<sql:query dataSource="${ic}" var="oc">
+    <c:set var="clsid" value="<%=tenantid%>"/>
+    SELECT  P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE,T.TENANTID,T.TENANTNAME
+    from TENANT T
+    JOIN BOOKINGDETAILS B
+    on T.TENANTID = B.TENANTID
+    join MONTHLYPAYMENT P
+    on B.BOOKINGID = P.BOOKINGID
+    WHERE T.TENANTID =?
+    <sql:param value="${clsid}" />
+</sql:query>
 
 <div class="container">
     <h3>MONTHLY PAYMENT</h3>
+    <c:forEach var="result" items="${oc.rows}">
+        <input type="hidden" name="payId" value="${result.payId}">
     <div class="row">
         <div class="col-25">
             <label>BOOKING ID</label>
         </div>
         <div class="col-75">
-            <label>TN001</label>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-25">
-            <label>HOUSE ID</label>
-        </div>
-        <div class="col-75">
-            <label>HS112</label>
+            <label>${result.bookingID}</label>
         </div>
     </div>
 
@@ -43,8 +60,7 @@
             <label>DUE DATE</label>
         </div>
         <div class="col-75">
-            <!--<input type="password" name="lecturerPassword" placeholder="Your email" value=""> -->
-            <label>4 JAN 2021</label>
+            <label>${result.payduedate}</label>
         </div>
     </div>
 
@@ -53,7 +69,7 @@
             <label>TOTAL PRICE</label>
         </div>
         <div class="col-75">
-            <label>RM 740</label>
+            <label>${result.payprice}</label>
         </div>
     </div>
 
@@ -62,7 +78,7 @@
             <label>STATUS</label>
         </div>
         <div class="col-75">
-            <label>Pending</label>
+            <label>${result.paystatus}</label>
         </div>
     </div>
     <br><br>
@@ -72,19 +88,37 @@
             <th>TENANT ID</th>
             <th>TENANT NAME</th>
             <th>RECEIPT</th>
-            <th>DATE PAYMENT</th>
         </tr>
 
         <tr>
             <td class="hello">1.</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+            <td>${result.tenantID}</td>
+            <td>${result.tenantname}</td>
+
+            <form method="post" action="MonthlyPaymentServlet" enctype="multipart/form-data">
+                <input type="hidden" name="payId" value="${result.payId}">
+                <td>
+                    <c:set var="status" value="${result.paystatus}"/>
+                    <c:if test="${status=='unpaid'}">
+
+                        <input type="file" name="payreceipt">
+                        <a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
+
+                        <input type="hidden" name="payId" value="${result.payId}">
+                            <input type="hidden" name="action" value="update">
+                            <button type="submit"  class="button button1" name="submit" >Update</button>
+
+                    </c:if>
+                </td>
+
+            </form>
+            </tr>
+
     </table>
-    <button type="submit" onclick="myFunction(); return false" class="button button1" name="submit" ><a href="tenant-uploadPayment.jsp">Update</a></button>
+
     <button type="submit" class="button button1" name="submit" ><a href="tenant-listPayment.jsp">Back</a></button>
+    </c:forEach>
+
 </div>
 </body>
 </html>
