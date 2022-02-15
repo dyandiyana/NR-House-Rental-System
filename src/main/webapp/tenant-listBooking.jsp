@@ -1,3 +1,5 @@
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: TOSHIBA
@@ -19,13 +21,37 @@
 
 <%@include file="tenant-navbar.html"%>
 
+<%
+    int tenantid = Integer.parseInt(session.getAttribute("tenantid").toString());
+    System.out.println(tenantid);
+%>
+<sql:setDataSource var="ic"
+                   driver="org.postgresql.Driver"
+                   url="jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"
+                   user = "gpdkvocjaztxrw"
+                   password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
+
+<sql:query dataSource="${ic}" var="oc">
+    <c:set var="clsid" value="<%=tenantid%>"/>
+    SELECT  H.HOUSENAME, B.BOOKINGID, B.BOOKINGSTATUS, B.BOOKINGTIME, B.BOOKINGDATE, B.BOOKINGDEPO, B.BOOKINGAGREEMENT, B.BOOKINGAPPROVALDATE, B.TENANTID, B.HOUSEID
+    from TENANT t
+    join BOOKINGDETAILS B
+    on t.TENANTID = B.TENANTID
+    join HOUSEDETAILS H
+    on B.HOUSEID = H.HOUSEID
+    WHERE t.TENANTID=?
+    <sql:param value="${clsid}" />
+</sql:query>
+
+
 <div class="container">
+
     <table id = "myTable">
+
         <h3>LIST OF BOOKING</h3>
+
         <tr>
-            <th class="hello">NO.</th>
             <th>BOOKING ID</th>
-            <th>TENANT NAME</th>
             <th>HOUSE NAME</th>
             <th>TIME</th>
             <th>DATE</th>
@@ -36,23 +62,57 @@
             <th>ACTION</th>
         </tr>
 
+        <c:forEach var="result" items="${oc.rows}">
         <tr>
-            <td class="hello">1.</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
 
-            <td><button type="submit" class="button button1" name="submit" ><a href ="tenant-updateBooking.jsp">Update</a></button><br><br>
-                <button type="submit" class="button button1" name="submit" ><a href ="#">Delete</a></button><br><br>
+            <td>${result.bookingid}</td>
+            <td>${result.housename}</td>
+            <td>${result.bookingtime}</td>
+            <td>${result.bookingdate}</td>
+
+            <form method="post" action="BookingServlet" enctype="multipart/form-data">
+                <input type="hidden" name="bookingid" value="${result.bookingid}">
+            <td>
+                <c:set var="status" value="${result.bookingstatus}"/>
+                <c:if test="${status=='pending'}">
+
+                    <input type="file" name="bookingdepo">
+                    <a href="${result.bookingDepo}" onclick="window.open('${result.bookingdepo}', '_blank', 'fullscreen=yes'); return false;">${result.bookingdepo}</a>
+
+
+                </c:if>
             </td>
+                <td>
+                    <c:set var="status" value="${result.bookingstatus}"/>
+                    <c:if test="${status=='pending'}">
+                        <input type="file" name="bookingagreement">
+                        <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a>
+
+                    </c:if>
+                </td>
+
+            <td>${result.bookingapprovaldate}</td>
+            <td>${result.bookingstatus}</td>
+
+            <td>
+
+                <form method="post" action="BookingServlet">
+                    <input type="hidden" name="bookingid" value="${result.bookingid}">
+                    <input type="hidden" name="action" value="update">
+                    <button type="submit" class="button button1" name="submit" >Update</button><br><br>
+                </form>
+                <form method="post">
+                    <input type="hidden" name="bookingid" value="${result.bookingid}">
+                    <input type="hidden" name="action" value="delete">
+                <button type="submit" class="button button1" name="submit" onclick="return confirm('Confirm delete Booking: <c:out value="${result.bookingid}"/>?');" formaction="BookingServlet">Delete</button><br><br>
+                </form>
+
+            </td>
+            </form>
         </tr>
+        </c:forEach>
     </table>
 </div>
+
 </body>
 </html>
