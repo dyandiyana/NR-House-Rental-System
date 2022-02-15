@@ -46,7 +46,7 @@
 
 
         <p>Don't have an account?</p>
-        <button type="submit" class="button button1" name="submit" >Submit</button>
+        <button type="submit" class="button button1" name="submit" >Login</button>
 
         <button type="submit" class="button2 button1 " name="submit" ><a href ="tenant-createProfile.jsp">Sign up</a></button><br><br>
 

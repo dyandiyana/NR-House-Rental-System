@@ -52,7 +52,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantemail"  value="${tenantEmail}">
+                <input type="text" name="tenantemail"  value="${tenant.tenantEmail}">
             </div>
         </div>
         <div class="row">
