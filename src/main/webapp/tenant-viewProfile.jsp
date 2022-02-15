@@ -20,7 +20,7 @@
 <%@include file="tenant-navbar.html"%>
 <form action="" method="post">
 
-    <input type="number" name="tenantid"  value="${tenantid}" hidden>
+    <input type="number" name="tenantid"  value="${tenant.tenantId}" hidden>
 
 <div class="container">
     <h3>MY PROFILE</h3>
@@ -29,7 +29,7 @@
             <label>USERNAME</label>
         </div>
         <div class="col-75">
-            <label>${tenantusername}</label>
+            <label>${tenant.tenantUsername}</label>
         </div>
     </div>
     <div class="row">
@@ -37,7 +37,7 @@
             <label>PASSWORD</label>
         </div>
         <div class="col-75">
-            <label>${tenantpassword}</label>
+            <label>${tenant.tenantPassword}</label>
         </div>
     </div>
 
@@ -46,7 +46,7 @@
             <label>FULL NAME</label>
         </div>
         <div class="col-75">
-            <label>${tenantname}</label>
+            <label>${tenant.tenantName}</label>
         </div>
     </div>
 
@@ -55,7 +55,7 @@
             <label>EMAIL</label>
         </div>
         <div class="col-75">
-            <label>${tenantemail}</label>
+            <label>${tenant.tenantEmail}</label>
         </div>
     </div>
 
@@ -64,8 +64,8 @@
             <label>GENDER</label>
         </div>
         <div class="col-75">
-            <label>${tenantgender}</label>
-            <input type="text" name="tenantgender"  value="${tenantgender}" hidden>
+            <label>${tenant.tenantGender}</label>
+            <input type="text" name="tenantgender"  value="${tenant.tenantGender}" hidden>
         </div>
     </div>
 
@@ -74,7 +74,7 @@
             <label>AGE</label>
         </div>
         <div class="col-75">
-            <label>${tenantage}</label>
+            <label>${tenant.tenantAge}</label>
         </div>
     </div>
 
@@ -83,13 +83,16 @@
             <label>PHONE NUMBER</label>
         </div>
         <div class="col-75">
-            <label>${tenantphoneno}</label>
+            <label>${tenant.tenantPhoneNo}</label>
         </div>
     </div>
 
+    <input type="hidden" name="action" value="delete">
+
+
 
     <button type="submit" class="button button1" name="submit" onclick="form.action='tenant-updateProfile.jsp'">UPDATE</button>
-    <button type="submit"  class="button button1" name="submit" onclick="form.action='TenantDeleteServlet'" >DELETE</button>
+    <button type="submit"  class="button button1" name="submit" onclick="form.action='TenantServlet'" >DELETE</button>
 
 
 </div>

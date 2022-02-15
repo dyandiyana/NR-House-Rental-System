@@ -17,7 +17,7 @@
 
 <body>
 
-<form action="TenantSignupServlet" method="POST">
+<form action="TenantServlet" method="POST">
     <div class="container">
         <h2>CREATE ACCOUNT</h2>
         <div class="row">
@@ -79,6 +79,8 @@
                 <input type="text" name="tenantphoneno" placeholder="Enter your phone number" value="">
             </div>
         </div>
+
+        <input type="hidden" name="action" value="signup">
 
         <button type="submit" class="button button1" name="submit" >Submit</button><br><br>
     </div>

@@ -22,13 +22,13 @@
 <form action="" method="POST">
     <div class="container">
         <h2>UPDATE MY PROFILE</h2>
-        <input type="text" name="tenantid" value="${tenantid}" hidden>
+        <input type="text" name="tenantid" value="${tenant.tenantId}" hidden>
         <div class="row">
             <div class="col-25">
                 <label style="">USERNAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantusername"  value="${tenantusername}">
+                <input type="text" name="tenantusername"  value="${tenant.tenantUsername}">
             </div>
         </div>
         <div class="row">
@@ -36,7 +36,7 @@
                 <label>PASSWORD</label>
             </div>
             <div class="col-75">
-                <input type="password" name="tenantpassword" value="${tenantpassword}" >
+                <input type="password" name="tenantpassword" value="${tenant.tenantPassword}" >
             </div>
         </div>
         <div class="row">
@@ -44,7 +44,7 @@
                 <label style="">FULL NAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantname" value="${tenantname}">
+                <input type="text" name="tenantname" value="${tenant.tenantName}">
             </div>
         </div>
         <div class="row">
@@ -87,7 +87,7 @@
                 <label style="">AGE</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantage" value="${tenantage}">
+                <input type="text" name="tenantage" value="${tenant.tenantAge}">
             </div>
         </div>
         <div class="row">
@@ -95,9 +95,11 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantphoneno" value="${tenantphoneno}">
+                <input type="text" name="tenantphoneno" value="${tenant.tenantPhoneNo}">
             </div>
         </div>
+
+        <input type="hidden" name="action" value="update">
       
         <button type="button" class="button button2" onclick="form.action='tenant-viewProfile.jsp'">Back</button>
         <button type="submit" class="button button1" name="submit" onclick="form.action='TenantUpdateServlet'">Update</button><br><br>

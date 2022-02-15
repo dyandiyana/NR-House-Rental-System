@@ -19,24 +19,20 @@
 <div class="header">
     <p>UiTM JASIN NON-RESIDENT HOUSE RENTAL SYSTEM</p>
 </div>
-<form action="TenantLoginServlet" method="POST">
+<form action="TenantServlet" method="POST">
     <div class="container">
         <h2>TENANT LOGIN</h2>
-        <div class="row">
-            <div class="col-25">
-                <label style=""></label>
-            </div>
-            <div class="col-75">
-                <input type="number" name="tenantid"  value="${tenantid}" hidden>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-25">
                 <label style="">Username</label>
             </div>
             <div class="col-75">
                 <input type="text" name="tenantusername" placeholder="Enter your username" value="">
-            </div></div>
+            </div>
+        </div>
+
+
         <div class="row">
             <div class="col-25">
                 <label>Password</label>
@@ -45,6 +41,10 @@
                 <input type="password" name="tenantpassword" placeholder="Your password" value="">
             </div>
         </div>
+
+        <input type="hidden" name="action" value="login">
+
+
         <p>Don't have an account?</p>
         <button type="submit" class="button button1" name="submit" >Submit</button>
 
