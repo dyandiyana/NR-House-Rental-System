@@ -56,14 +56,13 @@ public class AdminDao {
     public boolean updateUser(Admin admin) throws SQLException {
         boolean rowUpdated;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE admin set adminusername=?,adminpassword=?,adminname=?,adminemail=?,supervisorid=? where adminid=?");)
+             PreparedStatement statement = connection.prepareStatement("UPDATE admin set adminusername=?,adminpassword=?,adminname=?,adminemail=? where adminid=?");)
         {
             statement.setString(1, admin.getUsername());
             statement.setString(2, admin.getPassword());
             statement.setString(3, admin.getFullname());
             statement.setString(4, admin.getEmail());
-            statement.setInt(5, admin.getSupervisorid());
-            statement.setInt(6, admin.getId());
+            statement.setInt(5, admin.getId());
 
             rowUpdated = statement.executeUpdate() > 0;
         }
