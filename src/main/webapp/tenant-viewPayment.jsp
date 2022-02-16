@@ -45,10 +45,23 @@
     <sql:param value="<%=bookingid%>"/>
 </sql:query>
 
+
+<sql:query dataSource="${ic}" var="ac">
+    select h.housename, h.houseaddress, l.landlordname, l.landlordphoneno
+    from bookingdetails b
+        join housedetails h
+            on h.houseid = b.houseid
+        join landlord l
+        on l.landlordid = h.landlordid
+    where b.bookingid = ?
+    <sql:param value="<%=bookingid%>"/>
+</sql:query>
+
+
+<c:forEach var="result" items="${ac.rows}">
 <div class="container">
     <h3>MONTHLY PAYMENT</h3>
-    <c:forEach var="result" items="${oc.rows}">
-        <input type="hidden" name="payId" value="${result.payId}">
+
     <div class="row">
         <div class="col-25">
             <label>HOUSE NAME</label>
@@ -84,6 +97,7 @@
             <label>${result.landlordphoneno}</label>
         </div>
     </div>
+    </c:forEach>
 
 
     <br><br>
@@ -96,7 +110,7 @@
             <th>RECEIPT</th>
             <th>ACTION</th>
         </tr>
-
+        <c:forEach var="result" items="${oc.rows}">
         <tr>
             <td class="hello">${result.rank}</td>
             <td>${result.month}</td>
@@ -126,11 +140,12 @@
                 </td>
             </form>
         </tr>
+        </c:forEach>
 
     </table>
 
     <button type="submit" class="button button1" name="submit" style="float: left" ><a href="tenant-listPayment.jsp">Back</a></button>
-    </c:forEach>
+
 
 </div>
 </body>
