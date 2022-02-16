@@ -54,7 +54,6 @@ JOIN BOOKINGDETAILS B
             <th>LANDLORD NAME</th>
             <th>RENTAL STATUS</th>
             <th>ACTION</th>
-            <th> </th>
         </tr>
         <c:forEach var="result" items="${oc.rows}">
         <tr>
@@ -69,9 +68,11 @@ JOIN BOOKINGDETAILS B
             <c:if test="${status=='Completed'}">
                 <td style="color: dodgerblue">${result.rentalstatus}</td>
             </c:if>
+            <form method="post">
             <input type="hidden" name="bookingid" value="${result.bookingid}">
             <input type="hidden" name="landlordid" value="${result.landlordid}">
             <td><button type="submit" class="button button1" name="submit" formaction="tenant-viewPayment.jsp" >View More</button></td>
+            </form>
         </tr>
         </c:forEach>
     </table>
