@@ -22,7 +22,8 @@
 <%@include file="tenant-navbar.html"%>
 <%
     int tenantid = Integer.parseInt(session.getAttribute("tenantid").toString());
-
+    int bookingid = (Integer) session.getAttribute("bookingid");
+    int landlordid = Integer.parseInt(request.getParameter("landlordid"));
 %>
 <sql:setDataSource var="ic"
                    driver="org.postgresql.Driver"
@@ -32,14 +33,18 @@
 
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="clsid" value="<%=tenantid%>"/>
-    SELECT  P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE,T.TENANTID,T.TENANTNAME
-    from TENANT T
-    JOIN BOOKINGDETAILS B
-    on T.TENANTID = B.TENANTID
-    join MONTHLYPAYMENT P
-    on B.BOOKINGID = P.BOOKINGID
-    WHERE T.TENANTID =?
-    <sql:param value="${clsid}" />
+    SELECT  row_number() over () "rank" ,P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE, l.landlordid,l.landlordname
+    from landlord l
+    JOIN housedetails h
+        on l.landlordid = h.landlordid
+    join bookingdetails b
+        on h.houseid = b.houseid
+    join monthlypayment p
+        on b.bookingid = p.bookingid
+    WHERE l.landlordid =?
+    and b.bookingid = ?
+    <sql:param value="<%=landlordid%>>" />
+    <sql:param value="<%=bookingid%>"/>
 </sql:query>
 
 <div class="container">
@@ -78,11 +83,17 @@
             <label>STATUS</label>
         </div>
         <div class="col-75">
-            <label>${result.paystatus}</label>
+            <c:set var="status" value="${result.paystatus}"/>
+            <c:if test="${status=='Unpaid'}">
+                <label style="color: red">${result.paystatus}</label>
+            </c:if>
+            <c:if test="${status=='Paid'}">
+                <label style="color: red">${result.paystatus}</label>
+            </c:if>
         </div>
     </div>
     <br><br>
-    <table id = "myTable">
+    <table id = "myTable" style="text-align: center">
         <tr>
             <th class="hello">NO.</th>
             <th>TENANT ID</th>
@@ -91,7 +102,7 @@
         </tr>
 
         <tr>
-            <td class="hello">1.</td>
+            <td class="hello">${result.rank}</td>
             <td>${result.tenantID}</td>
             <td>${result.tenantname}</td>
 
@@ -99,7 +110,7 @@
                 <input type="hidden" name="payId" value="${result.payId}">
                 <td>
                     <c:set var="status" value="${result.paystatus}"/>
-                    <c:if test="${status=='unpaid'}">
+                    <c:if test="${status=='Unpaid'}">
 
                         <input type="file" name="payreceipt">
                         <a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
