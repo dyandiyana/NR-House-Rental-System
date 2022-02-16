@@ -56,9 +56,9 @@ public class HouseDetailsDao {
 
         int idhouse=0;
         try (Connection connection = getConnection();
-             PreparedStatement ps2 = connection.prepareStatement("select max(houseid) from housedetails");)
+             PreparedStatement ps3 = connection.prepareStatement("select max(houseid) from housedetails");)
         {
-            ResultSet rs = ps2.executeQuery();
+            ResultSet rs = ps3.executeQuery();
             while(rs.next()){
                 idhouse = rs.getInt(1);
             }
