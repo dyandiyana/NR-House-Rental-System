@@ -68,13 +68,18 @@ public class HouseDetailsDao {
 
         String FileName=f.getSubmittedFileName();
         File file = new File("src/main/webapp/images/"+ FileName);
-        FileOutputStream fos = new FileOutputStream(file);
-        InputStream is = f.getInputStream();
+        try{
+            FileOutputStream fos = new FileOutputStream(file);
+            InputStream is = f.getInputStream();
 
-        byte[] data=new byte[is.available()];
-        is.read(data);
-        fos.write(data);
-        fos.close();
+            byte[] data=new byte[is.available()];
+            is.read(data);
+            fos.write(data);
+            fos.close();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         try (Connection connection = getConnection();
              PreparedStatement ps2 = connection.prepareStatement("insert into houseimages(houseid,housepic,houseimagespic) values(?,?,?)");)
