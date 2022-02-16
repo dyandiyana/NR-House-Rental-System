@@ -40,10 +40,10 @@
         </div>
         <input type="hidden" name="action" value="login">
 
-        <p>Don't have an account?</p>
+
         <button type="submit" class="button button1" name="submit" >Login</button>
 
-        <button type="submit" class="button2 button1 " name="submit" ><a href ="admin-createProfile.jsp">Sign up</a></button><br><br>
+        <p>Not registered? <a href="tenant-createProfile.jsp" style="color: #0e6d69; text-decoration: none; margin-top: 0%">Create an account</a></p>
 
     </div>
 </form>
