@@ -51,7 +51,7 @@
         <input type="hidden" name="payId" value="${result.payId}">
     <div class="row">
         <div class="col-25">
-            <label>BOOKING ID</label>
+            <label>HOUSE NAME</label>
         </div>
         <div class="col-75">
             <label>${result.bookingID}</label>
@@ -60,7 +60,7 @@
 
     <div class="row">
         <div class="col-25">
-            <label>DUE DATE</label>
+            <label>HOUSE ADDRESS</label>
         </div>
         <div class="col-75">
             <label>${result.payduedate}</label>
@@ -69,7 +69,7 @@
 
     <div class="row">
         <div class="col-25">
-            <label>TOTAL PRICE</label>
+            <label>LANDLORD NAME</label>
         </div>
         <div class="col-75">
             <label>${result.payprice}</label>
@@ -78,50 +78,54 @@
 
     <div class="row">
         <div class="col-25">
-            <label>STATUS</label>
+            <label>LANDLORD PHONE NO</label>
         </div>
         <div class="col-75">
-            <c:set var="status" value="${result.paystatus}"/>
-            <c:if test="${status=='Unpaid'}">
-                <label style="color: red">${result.paystatus}</label>
-            </c:if>
-            <c:if test="${status=='Paid'}">
-                <label style="color: red">${result.paystatus}</label>
-            </c:if>
+            <label>${result.payprice}</label>
         </div>
     </div>
+
+
     <br><br>
     <table id = "myTable" style="text-align: center">
         <tr>
             <th class="hello">NO.</th>
-            <th>TENANT ID</th>
-            <th>TENANT NAME</th>
+            <th>MONTH</th>
+            <th>PRICE</th>
+            <th>STATUS</th>
             <th>RECEIPT</th>
+            <th>ACTION</th>
         </tr>
 
         <tr>
             <td class="hello">${result.rank}</td>
-            <td>${result.tenantID}</td>
-            <td>${result.tenantname}</td>
+            <td>${result.month}</td>
+            <td>${result.payprice}</td>
+
+            <c:if test="${result.paystatus=='Upaid'}">
+            <td style="color: red">${result.paystatus}</td>
+            </c:if>
+            <c:if test="${result.paystatus=='Paid'}">
+            <td style="color: forestgreen">${result.paystatus}</td>
+            </c:if>
+
 
             <form method="post" action="MonthlyPaymentServlet" enctype="multipart/form-data">
-                <input type="hidden" name="payId" value="${result.payId}">
                 <td>
                     <c:set var="status" value="${result.paystatus}"/>
                     <c:if test="${status=='Unpaid'}">
-
-                        <input type="file" name="payreceipt">
-                        <a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
-
-                        <input type="hidden" name="payId" value="${result.payId}">
-                            <input type="hidden" name="action" value="update">
-                            <button type="submit"  class="button button1" name="submit" >Update</button>
-
+                    <input type="file" name="payreceipt"><a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
                     </c:if>
                 </td>
-
+                <td>
+                    <c:if test="${result.paystatus=='Unpaid'}">
+                    <input type="hidden" name="payId" value="${result.payId}">
+                    <input type="hidden" name="action" value="update">
+                    <button type="submit"  class="button button1" name="submit" >Pay</button>
+                    </c:if>
+                </td>
             </form>
-            </tr>
+        </tr>
 
     </table>
 

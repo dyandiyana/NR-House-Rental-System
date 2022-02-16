@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 *{
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
 }
 .navbar {
     overflow: hidden;
     background-color: white;
-    font-family: Verdana,sans-serif;
 }
 
 .navbar a {
@@ -90,7 +92,6 @@ body {
     margin:100px 100px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius:0px;
-    font-family: Verdana,sans-serif;
 }
 .container::after, .row::after {
     content: "";
@@ -113,13 +114,14 @@ body {
     font-size: 13px;
     margin: 10px 2px;
     cursor: pointer;
-    font-family: Verdana,sans-serif;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     float:right;
 }
 .button1:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #0e5d64;
+    color: white;
 }
 a{
     text-decoration:none;
