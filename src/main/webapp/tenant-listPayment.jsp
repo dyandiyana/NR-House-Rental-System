@@ -51,7 +51,6 @@ JOIN BOOKINGDETAILS B
         <tr>
             <th class="hello">NO.</th>
             <th>HOUSE NAME</th>
-            <th>LANDLORD NAME</th>
             <th>RENTAL STATUS</th>
             <th>ACTION</th>
         </tr>
@@ -59,7 +58,6 @@ JOIN BOOKINGDETAILS B
         <tr>
             <td class="hello">${result.rank}</td>
             <td>${result.housename}</td>
-            <td>${result.landlordname}</td>
 
             <c:set var="status" value="${result.rentalstatus}"/>
             <c:if test="${status=='On Going'}">
