@@ -21,8 +21,7 @@
 
 <%@include file="tenant-navbar.html"%>
 <%
-    int tenantid = Integer.parseInt(session.getAttribute("tenantid").toString());
-    int bookingid = (Integer) session.getAttribute("bookingid");
+    int bookingid = Integer.parseInt(request.getParameter("bookingid"));
     int landlordid = Integer.parseInt(request.getParameter("landlordid"));
 %>
 <sql:setDataSource var="ic"
