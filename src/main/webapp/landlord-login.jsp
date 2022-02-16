@@ -28,6 +28,7 @@
             </div>
             <div class="col-75">
                 <input type="number" name="landlordid"  value="${landlordid}" hidden>
+                <input type="hidden" name="action"  value="login">
             </div>
         </div>
         <div class="row">

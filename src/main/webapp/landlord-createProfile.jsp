@@ -80,6 +80,7 @@
                 <label for="female">FEMALE</label>
             </div>
         </div>
+        <input type="hidden" name="action"  value="signup">
         <button type="submit" class="button button1" name="submit" >Submit</button><br><br>
     </div>
 </form>

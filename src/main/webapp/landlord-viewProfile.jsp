@@ -98,6 +98,7 @@
                 <label>${result.landlordgender}</label>
             </div>
         </div>
+        <input type="hidden" name="action"  value="delete">
         <button type="submit" class="button button1" name="submit" onclick="form.action='LandlordServlet'">DELETE</button>
         <button type="submit"  class="button button1" name="submit" onclick="form.action='landlord-updateProfile.jsp'"  >UPDATE</button>
 
