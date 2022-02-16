@@ -27,7 +27,11 @@
 %>
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="landlordid" value="<%=landlordid%>"/>
-    SELECT houseid,housepicname,housename from housedetails where landlordid=?  ;
+    SELECT h.houseid,h.housename
+    from housedetails h
+    join houseimages h2
+        on h.houseid = h2.houseid
+    where h.landlordid=?
     <sql:param value="${landlordid}" />
 </sql:query>
 
@@ -38,7 +42,7 @@
         <form action="landlord-displayMoreInfo.jsp" method="post">
             <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
         <div class="housepic">
-            <img src="images/${result.housepicname}"/>
+            <img src="images/${result.houseimagepic}"/>
         </div>  <%--Nnti letak data sql using scrplet --%>
         <div class="houseName">
             <p><c:out value="${result.housename}"/></p>  <%--Nnti letak data sql using scrplet --%>
