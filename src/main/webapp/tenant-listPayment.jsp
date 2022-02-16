@@ -64,7 +64,7 @@ JOIN BOOKINGDETAILS B
 
             <c:set var="status" value="${result.rentalstatus}"/>
             <c:if test="${status=='On Going'}">
-                <td style="color: lawngreen">${result.rentalstatus}</td>
+                <td style="color: forestgreen">${result.rentalstatus}</td>
             </c:if>
             <c:if test="${status=='Completed'}">
                 <td style="color: dodgerblue">${result.rentalstatus}</td>
