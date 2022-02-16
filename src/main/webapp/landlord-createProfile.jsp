@@ -16,13 +16,8 @@
 </head>
 
 <body>
-    <%
-    int landlordid = (Integer) session.getAttribute("landlordid");
-%>
-
 
 <form action="LandlordSignupServlet" method="post">
-    <input type="text" name="landlordid" value="<%=landlordid%>">
     <div class="container">
         <h2>CREATE ACCOUNT</h2>
         <div class="row">
