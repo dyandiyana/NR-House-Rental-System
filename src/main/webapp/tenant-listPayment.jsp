@@ -47,7 +47,7 @@ JOIN BOOKINGDETAILS B
 
 <div class="container">
     <table id = "myTable" style="text-align: center">
-        <h3>LIST OF PAYMENT</h3>
+        <h3>Your Rental House</h3>
         <tr>
             <th class="hello">NO.</th>
             <th>HOUSE NAME</th>
