@@ -1,10 +1,11 @@
 *{
 	box-sizing: border-box;
+  font-family: Verdana,sans-serif;
 }
 .navbar {
   overflow: hidden;
   background-color: white;
-  font-family: Verdana,sans-serif;
+
 }
 
 .navbar a {
@@ -119,7 +120,7 @@ td {
   display: table;
 }
 
-.button {
+/*.button {
   background-color:  black; 
   border-radius: 10px;
   border: none;
@@ -132,7 +133,7 @@ td {
   font-family: Verdana,sans-serif;
   -webkit-transition-duration: 0.4s; 
   transition-duration: 0.4s;
-}
+}*/
 .button1:hover {
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 	background-color: #0e5d64;
