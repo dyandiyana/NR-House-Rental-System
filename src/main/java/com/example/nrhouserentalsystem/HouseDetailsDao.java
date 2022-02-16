@@ -3,10 +3,11 @@ package com.example.nrhouserentalsystem;
 import javax.servlet.http.Part;
 import java.io.*;
 import java.sql.*;
+import javax.servlet.http.Part;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 
-import static java.lang.System.out;
-
-
+@MultipartConfig
 public class HouseDetailsDao {
 
     String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"; //ni url dri heroku database
@@ -63,7 +64,6 @@ public class HouseDetailsDao {
                 idhouse = rs.getInt(1);
             }
         }
-
 
 
         String FileName=f.getSubmittedFileName();
