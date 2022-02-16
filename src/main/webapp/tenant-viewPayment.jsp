@@ -67,7 +67,7 @@
             <label>HOUSE NAME</label>
         </div>
         <div class="col-75">
-            <label>${ac.housename}</label>
+            <label>${result.housename}</label>
         </div>
     </div>
 
@@ -76,7 +76,7 @@
             <label>HOUSE ADDRESS</label>
         </div>
         <div class="col-75">
-            <label>${ac.houseaddress}</label>
+            <label>${result.houseaddress}</label>
         </div>
     </div>
 
@@ -85,7 +85,7 @@
             <label>LANDLORD NAME</label>
         </div>
         <div class="col-75">
-            <label>${ac.landlordname}</label>
+            <label>${result.landlordname}</label>
         </div>
     </div>
 
@@ -94,7 +94,7 @@
             <label>LANDLORD PHONE NO</label>
         </div>
         <div class="col-75">
-            <label>${ac.landlordphoneno}</label>
+            <label>${result.landlordphoneno}</label>
         </div>
     </div>
     </c:forEach>
