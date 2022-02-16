@@ -22,16 +22,20 @@
 <br>
 
 <sql:setDataSource var="ic" driver="org.postgresql.Driver" url="jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com:5432/dcb70s908sasfa" user="gpdkvocjaztxrw" password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
-
+<%
+    int landlordid = (Integer) session.getAttribute("landlordid");
+%>
 <sql:query dataSource="${ic}" var="oc">
-    SELECT houseid,housepicname,housename from housedetails;
+    <c:set var="landlordid" value="<%=landlordid%>"/>
+    SELECT houseid,housepicname,housename from housedetails where landlordid=?  ;
+    <sql:param value="${landlordid}" />
 </sql:query>
 
 <div class="overflow-auto">
     <c:forEach var="result" items="${oc.rows}">
         <c:set var="houseid" scope="application" value="${result.houseid}"/>
     <div class="Hcont">
-        <form action="LAdisplayMoreDetailsServlet" method="post">
+        <form action="landlord-displayMoreInfo.jsp" method="post">
             <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
         <div class="housepic">
             <img src="images/${result.housepicname}"/>

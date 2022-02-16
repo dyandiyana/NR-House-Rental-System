@@ -2,6 +2,7 @@ package com.example.nrhouserentalsystem;
 
 import java.util.Date;
 
+
 public class HouseDetails  implements java.io.Serializable {
     public Integer hID;
     public String hName;

@@ -33,7 +33,6 @@ public class LAupdateHouseDetailsServlet extends HttpServlet {
 
 
         int hids = Integer.parseInt(request.getParameter("hid"));
-        //int landid = Integer.parseInt(request.getParameter("landid"));
 
         try{
 
@@ -89,7 +88,6 @@ public class LAupdateHouseDetailsServlet extends HttpServlet {
                 pst.setString(13,desc);
                 pst.setString(14,imageFileName);
                 pst.setInt(15,hids);
-            //pst.setInt(1,landid);
 
                 pst.executeUpdate();
 

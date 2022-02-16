@@ -275,6 +275,7 @@
 
         <br/>
         <div class="sbt">
+            <input type="hidden" name="action" value="update">
             <button type="submit" class="block">Update</button>
         </div>
         <br/>

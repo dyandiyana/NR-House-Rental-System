@@ -187,6 +187,7 @@
 
     <br/>
         <div class="sbt">
+            <input type="hidden" name="action" value="create">
             <button type="submit" class="block">Submit</button>
         </div>
     <br/>

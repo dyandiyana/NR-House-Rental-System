@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <a href="https://icons8.com/icon/549/washing-machine"></a>
 <a href="https://icons8.com/icon/NhCGK7IM0kV0/bedroom"></a>
@@ -24,136 +27,124 @@
 <body>
 
 <%@include file="landlord-navbar.html"%>
-<%
-    String houseidJ= (String)request.getAttribute("hids");
-    String housenameJ= (String)request.getAttribute("hnames");
-    String housemonth= (String)request.getAttribute("hpaymonth");
-    String houseadd= (String)request.getAttribute("haddress");
-    String houseloc= (String)request.getAttribute("houseloc");
-    Date d= (Date) request.getAttribute("hpdate");
-    String available= (String)request.getAttribute("hava");
-    String hnotenant= (String)request.getAttribute("hnoT");
-    String hnoroom= (String)request.getAttribute("hnoR");
-    String hnotoilet= (String)request.getAttribute("hnoToil");
-    String hnoac= (String)request.getAttribute("hnoAC");
-    String wifi= (String)request.getAttribute("hnoWifi");
-    String furnish= (String)request.getAttribute("hnoFur");
-    String washing= (String)request.getAttribute("hnoWM");
-    String housedesc= (String)request.getAttribute("hdec");
-    String housepic= (String)request.getAttribute("hpic");
-    String landid= (String)request.getAttribute("landid");
 
+<sql:setDataSource var="ic" driver="oracle.jdbc.driver.OracleDriver" url="jdbc:oracle:thin:@localhost:1521:XE" user="NRS" password="system"/>
 
-%>
-<div class="showgrid">
+<sql:query dataSource="${ic}" var="oc">
     <%
-        if(housenameJ!="" && houseidJ!=""){
+        int houseid = Integer.parseInt(request.getParameter("hid"));
     %>
-<div class="topic"><%=housenameJ%></div>
-    <%
-        }
-    %>
+    <c:set var="houseid" value="<%=houseid%>"/>
+    SELECT * FROM housedetails WHERE houseid=?;
+    <sql:param value="${houseid}" />
+</sql:query>
 
-    <form action="" method="post" id="theForm">
-        <div>
-            <input type="number" id="hid" name="hid" value="<%=houseidJ%>" hidden/>
-            <input type="number" id="landid" name="landid" value="<%=landid%>" hidden/>
-        </div>
-     <div class="mybtn">
-        <button formaction="#" type="submit">Booking</button>
-        <button formaction="LAdisplayInUpdateServlet" type="submit">Edit</button>
-        <button type="submit" formaction="LAdeleteHouseDetails" onclick="return confirm('Are you sure you wish to delete? Your action cannot be undone!');">Delete</button>
-     </div>
-    </form>
+<c:forEach var="result" items="${oc.rows}">
+    <div class="showgrid">
+        <div class="topic">${result.housename}</div>
 
 
-<div class="tintedbg2">
-    <div class="k">
-         <div class="colk">
-             <div class="imagex">
-                 <%-- display image by house-id and image array --%>
-                     <div class="w3-content w3-display-container">
-                         <%-- kene ada foreach klau nk display bnyk image nnti --%>
-                         <img class="mySlides" src="images/<%=housepic%>" style="width:100%">
+        <form action="" method="post" id="theForm">
+            <div>
+                <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
+                <input type="number" id="landid" name="landid" value="${result.landlordid}" hidden/>
+                <input type="hidden" name="action" value="delete"/>
+            </div>
+            <div class="mybtn">
+                <button formaction="landlord-displayBookingList.jsp" type="submit">Booking</button>
+                <button formaction="landlord-updateHouseDetails.jsp" type="submit">Edit</button>
+                <button type="submit" formaction="HouseDetailsServlet" onclick="return confirm('Are you sure you wish to delete? Your action cannot be undone!');">Delete</button>
+            </div>
+        </form>
 
-                         <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-                         <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
-                     </div>
-             </div>
-         </div>
 
-        <div class="coll">
-            <div class="overflow-auto">
-                <div class="mytable">
-                <table>
-                    <tr>
-                        <td colspan="2">Publish Date </td>
-                        <td colspan="3"><%=d%></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Address</td>
-                        <td colspan="3"><%=houseadd%></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Location</td>
-                        <td colspan="3"><%=houseloc%></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Price (per month) RM</td>
-                        <td colspan="3"><%=housemonth%></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Number of Tenant</td>
-                        <td colspan="3"><%=hnotenant%></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">House Availability</td>
-                        <td colspan="3"><%=available%></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Wifi Availability</td>
-                        <%if (wifi.equals("true")){%>
-                        <td colspan="3">Available</td>
-                        <% }
-                        else if (wifi.equals("false")){%>
-                        <td colspan="3">Not Available</td>
-                        <%
-                            }
-                        %>
-                    </tr>
-                    <tr>
-                        <td style="text-align: center"><img src="https://img.icons8.com/ios-glyphs/40/000000/sleeping-in-bed.png"/></td>
-                        <td style="text-align: center"><img src="https://img.icons8.com/ios-glyphs/40/000000/shower-and-tub.png"/></td>
-                        <td style="text-align: center"><img src="https://img.icons8.com/fluency-systems-filled/40/000000/air-conditioner.png"/></td>
-                        <td style="text-align: center"><img src="https://img.icons8.com/ios-glyphs/40/000000/washing-machine.png"/></td>
-                        <td style="text-align: center"><img src="https://img.icons8.com/ios-filled/40/000000/furniture.png"/></td>
-                    </tr>
-                    <tr>
-                        <td text-align="center">Bedroom</td>
-                        <td text-align="center">Bathroom</td>
-                        <td text-align="center">Air Conditioner</td>
-                        <td text-align="center">Washing Machine</td>
-                        <td text-align="center">Furniture</td>
-                    </tr>
-                    <tr>
-                        <td><%=hnoroom%></td>
-                        <td><%=hnotoilet%></td>
-                        <td><%=hnoac%></td>
-                        <td><%=washing%></td>
-                        <td><%=furnish%></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">House Description</td>
-                        <td colspan="3"><%=housedesc%></td>
-                    </tr>
-                </table>
+        <div class="tintedbg2">
+            <div class="k">
+                <div class="colk">
+                    <div class="imagex">
+                            <%-- display image by house-id and image array --%>
+                        <div class="w3-content w3-display-container">
+                                <%-- kene ada foreach klau nk display bnyk image nnti --%>
+                            <img class="mySlides" src="images/${result.houseimagespic}" style="width:100%">
+
+                            <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                            <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="coll">
+                    <div class="overflow-auto">
+                        <div class="mytable">
+                            <table>
+                                <tr>
+                                    <td colspan="2">Publish Date </td>
+                                    <td colspan="3">${result.housepublishdate}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Address</td>
+                                    <td colspan="3">${result.houseaddress}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Location</td>
+                                    <td colspan="3">${result.houselocation}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Price (per month) RM</td>
+                                    <td colspan="3">${result.housemonthlyprice}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Number of Tenant</td>
+                                    <td colspan="3">${result.housenotenants}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">House Availability</td>
+                                    <td colspan="3">${result.houseavailability}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Wifi Availability</td>
+                                    <c:set var = "wifiAv" scope = "session" value = "${result.housewifi}"/>
+                                    <c:if test = "${wifiAv == 'Available'}">
+                                        <td colspan="3">Available</td>
+                                    </c:if>
+                                    <c:if test = "${wifiAv == 'Not Available'}">
+                                        <td colspan="3">Not Available</td>
+                                    </c:if>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center"><img src="https://img.icons8.com/ios-glyphs/40/000000/sleeping-in-bed.png"/></td>
+                                    <td style="text-align: center"><img src="https://img.icons8.com/ios-glyphs/40/000000/shower-and-tub.png"/></td>
+                                    <td style="text-align: center"><img src="https://img.icons8.com/fluency-systems-filled/40/000000/air-conditioner.png"/></td>
+                                    <td style="text-align: center"><img src="https://img.icons8.com/ios-glyphs/40/000000/washing-machine.png"/></td>
+                                    <td style="text-align: center"><img src="https://img.icons8.com/ios-filled/40/000000/furniture.png"/></td>
+                                </tr>
+                                <tr>
+                                    <td text-align="center">Bedroom</td>
+                                    <td text-align="center">Bathroom</td>
+                                    <td text-align="center">Air Conditioner</td>
+                                    <td text-align="center">Washing Machine</td>
+                                    <td text-align="center">Furniture</td>
+                                </tr>
+                                <tr>
+                                    <td>${result.housenoroom}</td>
+                                    <td>${result.housenotoilet}</td>
+                                    <td>${result.housenoac}</td>
+                                    <td>${result.housewm}</td>
+                                    <td>${result.housefurniture}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">House Description</td>
+                                    <td colspan="3">${result.housedescription}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-     </div>
-</div>
-<br>
-</div>
+        <br>
+    </div>
+</c:forEach>
 
 <script>
 
@@ -163,7 +154,7 @@
     }
 
 
-   //for slideimage show
+    //for slideimage show
     var slideIndex = 1;
     showDivs(slideIndex);
 
@@ -189,3 +180,4 @@
 
 </body>
 </html>
+

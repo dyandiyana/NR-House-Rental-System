@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import static java.lang.System.out;
 
+
 public class HouseDetailsDao {
 
     String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"; //ni url dri heroku database
@@ -78,6 +79,53 @@ public class HouseDetailsDao {
 
         catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void updatehouse(HouseDetails house, HouseImages houseImages,Integer landid) throws SQLException, IOException {
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("UPDATE housedetails SET housename=?,housemonthlyprice=?,houseaddress=?,houselocation=?,housepublishdate=localtimestamp,houseavailability=?,housenotenants=?,housenoroom=?,housenotoilet=?,housenoac=?,housewifi=?,housefurniture=?,housewm=?,housedescription=?,housepicname=? WHERE houseid = ?");)
+        {
+
+            ps.setString(1, house.gethName());
+            ps.setDouble(2, house.gethMP());
+            ps.setString(3, house.gethAddress());
+            ps.setString(4, house.getHlocation());
+            ps.setString(5, house.gethAvailability());
+            ps.setInt(6, house.gethNoTenants());
+            ps.setInt(7, house.gethNoRoom());
+            ps.setInt(8, house.gethNoToilet());
+            ps.setInt(9, house.gethNoAC());
+            ps.setString(10, house.gethWifi());
+            ps.setInt(11, house.gethFurniture());
+            ps.setInt(12, house.gethWM());
+            ps.setString(13, house.getDesc());
+            ps.setInt(14, house.getLandlordID());
+            ps.setInt(15, house.gethID());
+            ps.executeUpdate();
+
+        }
+
+        File file = new File("src/main/webapp/images/"+ houseImages.getHousepicname());
+        FileOutputStream fos = new FileOutputStream(file);
+        InputStream is = houseImages.getHousepic().getInputStream();
+
+        byte[] data=new byte[is.available()];
+        is.read(data);
+        fos.write(data);
+        fos.close();
+
+        try (Connection connection = getConnection();
+             PreparedStatement ps2 = connection.prepareStatement("UPDATE houseimages SET houseid=?,housepic=?,houseimagespic=? WHERE houseid = ?");)
+        {
+            FileInputStream fis = new FileInputStream(file);
+            ps2.setInt(1, landid);
+            ps2.setBinaryStream(2, fis, file.length());
+            ps2.setString(3, file.getName());
+            ps2.setInt(4, landid);
+            ps2.executeUpdate();
+
         }
     }
 }

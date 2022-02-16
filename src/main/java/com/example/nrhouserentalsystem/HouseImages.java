@@ -4,6 +4,7 @@ import javax.servlet.http.Part;
 import java.io.Serializable;
 import java.sql.Blob;
 
+
 public class HouseImages  implements Serializable {
 
     public Part housepic;
