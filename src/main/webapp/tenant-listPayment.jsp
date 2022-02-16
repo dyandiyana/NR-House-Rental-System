@@ -32,40 +32,46 @@
 
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="clsid" value="<%=tenantid%>"/>
-    SELECT  P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE
+    SELECT  row_number() over () "rank", B.bookingid,b.landlordid, b.rentalstatus, h.housename, l.landlordname
 from TENANT T
 JOIN BOOKINGDETAILS B
     on T.TENANTID = B.TENANTID
-    join MONTHLYPAYMENT P
-    on B.BOOKINGID = P.BOOKINGID
-WHERE T.TENANTID =?
+    join landlord l
+    on B.landlordid = l.landlordid
+    join housedetails h
+    on l.landlordid = h.landlordid
+    WHERE T.TENANTID =?
+    and b.rentalstatus in ('On Going','Completed')
     <sql:param value="${clsid}" />
 </sql:query>
 
 <div class="container">
-    <table id = "myTable">
+    <table id = "myTable" style="text-align: center">
         <h3>LIST OF PAYMENT</h3>
         <tr>
             <th class="hello">NO.</th>
-            <th>BOOKING ID</th>
-            <th>DUE DATE</th>
-            <th>TOTAL PRICE</th>
-            <th>STATUS</th>
-            <th>RECEIPT</th>
-            <th>PAY DATE</th>
-            <th>DATE PAYMENT</th>
+            <th>HOUSE NAME</th>
+            <th>LANDLORD NAME</th>
+            <th>RENTAL STATUS</th>
+            <th> </th>
+            <th> </th>
         </tr>
         <c:forEach var="result" items="${oc.rows}">
         <tr>
-            <td class="hello">1.</td>
-            <td>${result.bookingID}</td>
-            <td>${result.payduedate}</td>
-            <td>${result.payprice}</td>
-            <td>${result.paystatus}</td>
-            <td>${result.payreceipt}</td>
-            <td>${result.paydate}</td>
-            <input type="hidden" name="payid" value="${result.payID}">
-            <td><button type="submit" class="button button1" name="submit" ><a href ="tenant-viewPayment.jsp">Pay now</a></button><br><br></td>
+            <td class="hello">${result.rank}</td>
+            <td>${result.housename}</td>
+            <td>${result.landlordname}</td>
+
+            <c:set var="status" value="${result.rentalstatus}"/>
+            <c:if test="${status=='On Going'}">
+                <td style="color: lawngreen">${result.rentalstatus}</td>
+            </c:if>
+            <c:if test="${status=='Completed'}">
+                <td style="color: dodgerblue">${result.rentalstatus}</td>
+            </c:if>
+            <input type="hidden" name="bookingid" value="${result.bookingid}">
+            <input type="hidden" name="landlordid" value="${result.landlordid}">
+            <td><button type="submit" class="button button1" name="submit" formaction="tenant-viewPayment.jsp" ></button><br><br></td>
         </tr>
         </c:forEach>
     </table>
