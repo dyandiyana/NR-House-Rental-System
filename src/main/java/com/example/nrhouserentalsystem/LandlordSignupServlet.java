@@ -73,7 +73,7 @@ public class LandlordSignupServlet extends HttpServlet {
             int row= st.executeUpdate();//return no of row effected
 
             if(row>0){
-                out.println("Record insertedd");
+                response.sendRedirect("landlord-login.jsp");
                 //response.sendRedirect("landlord-login.jsp");
             }else{
                 out.println("Record failed");
