@@ -19,7 +19,7 @@
 
     SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
     String ddMMyyyyToday = DATE_FORMAT.format(today);
-
+    int landlordid = (Integer) session.getAttribute("landlordid");
 
 
 
@@ -187,6 +187,7 @@
 
     <br/>
         <div class="sbt">
+            <input type="hidden" name="landlordid" value="<%=landlordid%>">
             <input type="hidden" name="action" value="create">
             <button type="submit" class="block">Submit</button>
         </div>

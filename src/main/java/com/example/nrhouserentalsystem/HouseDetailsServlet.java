@@ -178,6 +178,9 @@ public class HouseDetailsServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        int hids = Integer.parseInt(request.getParameter("landlordid"));
+        int hids = Integer.parseInt(request.getParameter("hid"));
+        int landid = Integer.parseInt(request.getParameter("landid"));
+
+        hd.deletehouse(hids,landid);
     }
 }

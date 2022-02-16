@@ -105,6 +105,8 @@ public class HouseDetailsDao {
             ps.setInt(15, house.gethID());
             ps.executeUpdate();
 
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         File file = new File("src/main/webapp/images/"+ houseImages.getHousepicname());
@@ -126,6 +128,20 @@ public class HouseDetailsDao {
             ps2.setInt(4, landid);
             ps2.executeUpdate();
 
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
+
+    public void deletehouse(Integer houseid, Integer landid) throws SQLException, IOException {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("DELETE FROM housedetails WHERE houseid = ? AND landlordid= ?");)
+        {
+            ps.setInt(1,houseid);
+            ps.setInt(1,landid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
