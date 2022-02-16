@@ -71,7 +71,7 @@ JOIN BOOKINGDETAILS B
             </c:if>
             <input type="hidden" name="bookingid" value="${result.bookingid}">
             <input type="hidden" name="landlordid" value="${result.landlordid}">
-            <td><button type="submit" class="button button1" name="submit" formaction="tenant-viewPayment.jsp" style="all: revert" >View More</button></td>
+            <td><button type="submit" class="button button1" name="submit" formaction="tenant-viewPayment.jsp" >View More</button></td>
         </tr>
         </c:forEach>
     </table>
