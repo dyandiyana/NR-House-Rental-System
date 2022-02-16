@@ -11,6 +11,7 @@ public class Landlord implements java.io.Serializable {
     public String landlordPhoneNo;
     public String landlordGender;
 
+
     public Landlord(){
 
     }

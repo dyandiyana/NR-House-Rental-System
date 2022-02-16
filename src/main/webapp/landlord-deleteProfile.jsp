@@ -4,6 +4,7 @@
 <%@page import="java.sql.*"%>
 <%@ page import="java.io.PrintWriter" %>
 
+
 <html>
     <head>
         <title>HOUSE RENTAL SYSTEM</title>

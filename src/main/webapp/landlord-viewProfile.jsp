@@ -33,6 +33,7 @@
     <sql:param value="${landid}" />
 </sql:query>
 
+
 <%@include file="landlord-navbar.html"%>
 <c:forEach var="result" items="${oc.rows}">
 <form action="" method="post">

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import static java.lang.System.out;
 
+
 public class LandlordDao {
 
     String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"; //ni url dri heroku database

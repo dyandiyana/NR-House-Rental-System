@@ -20,6 +20,7 @@
     int landlordid = (Integer) session.getAttribute("landlordid");
 %>
 
+
 <form action="LandlordSignupServlet" method="post">
     <input type="text" name="landlordid" value="<%=landlordid%>">
     <div class="container">

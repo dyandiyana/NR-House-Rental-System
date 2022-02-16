@@ -12,7 +12,8 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 
 
-@WebServlet(name = "TenantServlet", value = "/TenantServlet")
+
+@WebServlet(name = "LandlordServlet", value = "/LandlordServlet")
 public class LandlordServlet extends HttpServlet {
 
     private LandlordDao ld;
