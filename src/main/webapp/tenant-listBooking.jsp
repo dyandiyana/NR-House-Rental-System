@@ -33,7 +33,7 @@
 
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="clsid" value="<%=tenantid%>"/>
-    SELECT  H.HOUSENAME, B.BOOKINGID, B.BOOKINGSTATUS, B.BOOKINGTIME, B.BOOKINGDATE, B.BOOKINGDEPO, B.BOOKINGAGREEMENT, B.BOOKINGAPPROVALDATE, B.TENANTID, B.HOUSEID
+    SELECT  H.HOUSENAME, B.BOOKINGID, B.BOOKINGSTATUS, B.BOOKINGTIME, B.BOOKINGDATE, B.BOOKINGDEPO, B.BOOKINGAGREEMENT, B.BOOKINGAPPROVALDATE, B.TENANTID, B.HOUSEID, h.housename
     from TENANT t
     join BOOKINGDETAILS B
     on t.TENANTID = B.TENANTID
@@ -104,7 +104,7 @@
                 <form method="post">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
                     <input type="hidden" name="action" value="delete">
-                <button type="submit" class="button button1" name="submit" onclick="return confirm('Confirm delete Booking: <c:out value="${result.bookingid}"/>?');" formaction="BookingServlet">Delete</button><br><br>
+                <button type="submit" class="button button1" name="submit" onclick="return confirm('Confirm delete Booking? House name: <c:out value="${result.housename}"/>');" formaction="BookingServlet">Delete</button><br><br>
                 </form>
 
             </td>
