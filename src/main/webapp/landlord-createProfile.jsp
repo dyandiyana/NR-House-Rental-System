@@ -81,7 +81,7 @@
             </div>
         </div>
         <input type="hidden" name="action"  value="signup">
-        <button type="submit" class="button button1" name="submit" >Submit</button><br><br>
+        <button type="submit" class="button button1" name="submit" >Sign Up</button><br><br>
     </div>
 </form>
 </body>
