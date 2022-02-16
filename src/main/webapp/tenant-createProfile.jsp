@@ -20,7 +20,7 @@
 
 <form action="TenantServlet" method="POST">
     <div class="container">
-        <h2>CREATE ACCOUNT</h2>
+        <h2>TENANT SIGN UP</h2>
         <div class="row">
             <div class="col-25">
                 <label style="">USERNAME</label>
