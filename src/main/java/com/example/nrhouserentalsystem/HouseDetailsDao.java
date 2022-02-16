@@ -1,5 +1,6 @@
 package com.example.nrhouserentalsystem;
 
+import javax.servlet.http.Part;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,7 +32,7 @@ public class HouseDetailsDao {
     }
 
 
-    public void createhouse(HouseDetails house, HouseImages houseImages,Integer landid) throws SQLException, IOException {
+    public void createhouse(HouseDetails house, Part f, Integer landid) throws SQLException, IOException {
 
         // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection();
@@ -56,9 +57,10 @@ public class HouseDetailsDao {
 
         }
 
-        File file = new File("src/main/webapp/images/"+ houseImages.getHousepicname());
+        String FileName=f.getSubmittedFileName();
+        File file = new File("src/main/webapp/images/"+ FileName);
         FileOutputStream fos = new FileOutputStream(file);
-        InputStream is = houseImages.getHousepic().getInputStream();
+        InputStream is = f.getInputStream();
 
         byte[] data=new byte[is.available()];
         is.read(data);
@@ -82,7 +84,7 @@ public class HouseDetailsDao {
         }
     }
 
-    public void updatehouse(HouseDetails house, HouseImages houseImages,Integer landid) throws SQLException, IOException {
+    public void updatehouse(HouseDetails house, Part f,Integer landid) throws SQLException, IOException {
 
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement("UPDATE housedetails SET housename=?,housemonthlyprice=?,houseaddress=?,houselocation=?,housepublishdate=localtimestamp,houseavailability=?,housenotenants=?,housenoroom=?,housenotoilet=?,housenoac=?,housewifi=?,housefurniture=?,housewm=?,housedescription=?,housepicname=? WHERE houseid = ?");)
@@ -109,9 +111,10 @@ public class HouseDetailsDao {
             e.printStackTrace();
         }
 
-        File file = new File("src/main/webapp/images/"+ houseImages.getHousepicname());
+        String FileName=f.getSubmittedFileName();
+        File file = new File("src/main/webapp/images/"+ FileName);
         FileOutputStream fos = new FileOutputStream(file);
-        InputStream is = houseImages.getHousepic().getInputStream();
+        InputStream is = f.getInputStream();
 
         byte[] data=new byte[is.available()];
         is.read(data);

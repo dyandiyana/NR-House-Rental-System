@@ -103,7 +103,7 @@ public class HouseDetailsServlet extends HttpServlet {
             houseImages.setHousepicname(FileName);
 
 
-            hd.createhouse(house,houseImages,landlordid);
+            hd.createhouse(house,f,landlordid);
             response.sendRedirect("landlord-displayHouseList.jsp");
 
         } catch (Exception e) {
@@ -155,11 +155,7 @@ public class HouseDetailsServlet extends HttpServlet {
             house.setHlocation(hloc);
             house.setLandlordID(landlordid);
 
-            HouseImages houseImages = new HouseImages();
-            houseImages.setHousepic(f);
-            houseImages.setHousepicname(FileName);
-
-            hd.updatehouse(house,houseImages,landlordid);
+            hd.updatehouse(house,f,landlordid);
             response.sendRedirect("landlord-displayHouseList.jsp");
 
         } catch (Exception e) {
