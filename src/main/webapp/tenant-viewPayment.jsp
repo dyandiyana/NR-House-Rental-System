@@ -45,6 +45,20 @@
     <sql:param value="<%=bookingid%>"/>
 </sql:query>
 
+
+<sql:query dataSource="${ic}" var="ac">
+    select h.housename, h.houseaddress, l.landlordname, l.landlordphoneno
+    from bookingdetails b
+        join housedetails h
+            on h.houseid = b.houseid
+        join landlord l
+        on l.landlordid = h.landlordid
+    where b.bookingid = ?
+    <sql:param value="<%=bookingid%>"/>
+</sql:query>
+
+
+<c:forEach var="result" items="${ac.rows}">
 <div class="container">
     <h3>MONTHLY PAYMENT</h3>
 
@@ -53,7 +67,7 @@
             <label>HOUSE NAME</label>
         </div>
         <div class="col-75">
-            <label>${oc.housename}</label>
+            <label>${ac.housename}</label>
         </div>
     </div>
 
@@ -62,7 +76,7 @@
             <label>HOUSE ADDRESS</label>
         </div>
         <div class="col-75">
-            <label>${oc.houseaddress}</label>
+            <label>${ac.houseaddress}</label>
         </div>
     </div>
 
@@ -71,7 +85,7 @@
             <label>LANDLORD NAME</label>
         </div>
         <div class="col-75">
-            <label>${oc.landlordname}</label>
+            <label>${ac.landlordname}</label>
         </div>
     </div>
 
@@ -80,9 +94,10 @@
             <label>LANDLORD PHONE NO</label>
         </div>
         <div class="col-75">
-            <label>${oc.landlordphoneno}</label>
+            <label>${ac.landlordphoneno}</label>
         </div>
     </div>
+    </c:forEach>
 
 
     <br><br>
