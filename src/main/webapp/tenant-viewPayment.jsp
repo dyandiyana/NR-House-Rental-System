@@ -129,7 +129,7 @@
 
     </table>
 
-    <button type="submit" class="button button1" name="submit" ><a href="tenant-listPayment.jsp">Back</a></button>
+    <button type="submit" class="button button1" name="submit" style="float: left" ><a href="tenant-listPayment.jsp">Back</a></button>
     </c:forEach>
 
 </div>
