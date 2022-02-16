@@ -47,14 +47,13 @@
 
 <div class="container">
     <h3>MONTHLY PAYMENT</h3>
-    <c:forEach var="result" items="${oc.rows}">
-        <input type="hidden" name="payId" value="${result.payId}">
+
     <div class="row">
         <div class="col-25">
             <label>HOUSE NAME</label>
         </div>
         <div class="col-75">
-            <label>${result.housename}</label>
+            <label>${oc.housename}</label>
         </div>
     </div>
 
@@ -63,7 +62,7 @@
             <label>HOUSE ADDRESS</label>
         </div>
         <div class="col-75">
-            <label>${result.houseaddress}</label>
+            <label>${oc.houseaddress}</label>
         </div>
     </div>
 
@@ -72,7 +71,7 @@
             <label>LANDLORD NAME</label>
         </div>
         <div class="col-75">
-            <label>${result.landlordname}</label>
+            <label>${oc.landlordname}</label>
         </div>
     </div>
 
@@ -81,7 +80,7 @@
             <label>LANDLORD PHONE NO</label>
         </div>
         <div class="col-75">
-            <label>${result.landlordphoneno}</label>
+            <label>${oc.landlordphoneno}</label>
         </div>
     </div>
 
@@ -96,7 +95,7 @@
             <th>RECEIPT</th>
             <th>ACTION</th>
         </tr>
-
+        <c:forEach var="result" items="${oc.rows}">
         <tr>
             <td class="hello">${result.rank}</td>
             <td>${result.month}</td>
@@ -126,11 +125,12 @@
                 </td>
             </form>
         </tr>
+        </c:forEach>
 
     </table>
 
     <button type="submit" class="button button1" name="submit" style="float: left" ><a href="tenant-listPayment.jsp">Back</a></button>
-    </c:forEach>
+
 
 </div>
 </body>
