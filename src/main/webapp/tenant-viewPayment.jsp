@@ -31,7 +31,7 @@
                    password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
 
 <sql:query dataSource="${ic}" var="oc">
-    SELECT  row_number() over () "rank" ,P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE, l.landlordid,l.landlordname
+    SELECT  row_number() over () "rank" ,P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE, p.month, l.landlordid,l.landlordname, l.landlordphoneno, h.housename, h.houseaddress
     from landlord l
     JOIN housedetails h
         on l.landlordid = h.landlordid
@@ -100,9 +100,9 @@
         <tr>
             <td class="hello">${result.rank}</td>
             <td>${result.month}</td>
-            <td>${result.payprice}</td>
+            <td>${result.payprice}.00</td>
 
-            <c:if test="${result.paystatus=='Upaid'}">
+            <c:if test="${result.paystatus=='Unpaid'}">
             <td style="color: red">${result.paystatus}</td>
             </c:if>
             <c:if test="${result.paystatus=='Paid'}">
