@@ -61,10 +61,8 @@ td {
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 13px;
   margin:auto;
-  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
 .button1:hover {
