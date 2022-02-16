@@ -32,7 +32,6 @@
                    password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
 
 <sql:query dataSource="${ic}" var="oc">
-    <c:set var="clsid" value="<%=tenantid%>"/>
     SELECT  row_number() over () "rank" ,P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE, l.landlordid,l.landlordname
     from landlord l
     JOIN housedetails h
@@ -43,7 +42,7 @@
         on b.bookingid = p.bookingid
     WHERE l.landlordid =?
     and b.bookingid = ?
-    <sql:param value="<%=landlordid%>>" />
+    <sql:param value="<%=landlordid%>"/>
     <sql:param value="<%=bookingid%>"/>
 </sql:query>
 
