@@ -2,10 +2,7 @@ package com.example.nrhouserentalsystem;
 
 import javax.servlet.http.Part;
 import java.io.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 import static java.lang.System.out;
 
@@ -32,7 +29,7 @@ public class HouseDetailsDao {
     }
 
 
-    public void createhouse(HouseDetails house, Part f, Integer landid) throws SQLException, IOException {
+    public void createhouse(HouseDetails house, Part f) throws SQLException, IOException {
 
         // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection();
@@ -57,6 +54,18 @@ public class HouseDetailsDao {
 
         }
 
+        int idhouse=0;
+        try (Connection connection = getConnection();
+             PreparedStatement ps2 = connection.prepareStatement("select max(houseid) from housedetails");)
+        {
+            ResultSet rs = ps2.executeQuery();
+            while(rs.next()){
+                idhouse = rs.getInt(1);
+            }
+        }
+
+
+
         String FileName=f.getSubmittedFileName();
         File file = new File("src/main/webapp/images/"+ FileName);
         FileOutputStream fos = new FileOutputStream(file);
@@ -71,7 +80,7 @@ public class HouseDetailsDao {
              PreparedStatement ps2 = connection.prepareStatement("insert into houseimages(houseid,housepic,houseimagespic) values(?,?,?)");)
         {
             FileInputStream fis = new FileInputStream(file);
-            ps2.setInt(1, landid);
+            ps2.setInt(1, idhouse);
             ps2.setBinaryStream(2, fis, file.length());
             ps2.setString(3, file.getName());
             ps2.executeUpdate();
@@ -111,6 +120,16 @@ public class HouseDetailsDao {
             e.printStackTrace();
         }
 
+        int idhouse=0;
+        try (Connection connection = getConnection();
+             PreparedStatement ps2 = connection.prepareStatement("select max(houseid) from housedetails");)
+        {
+            ResultSet rs = ps2.executeQuery();
+            while(rs.next()){
+                idhouse = rs.getInt(1);
+            }
+        }
+
         String FileName=f.getSubmittedFileName();
         File file = new File("src/main/webapp/images/"+ FileName);
         FileOutputStream fos = new FileOutputStream(file);
@@ -125,10 +144,10 @@ public class HouseDetailsDao {
              PreparedStatement ps2 = connection.prepareStatement("UPDATE houseimages SET houseid=?,housepic=?,houseimagespic=? WHERE houseid = ?");)
         {
             FileInputStream fis = new FileInputStream(file);
-            ps2.setInt(1, landid);
+            ps2.setInt(1, idhouse);
             ps2.setBinaryStream(2, fis, file.length());
             ps2.setString(3, file.getName());
-            ps2.setInt(4, landid);
+            ps2.setInt(4, idhouse);
             ps2.executeUpdate();
 
         } catch (Exception e) {
