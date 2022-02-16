@@ -8,9 +8,9 @@ import java.io.IOException;
 @WebServlet(name = "LandlordDeleteServlet", value = "/LandlordDeleteServlet")
 public class LandlordDeleteServlet extends HttpServlet {
 
-    private LandlordDeleteDao ld;
+    private LandlordDao ld;
     public void init() {
-        ld = new LandlordDeleteDao();
+        ld = new LandlordDao();
     }
 
     @Override

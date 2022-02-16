@@ -7,14 +7,15 @@ public class Landlord implements java.io.Serializable {
     public String landlordPassword;
     public String landlordName;
     public String landlordEmail;
-    public String landlordAge;
+    public Integer landlordAge;
     public String landlordPhoneNo;
     public String landlordGender;
 
     public Landlord(){
 
     }
-    public Landlord(Integer landlordId, String landlordUsername, String landlordPassword, String landlordName, String landlordEmail, String landlordAge, String landlordPhoneNo, String landlordGender) {
+
+    public Landlord(Integer landlordId, String landlordUsername, String landlordPassword, String landlordName, String landlordEmail, Integer landlordAge, String landlordPhoneNo, String landlordGender) {
         this.landlordId = landlordId;
         this.landlordUsername = landlordUsername;
         this.landlordPassword = landlordPassword;
@@ -65,11 +66,11 @@ public class Landlord implements java.io.Serializable {
         this.landlordEmail = landlordEmail;
     }
 
-    public String getLandlordAge() {
+    public Integer getLandlordAge() {
         return landlordAge;
     }
 
-    public void setLandlordAge(String landlordAge) {
+    public void setLandlordAge(Integer landlordAge) {
         this.landlordAge = landlordAge;
     }
 

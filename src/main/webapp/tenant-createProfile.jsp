@@ -17,6 +17,7 @@
 
 <body>
 
+
 <form action="TenantServlet" method="POST">
     <div class="container">
         <h2>CREATE ACCOUNT</h2>

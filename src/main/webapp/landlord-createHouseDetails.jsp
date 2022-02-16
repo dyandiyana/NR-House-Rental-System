@@ -21,13 +21,15 @@
     String ddMMyyyyToday = DATE_FORMAT.format(today);
 
 
+
+
 %>
 <div class="topic">
     <p>HOUSE INFORMATION APPLICATION</p>
 </div>
 
 <div class="tintedbg">
-    <form name="HouseInfoForm" method="post" action="LAcreateHouseDetailsServlet" action="AddImagesServlet"  enctype = "multipart/form-data">
+    <form name="HouseInfoForm" method="post" action="HouseDetailsServlet" enctype = "multipart/form-data">
     <br/>
     <br/>
         <div class="input-box">

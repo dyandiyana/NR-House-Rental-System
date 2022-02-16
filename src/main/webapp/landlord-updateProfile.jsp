@@ -20,7 +20,7 @@
     <%@include file="landlord-navbar.html"%>
 
 
-<form action="LandlordUpdateServlet" method="POST">
+<form action="LandlordServlet" method="POST">
 
     <div class="container">
         <h2>UPDATE MY ACCOUNT</h2>
