@@ -1,76 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
 *{
-	box-sizing: border-box;
-  font-family: Verdana,sans-serif;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-.navbar {
-  overflow: hidden;
-  background-color: white;
-
-}
-
-.navbar a {
-  float: right;
-  font-size: 16px;
-  color: black;
-  text-align: center;
-  padding: 16px 16px;
-  text-decoration: none;
-}
-.navbar p {
-  float: left;
-  color: black;
-}
-
-.dropdown {
-  float: right;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  color: black;
-  padding: 16px 16px;
-  background-color: inherit;
-  font-family: Verdana,sans-serif;
-  margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: pink;
-}
-.navbar a.active {
-  background-color: #666;
-  color: white;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
 
 body {
  /*background-image: url('img1.jpg');*/
@@ -112,7 +45,6 @@ td {
   margin:100px 100px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   border-radius:0px;
-  font-family: Verdana,sans-serif;
 }
 .container::after, .row::after {
   content: "";
@@ -132,15 +64,13 @@ td {
   display: inline-block;
   font-size: 13px;
   margin:auto;
-  cursor: pointer;
-  font-family: Verdana,sans-serif;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
 .button1:hover {
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 	background-color: #0e5d64;
-	color: black;
+	color: white;
 }
 a{
 	text-decoration:none;
