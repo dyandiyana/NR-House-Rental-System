@@ -9,18 +9,10 @@ public class MonthlyPayment {
     public String payReceipt;
     public String payStatus;
     public Float payPrice;
+    public  String month;
 
     public MonthlyPayment(){
 
-    }
-
-    public MonthlyPayment(int payId, Date payDueDate, Date payDate, String payReceipt, String payStatus, Float payPrice) {
-        this.payId = payId;
-        this.payDueDate = payDueDate;
-        this.payDate = payDate;
-        this.payReceipt = payReceipt;
-        this.payStatus = payStatus;
-        this.payPrice = payPrice;
     }
 
     public int getPayId() {
@@ -69,5 +61,13 @@ public class MonthlyPayment {
 
     public void setPayPrice(Float payPrice) {
         this.payPrice = payPrice;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
     }
 }
