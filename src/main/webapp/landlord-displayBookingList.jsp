@@ -285,7 +285,7 @@
     //popApproval
     var appr = document.getElementById("popAppr");
     var apprbtn = document.getElementById("btnAprv");
-    var apprclose = document.getElementsByClassName("close2")[0];
+    var apprclose = document.getElementsByClassName("close")[0];
 
     apprbtn.onclick = function() {
         appr.style.display = "block";
