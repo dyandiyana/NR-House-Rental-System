@@ -35,7 +35,7 @@ public class HouseDetailsDao {
     }
 
 
-    public void createhouse(HouseDetails house, Part f) throws SQLException, IOException {
+    public void createhouse(HouseDetails house, HouseImages hi) throws SQLException, IOException {
 
         // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection();
@@ -71,11 +71,10 @@ public class HouseDetailsDao {
         }
 
 
-        String FileName=f.getSubmittedFileName();
-        File file = new File("src/main/webapp/images/"+ FileName);
+        File file = new File("src/main/webapp/images/"+ hi.getHousepicname());
         try{
             FileOutputStream fos = new FileOutputStream(file);
-            InputStream is = f.getInputStream();
+            InputStream is = hi.getHousepic().getInputStream();
 
             byte[] data=new byte[is.available()];
             is.read(data);

@@ -62,6 +62,7 @@ public class HouseDetailsServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         Part f = request.getPart("hPic");
+        String FileName=f.getSubmittedFileName();
 
         try {
 
@@ -97,12 +98,12 @@ public class HouseDetailsServlet extends HttpServlet {
             house.setHlocation(hloc);
             house.setLandlordID(landlordid);
 
-//            HouseImages houseImages = new HouseImages();
-//            houseImages.setHousepic(f);
-//            houseImages.setHousepicname(FileName);
+            HouseImages houseImages = new HouseImages();
+            houseImages.setHousepic(f);
+            houseImages.setHousepicname(FileName);
 
 
-            hd.createhouse(house,f);
+            hd.createhouse(house,houseImages);
             response.sendRedirect("landlord-displayHouseList.jsp");
 
         } catch (Exception e) {
