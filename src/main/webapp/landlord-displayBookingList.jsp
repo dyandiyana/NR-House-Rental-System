@@ -43,9 +43,7 @@
 
 <div class="titlebg">
    <fieldset>
-    <c:forEach var="result" begin = "1" end = "1">
     <legend>${result.housename}</legend>
-    </c:forEach>
     <div class="htopic">
         <h1>TENANCY BOOKING APPLICATION</h1>
     </div>
