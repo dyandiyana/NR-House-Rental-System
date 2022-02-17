@@ -1,15 +1,36 @@
 *{
 	box-sizing: border-box;
 }
-body {
+/*body {
   background-image: url('pic2.jpg');
-  /*background:lightblue;*/
+  !*background:lightblue;*!
   height:auto;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin:auto;
+}*/
+
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero::before {
+  content: "";
+  background-image: url('pic2.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.75;
 }
 
 .header {

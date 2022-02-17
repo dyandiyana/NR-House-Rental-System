@@ -11,6 +11,8 @@
 
 <body>
 
+<div class="hero">
+
 <div class="header">
     <h1>UiTM JASIN NON-RESIDENT HOUSE RENTAL SYSTEM</h1>
 </div>
@@ -40,6 +42,6 @@
     </div>
     </a>
 </div>
-
+</div>
 </body>
 </html>
