@@ -209,7 +209,6 @@
                 <p>${result.bookingdepo}</p>
                 <br>
             </div>
-
             <button class="close">Close</button>
         </div>
         </c:forEach>
@@ -256,21 +255,21 @@
     var btnVM2 = document.getElementById("btnVM2");
     var btnVM3 = document.getElementById("btnVM3");
     var btnVM4 = document.getElementById("btnVM4");
-    var a = document.getElementsByClassName("close")[4];
+    var a = document.getElementsByClassName("close")[0];
 
     btnVM1.onclick = function() {
         modal.style.display = "block";
     }
 
-    btnVM2.onclick = function() {
-        modal.style.display = "block";
-    }
-    btnVM3.onclick = function() {
-        modal.style.display = "block";
-    }
-    btnVM4.onclick = function() {
-        modal.style.display = "block";
-    }
+    // btnVM2.onclick = function() {
+    //     modal.style.display = "block";
+    // }
+    // btnVM3.onclick = function() {
+    //     modal.style.display = "block";
+    // }
+    // btnVM4.onclick = function() {
+    //     modal.style.display = "block";
+    // }
 
     a.onclick = function() {
         modal.style.display = "none";
