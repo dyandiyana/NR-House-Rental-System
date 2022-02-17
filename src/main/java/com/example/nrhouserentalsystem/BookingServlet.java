@@ -52,6 +52,9 @@ public class BookingServlet extends HttpServlet {
                 case "delete":
                     delete(request, response);
                     break;
+                case "approvedbooking":
+                    approvedbook(request, response);
+                    break;
 
             }
         } catch (SQLException ex) {
@@ -107,6 +110,15 @@ public class BookingServlet extends HttpServlet {
         int bookingid = Integer.parseInt(request.getParameter("bookingid"));
         bd.deletebooking(bookingid);
         response.sendRedirect("tenant-listBooking.jsp");
+    }
+
+    private void approvedbook(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+
+        Part f = request.getPart("agreedoc");
+        int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+        bd.approvedbooking(bookingid,f);
+        response.sendRedirect("landlord-displayBookingList.jsp");
     }
 }
 

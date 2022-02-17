@@ -106,10 +106,34 @@ public class BookingDao {
         return rowDeleted;
     }
 
+    public void approvedbooking(int bookingid,Part f) throws SQLException {
+        String status="Approved";
 
 
+        String imageFileName = f.getSubmittedFileName();
+        File file = new File("src/main/webapp/images/" + imageFileName);
 
+        try (Connection connection = getConnection();
+            PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGAPPROVALDATE=localtimestamp,AGREEDOC=?,BOOKINGAGREEMENT=? WHERE BOOKINGID=?");) {
+            FileOutputStream fos = new FileOutputStream(file);
+            InputStream is = f.getInputStream();
 
+            byte[] data = new byte[is.available()];
+            is.read(data);
+            fos.write(data);
+            fos.close();
+            FileInputStream fis = new FileInputStream(file);
+
+            statement.setString(1, status);
+            statement.setBinaryStream(2, fis, file.length());
+            statement.setString(3, file.getName());
+            statement.setInt(4, bookingid);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {

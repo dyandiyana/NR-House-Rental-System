@@ -43,7 +43,7 @@
 
 <div class="titlebg">
    <fieldset>
-    <c:forEach var="result" items="${oc.rows}">
+    <c:forEach var="result" begin = "1" end = "1">
     <legend>${result.housename}</legend>
     </c:forEach>
     <div class="htopic">
@@ -87,10 +87,12 @@
                 <td colspan="2">
                     <button id="btnVM1">View More</button>
                 </td>
-                <form>
-                <td colspan="2"><input type="file" name="agreedoc" required></td>
+                <form action="BookingServlet">
+                <td colspan="2"><input type="file" name="agreedoc"></td>
                 <td colspan="2">
-                    <button id="btnAprv">Approved</button>
+                    <input type="hidden" name="bookingid" value="${result.bookingid}">
+                    <input type="hidden" name="action" value="approvedbooking">
+                    <button id="btnAprv" onclick="return confirm('Are you sure you wish to approved this application? Your action cannot be undone!');">Approved</button>
                 </td>
                 </form>
             </tr>
@@ -138,6 +140,9 @@
           <h2>Completed</h2>
           <br>
           <table>
+        <c:forEach var="result" items="${oc.rows}">
+            <c:set var="status" value="${result.bookingstatus}"/>
+            <c:if test="${status=='Completed'}">
               <tr>
                   <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
                   <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
@@ -154,13 +159,18 @@
                       <button id="btnVM3">View More</button>
                   </td>
               </tr>
+            </c:if>
+        </c:forEach>
           </table>
       </div>
 
-       <div id="Canceled" class="w3-container mystatus" style="display:none">
            <h2>Canceled</h2>
            <br>
            <table>
+               <div id="Canceled" class="w3-container mystatus" style="display:none">
+               <c:forEach var="result" items="${oc.rows}">
+                 <c:set var="status" value="${result.bookingstatus}"/>
+                   <c:if test="${status=='Canceled'}">
                <tr>
                    <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
@@ -177,6 +187,8 @@
                        <button id="btnVM4">View More</button>
                    </td>
                </tr>
+                  </c:if>
+               </c:forEach>
            </table>
        </div>
 
@@ -215,23 +227,25 @@
 </div>
 
 
-    <div id="popAppr" class="overlay">
-        <span class="close2">&times;</span>
-        <div class="popup2">
-            <div class="cont">
-               <h2>Are you sure?</h2>
-               <div class="content">
-               <p>Are you sure you want to accept this application? <br> Your action cannot be undone!</p>
-                  <div class="clearfix">
-                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Delete</button>
-                  </div>
-               </div>
-            </div>
-        </div>
-    </div>
+<%--    <div id="popAppr" class="overlay">--%>
+<%--        <span class="close2">&times;</span>--%>
+<%--        <div class="popup2">--%>
+<%--            <div class="cont">--%>
+<%--               <h2>Are you sure?</h2>--%>
+<%--               <div class="content">--%>
+<%--               <p>Are you sure you want to accept this application? <br> Your action cannot be undone!</p>--%>
+<%--                  <div class="clearfix">--%>
+<%--                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>--%>
+<%--                   <button type="button" onclick="document.getElementById('id01').style.display='none'" class="deletebtn">Delete</button>--%>
+<%--                  </div>--%>
+<%--               </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 </div>
 
+
+<c:forEach var="result" items="${oc.rows}">
 <script>
 
     //each tab of booking status
@@ -282,19 +296,20 @@
     }
 
     //popApproval
-    var appr = document.getElementById("popAppr");
-    var apprbtn = document.getElementById("btnAprv");
-    var apprclose = document.getElementsByClassName("close2")[0];
-
-    apprbtn.onclick = function() {
-        appr.style.display = "block";
-    }
-
-    apprclose.onclick = function() {
-        appr.style.display = "none";
-    }
+    // var appr = document.getElementById("popAppr");
+    // var apprbtn = document.getElementById("btnAprv");
+    // var apprclose = document.getElementsByClassName("close2")[0];
+    //
+    // apprbtn.onclick = function() {
+    //     appr.style.display = "block";
+    // }
+    //
+    // apprclose.onclick = function() {
+    //     appr.style.display = "none";
+    // }
 
 
 </script>
+</c:forEach>
 </body>
 </html>
