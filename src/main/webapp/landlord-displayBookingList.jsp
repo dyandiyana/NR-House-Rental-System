@@ -72,8 +72,8 @@
                 <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
-                <td colspan="2" style="background-color: black; color:#f44336;">Booking Agreement</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
+                <td colspan="2" style="background-color: black; color:#f44336;">Booking Agreement</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Action <i onclick="popnote1()"  class="fa fa-question-circle"></i>
                     <span class="popuptext" id="note">A Simple Popup!</span></td>
             </tr>
@@ -84,12 +84,11 @@
                 <td colspan="2">${result.bookingid}</td>
                 <td colspan="2">${result.bookingtime}</td>
                 <td colspan="2">${result.bookingdate}</td>
-                <form>
-                <td colspan="2"><input type="file" name="agreedoc" required></td>
                 <td colspan="2">
-                    <input type="hidden" name="tenantid" value="${result.tenantid}"></td>
                     <button id="btnVM1">View More</button>
                 </td>
+                <form>
+                <td colspan="2"><input type="file" name="agreedoc" required></td>
                 <td colspan="2">
                     <button id="btnAprv">Approved</button>
                 </td>
