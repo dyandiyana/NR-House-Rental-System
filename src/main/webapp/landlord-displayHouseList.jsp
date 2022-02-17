@@ -27,11 +27,9 @@
 %>
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="landlordid" value="<%=landlordid%>"/>
-    SELECT h.houseid,h.housename
-    from housedetails h
-    join houseimages h2
-        on h.houseid = h2.houseid
-    where h.landlordid=?
+    SELECT *
+    from housedetails
+    where landlordid=?
     <sql:param value="${landlordid}" />
 </sql:query>
 
