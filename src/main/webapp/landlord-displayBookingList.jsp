@@ -210,7 +210,7 @@
                 <br>
             </div>
 
-            <button class="close3">Close</button>
+            <button class="close">Close</button>
         </div>
         </c:forEach>
 </div>
