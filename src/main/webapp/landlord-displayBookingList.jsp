@@ -210,7 +210,7 @@
                 <br>
             </div>
 
-            <button class="close">Close</button>
+            <button class="close3">Close</button>
         </div>
         </c:forEach>
 </div>
@@ -256,7 +256,7 @@
     var btnVM2 = document.getElementById("btnVM2");
     var btnVM3 = document.getElementById("btnVM3");
     var btnVM4 = document.getElementById("btnVM4");
-    var a = document.getElementsByClassName("close")[0];
+    var a = document.getElementsByClassName("close3")[0];
 
     btnVM1.onclick = function() {
         modal.style.display = "block";
@@ -285,7 +285,7 @@
     //popApproval
     var appr = document.getElementById("popAppr");
     var apprbtn = document.getElementById("btnAprv");
-    var apprclose = document.getElementsByClassName("close")[0];
+    var apprclose = document.getElementsByClassName("close2")[0];
 
     apprbtn.onclick = function() {
         appr.style.display = "block";
@@ -294,7 +294,6 @@
     apprclose.onclick = function() {
         appr.style.display = "none";
     }
-
 
 
 </script>
