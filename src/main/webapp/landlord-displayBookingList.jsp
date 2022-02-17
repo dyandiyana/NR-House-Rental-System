@@ -31,7 +31,7 @@
 
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="hid" value="<%=houseid%>"/>
-    SELECT  H.HOUSENAME, B.BOOKINGID, B.BOOKINGSTATUS, B.BOOKINGTIME, B.BOOKINGDATE, B.BOOKINGDEPO, B.BOOKINGAGREEMENT, B.BOOKINGAPPROVALDATE, B.TENANTID, B.HOUSEID, h.housename
+    SELECT  H.HOUSENAME, B.BOOKINGID, B.BOOKINGSTATUS, B.BOOKINGTIME, B.BOOKINGDATE, B.BOOKINGDEPO, B.BOOKINGAGREEMENT, B.BOOKINGAPPROVALDATE, B.TENANTID, B.HOUSEID, h.housename, t.tenantid,t.tenantname,t.tenantage,t.tenantemail,t.tenantphoneno,t.tenantgender
     from TENANT t
     join BOOKINGDETAILS B
     on t.TENANTID = B.TENANTID
@@ -182,46 +182,46 @@
 
 </div>
 
-    <c:forEach var="result" items="${oc.rows}">
-        <c:set var="tid" value="${result.tenantid}"/>
-    </c:forEach>
-    <sql:query dataSource="${ic}" var="oc2">
-        SELECT t.tenantid,t.tenantname,t.tenantage,t.tenantemail,t.tenantphoneno,t.tenantgender,B.bookingdepo
-        from TENANT t
-        join BOOKINGDETAILS B
-        on t.TENANTID = B.TENANTID
-        join HOUSEDETAILS H
-        on B.HOUSEID = H.HOUSEID
-        WHERE H.houseid = ?
-        <sql:param value="${tid}" />
-    </sql:query>
+<%--    <c:forEach var="result" items="${oc.rows}">--%>
+<%--        <c:set var="tid" value="${result.tenantid}"/>--%>
+<%--    </c:forEach>--%>
+<%--    <sql:query dataSource="${ic}" var="oc2">--%>
+<%--        SELECT t.tenantid,t.tenantname,t.tenantage,t.tenantemail,t.tenantphoneno,t.tenantgender,B.bookingdepo--%>
+<%--        from TENANT t--%>
+<%--        join BOOKINGDETAILS B--%>
+<%--        on t.TENANTID = B.TENANTID--%>
+<%--        join HOUSEDETAILS H--%>
+<%--        on B.HOUSEID = H.HOUSEID--%>
+<%--        WHERE H.houseid = ?--%>
+<%--        <sql:param value="${tid}" />--%>
+<%--    </sql:query>--%>
 
     <div id="popDH" class="overlay">
         <div class="popup">
             <h2>Tenancy Details</h2>
             <br>
-            <c:forEach var="result2" items="${oc2.rows}">
+            <c:forEach var="result" items="${oc.rows}">
             <div class="content">
                 <label for="tID">Tenant ID</label>
-                <input type="text" id="tID" name="tID" value="${result2.tenantid}">
+                <input type="text" id="tID" name="tID" value="${result.tenantid}">
                 <br>
                 <label for="tName">Name</label>
-                <input type="text" id="tName" name="tName" value="${result2.tenantname}">
+                <input type="text" id="tName" name="tName" value="${result.tenantname}">
                 <br>
                 <label for="tAge">Age</label>
-                <input type="text" id="tAge" name="tAge" value="${result2.tenantage}">
+                <input type="text" id="tAge" name="tAge" value="${result.tenantage}">
                 <br>
                 <label for="temail">Email</label>
-                <input type="text" id="temail" name="temail" value="${result2.tenantemail}">
+                <input type="text" id="temail" name="temail" value="${result.tenantemail}">
                 <br>
                 <label for="tPhone">Phone Number</label>
-                <input type="text" id="tPhone" name="tPhone" value="${result2.tenantphoneno}">
+                <input type="text" id="tPhone" name="tPhone" value="${result.tenantphoneno}">
                 <br>
                 <label for="tgender">Gender</label>
-                <input type="text" id="tgender" name="tgender" value="${result2.tenantgender}">
+                <input type="text" id="tgender" name="tgender" value="${result.tenantgender}">
                 <br>
                 <label>Booking Deposit</label>
-                <p>${result2.bookingdepo}</p>
+                <p>${result.bookingdepo}</p>
                 <br>
             </div>
             </c:forEach>
