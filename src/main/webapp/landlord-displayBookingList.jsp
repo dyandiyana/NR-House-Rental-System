@@ -181,26 +181,11 @@
        </div>
 
 </div>
-
-<%--    <c:forEach var="result" items="${oc.rows}">--%>
-<%--        <c:set var="tid" value="${result.tenantid}"/>--%>
-<%--    </c:forEach>--%>
-<%--    <sql:query dataSource="${ic}" var="oc2">--%>
-<%--        SELECT t.tenantid,t.tenantname,t.tenantage,t.tenantemail,t.tenantphoneno,t.tenantgender,B.bookingdepo--%>
-<%--        from TENANT t--%>
-<%--        join BOOKINGDETAILS B--%>
-<%--        on t.TENANTID = B.TENANTID--%>
-<%--        join HOUSEDETAILS H--%>
-<%--        on B.HOUSEID = H.HOUSEID--%>
-<%--        WHERE H.houseid = ?--%>
-<%--        <sql:param value="${tid}" />--%>
-<%--    </sql:query>--%>
-
+    <c:forEach var="result" items="${oc.rows}">
     <div id="popDH" class="overlay">
         <div class="popup">
             <h2>Tenancy Details</h2>
             <br>
-            <c:forEach var="result" items="${oc.rows}">
             <div class="content">
                 <label for="tID">Tenant ID</label>
                 <input type="text" id="tID" name="tID" value="${result.tenantid}">
@@ -224,10 +209,10 @@
                 <p>${result.bookingdepo}</p>
                 <br>
             </div>
-            </c:forEach>
 
             <button class="close">Close</button>
         </div>
+        </c:forEach>
 </div>
 
 
