@@ -149,7 +149,9 @@
 
 
       <br>
-      <button formaction="admin-viewhousedetails.jsp" style="background: transparent; border: transparent;">View more</button>
+        <div class="MyLink">
+            <button formaction="admin-viewhousedetails.jsp" style="background: transparent; border: transparent;">View more</button>
+        </div>
 
 
     </form>
