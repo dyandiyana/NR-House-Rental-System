@@ -256,7 +256,7 @@
     var btnVM2 = document.getElementById("btnVM2");
     var btnVM3 = document.getElementById("btnVM3");
     var btnVM4 = document.getElementById("btnVM4");
-    var a = document.getElementsByClassName("close3")[0];
+    var a = document.getElementsByClassName("close")[4];
 
     btnVM1.onclick = function() {
         modal.style.display = "block";
