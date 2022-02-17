@@ -150,7 +150,7 @@
 
       <br>
         <div class="MyLink">
-            <button formaction="admin-viewhousedetails.jsp" style="background: transparent; border: transparent;">View more</button>
+            <button formaction="admin-viewhousedetails.jsp" >View more</button>
         </div>
 
 
