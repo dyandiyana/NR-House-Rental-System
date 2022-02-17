@@ -8,6 +8,8 @@
 
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
 <style><%@include file="landlord-displayBookingList.css"%></style>
@@ -16,9 +18,34 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
 <%@include file="landlord-navbar.html"%>
+
+<%
+    int landlordid = Integer.parseInt(session.getAttribute("landlordid").toString());
+    int houseid  = Integer.parseInt(request.getParameter("hid"));
+%>
+<sql:setDataSource var="ic"
+                   driver="org.postgresql.Driver"
+                   url="jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"
+                   user = "gpdkvocjaztxrw"
+                   password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
+
+<sql:query dataSource="${ic}" var="oc">
+    <c:set var="hid" value="<%=houseid%>"/>
+    SELECT  H.HOUSENAME, B.BOOKINGID, B.BOOKINGSTATUS, B.BOOKINGTIME, B.BOOKINGDATE, B.BOOKINGDEPO, B.BOOKINGAGREEMENT, B.BOOKINGAPPROVALDATE, B.TENANTID, B.HOUSEID, h.housename
+    from TENANT t
+    join BOOKINGDETAILS B
+    on t.TENANTID = B.TENANTID
+    join HOUSEDETAILS H
+    on B.HOUSEID = H.HOUSEID
+    WHERE H.houseid = ?
+    <sql:param value="${hid}" />
+</sql:query>
+
 <div class="titlebg">
    <fieldset>
-    <legend>RUMAH BANGLO TAMAN PERMAI INDAH</legend>
+    <c:forEach var="result" items="${oc.rows}">
+    <legend>${result.housename}</legend>
+    </c:forEach>
     <div class="htopic">
         <h1>TENANCY BOOKING APPLICATION</h1>
     </div>
@@ -45,16 +72,17 @@
                 <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
-                <td colspan="2" style="background-color: black; color:#f44336;">Booking Approval Date</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Action <i onclick="popnote1()"  class="fa fa-question-circle"></i>
                     <span class="popuptext" id="note">A Simple Popup!</span></td>
             </tr>
+            <c:forEach var="result" items="${oc.rows}">
+                <c:set var="status" value="${result.bookingstatus}"/>
+                <c:if test="${status=='Pending'}">
             <tr>
-                <td colspan="2">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
-                <td colspan="2">&nbsp;</td>
+                <td colspan="2">${result.bookingid}</td>
+                <td colspan="2">${result.bookingtime}</td>
+                <td colspan="2">${result.bookingdate}</td>
                 <td colspan="2">
                     <button id="btnVM1">View More</button>
                 </td>
@@ -62,6 +90,8 @@
                     <button id="btnAprv">Approved</button>
                 </td>
             </tr>
+                </c:if>
+            </c:forEach>
         </table>
        </div>
 

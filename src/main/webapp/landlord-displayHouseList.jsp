@@ -29,6 +29,7 @@
     int landlordid = (Integer) session.getAttribute("landlordid");
 %>
 <sql:query dataSource="${ic}" var="oc">
+    <c:set var="houseid" value="<%=houseid%>"/>
     select * from housedetails where landlordid=?
     <sql:param value="<%=landlordid%>" />
 </sql:query>
