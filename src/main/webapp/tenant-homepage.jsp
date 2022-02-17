@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
     body,h1,h2,h3,h4,h5,h6
     {
@@ -19,7 +20,6 @@
     .custom-select
     {
         position: relative;
-
     }
 
 
