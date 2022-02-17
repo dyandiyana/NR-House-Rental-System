@@ -83,12 +83,16 @@
                 <td colspan="2">${result.bookingid}</td>
                 <td colspan="2">${result.bookingtime}</td>
                 <td colspan="2">${result.bookingdate}</td>
+                <form>
+                <td colspan="2"><input type="file" name="agreedoc" required></td>
                 <td colspan="2">
+                    <input type="hidden" name="tenantid" value="${result.tenantid}"></td>
                     <button id="btnVM1">View More</button>
                 </td>
                 <td colspan="2">
                     <button id="btnAprv">Approved</button>
                 </td>
+                </form>
             </tr>
                 </c:if>
             </c:forEach>
@@ -108,6 +112,9 @@
                   <td colspan="2" style="background-color: black; color:#f44336;">Action <i onclick="popnote2()"  class="fa fa-question-circle"></i>
                       <span class="popuptext" id="note2">A Simple Popup!</span></td>
               </tr>
+              <c:forEach var="result" items="${oc.rows}">
+            <c:set var="status" value="${result.bookingstatus}"/>
+            <c:if test="${status=='Approved'}">
               <tr>
                   <td colspan="2">&nbsp;</td>
                   <td colspan="2">&nbsp;</td>
@@ -122,6 +129,8 @@
                       <button id="btnCancel"> Canceled </button>
                   </td>
               </tr>
+            </c:if>
+            </c:forEach>
           </table>
       </div>
 
@@ -173,36 +182,49 @@
 
 </div>
 
+    <c:forEach var="result" items="${oc.rows}">
+        <c:set var="tid" value="${result.tenantid}"/>
+    </c:forEach>
+    <sql:query dataSource="${ic}" var="oc2">
+        SELECT t.tenantid,t.tenantname,t.tenantage,t.tenantemail,t.tenantphoneno,t.tenantgender,B.bookingdepo
+        from TENANT t
+        join BOOKINGDETAILS B
+        on t.TENANTID = B.TENANTID
+        join HOUSEDETAILS H
+        on B.HOUSEID = H.HOUSEID
+        WHERE H.houseid = ?
+        <sql:param value="${tid}" />
+    </sql:query>
+
     <div id="popDH" class="overlay">
         <div class="popup">
             <h2>Tenancy Details</h2>
             <br>
+            <c:forEach var="result2" items="${oc2.rows}">
             <div class="content">
                 <label for="tID">Tenant ID</label>
-                <input type="text" id="tID" name="tID">
+                <input type="text" id="tID" name="tID" value="${result2.tenantid}">
                 <br>
                 <label for="tName">Name</label>
-                <input type="text" id="tName" name="tName">
+                <input type="text" id="tName" name="tName" value="${result2.tenantname}">
                 <br>
                 <label for="tAge">Age</label>
-                <input type="text" id="tAge" name="tAge">
+                <input type="text" id="tAge" name="tAge" value="${result2.tenantage}">
                 <br>
                 <label for="temail">Email</label>
-                <input type="text" id="temail" name="temail">
+                <input type="text" id="temail" name="temail" value="${result2.tenantemail}">
                 <br>
                 <label for="tPhone">Phone Number</label>
-                <input type="text" id="tPhone" name="tPhone">
+                <input type="text" id="tPhone" name="tPhone" value="${result2.tenantphoneno}">
                 <br>
                 <label for="tgender">Gender</label>
-                <input type="text" id="tgender" name="tgender">
+                <input type="text" id="tgender" name="tgender" value="${result2.tenantgender}">
                 <br>
                 <label>Booking Deposit</label>
-                <p>-</p>
-                <br>
-                <label>Booking Agreement</label>
-                <p>-</p>
+                <p>${result2.bookingdepo}</p>
                 <br>
             </div>
+            </c:forEach>
 
             <button class="close">Close</button>
         </div>
