@@ -72,6 +72,7 @@
                 <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
+                <td colspan="2" style="background-color: black; color:#f44336;">Booking Agreement</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
                 <td colspan="2" style="background-color: black; color:#f44336;">Action <i onclick="popnote1()"  class="fa fa-question-circle"></i>
                     <span class="popuptext" id="note">A Simple Popup!</span></td>
