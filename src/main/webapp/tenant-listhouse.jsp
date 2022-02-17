@@ -86,7 +86,7 @@
 
 
                 <div class="MyLink">
-                    <button style="margin-left: 3%;" type="submit" formaction="tenant-listhousedetails.jsp">View More</button>
+                    <button type="submit" formaction="tenant-listhousedetails.jsp">View More</button>
                 </div>
             </form>
         </div>

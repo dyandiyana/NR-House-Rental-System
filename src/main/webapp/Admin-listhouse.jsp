@@ -134,16 +134,16 @@
             </c:if>
 
             <c:set var="wifi" value="${result.housewifi}"/>
-            <c:if test ="${wifi == 'Yes'}">
+            <c:if test ="${wifi == 'Available'}">
               <i class="fa fa-wifi"></i>
             </c:if>
 
 
                 <c:set var="status" value="${result.houseavailability}"/>
-              <c:if test ="${status == 'Yes'}">
+              <c:if test ="${status == 'Available'}">
       <p class="status">Available</p>
       </c:if>
-      <c:if test ="${status == 'No'}">
+      <c:if test ="${status == 'Not Available'}">
         <p class="status" style="color: red; margin-bottom: 0%; padding-bottom: 0%;">Not Available</p>
       </c:if>
 
