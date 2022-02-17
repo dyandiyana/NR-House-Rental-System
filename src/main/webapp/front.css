@@ -3,6 +3,7 @@
 }
 body {
   background-image: url('pic2.jpg');
+  opacity:0.5;
   /*background:lightblue;*/
   height:auto;
   background-size: cover;
