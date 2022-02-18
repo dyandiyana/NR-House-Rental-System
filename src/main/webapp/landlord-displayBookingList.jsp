@@ -138,9 +138,6 @@
           <h2>Completed</h2>
           <br>
           <table>
-        <c:forEach var="result" items="${oc.rows}">
-            <c:set var="status" value="${result.bookingstatus}"/>
-            <c:if test="${status=='Completed'}">
               <tr>
                   <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
                   <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
@@ -148,6 +145,10 @@
                   <td colspan="2" style="background-color: black; color:#f44336;">Booking Approval Date</td>
                   <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
               </tr>
+
+                <c:forEach var="result" items="${oc.rows}">
+                    <c:set var="status" value="${result.bookingstatus}"/>
+                    <c:if test="${status=='Completed'}">
               <tr>
                   <td colspan="2">&nbsp;</td>
                   <td colspan="2">&nbsp;</td>
@@ -166,10 +167,6 @@
            <h2>Canceled</h2>
            <br>
            <table>
-
-               <c:forEach var="result" items="${oc.rows}">
-                 <c:set var="status" value="${result.bookingstatus}"/>
-                   <c:if test="${status=='Canceled'}">
                <tr>
                    <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
@@ -177,6 +174,10 @@
                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Approval Date</td>
                    <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
                </tr>
+
+               <c:forEach var="result" items="${oc.rows}">
+                   <c:set var="status" value="${result.bookingstatus}"/>
+                   <c:if test="${status=='Canceled'}">
                <tr>
                    <td colspan="2">&nbsp;</td>
                    <td colspan="2">&nbsp;</td>
