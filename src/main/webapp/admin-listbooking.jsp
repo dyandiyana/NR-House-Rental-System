@@ -80,7 +80,6 @@
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Agreement</td>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Action <i onclick="popnote1()"  class="fa fa-question-circle"></i>
                         <span class="popuptext" id="note">A Simple Popup!</span></td>
                 </tr>
                 <c:forEach var="result" items="${oc.rows}">
@@ -110,8 +109,7 @@
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Approval Date</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Action <i onclick="popnote2()"  class="fa fa-question-circle"></i>
-                        <span class="popuptext" id="note2">A Simple Popup!</span></td>
+
                 </tr>
                 <c:forEach var="result" items="${oc.rows}">
                     <c:set var="status" value="${result.bookingstatus}"/>
