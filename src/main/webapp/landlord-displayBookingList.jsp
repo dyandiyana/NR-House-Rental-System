@@ -21,7 +21,16 @@
 
 <%
     int landlordid = Integer.parseInt(session.getAttribute("landlordid").toString());
-    int houseid  = Integer.parseInt(request.getParameter("hid"));
+    int houseid= 0;
+
+    if(request.getParameter("hid")==null){
+        houseid = (Integer) session.getAttribute("hid");
+    }
+    else{
+        houseid  = Integer.parseInt(request.getParameter("hid"));
+        session.setAttribute("hid", houseid);
+    }
+
 %>
 <sql:setDataSource var="ic"
                    driver="org.postgresql.Driver"
