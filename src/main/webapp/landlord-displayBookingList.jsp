@@ -85,7 +85,7 @@
                 <td colspan="2">
                     <button id="btnVM1">View More</button>
                 </td>
-                <form action="BookingServlet">
+                <form action="BookingServlet" method="post">
                 <td colspan="2"><input type="file" name="agreedoc"></td>
                 <td colspan="2">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
