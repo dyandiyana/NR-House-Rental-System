@@ -46,6 +46,17 @@
     <sql:param value="${jhouseid}" />
 </sql:query>
 
+<sql:query dataSource="${ic}" var="ac">
+    <%
+        int tenantid = Integer.parseInt(session.getAttribute("tenantid").toString());
+    %>
+    <c:set var="tenantid" value="<%=tenantid%>"/>
+    SELECT count(tenantid)"total" FROM bookingdetails
+    WHERE tenantid = ?
+    and bookingstatus not in ('Completed','Rejected')
+    <sql:param value="${tenantid}" />
+</sql:query>
+
 <c:forEach var="result" items="${oc.rows}">
     <div class="showgrid">
         <div class="topic">${result.housename}</div>
@@ -59,7 +70,11 @@
                 <input type="hidden" name="action" value="create">
             </div>
             <div class="mybtn">
-                <button formaction="BookingServlet" onclick="return confirm('Confirm book this rental house?');" type="submit">Book Now</button>
+                <c:forEach var="result" items="${ac.rows}">
+                    <c:if test="${result.total} < 3 ">
+                        <button formaction="BookingServlet" onclick="return confirm('Confirm book this rental house?');" type="submit">Book Now</button>
+                    </c:if>
+                </c:forEach>
             </div>
         </form>
 
