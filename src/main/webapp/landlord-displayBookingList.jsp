@@ -20,7 +20,6 @@
 <%@include file="landlord-navbar.html"%>
 
 <%
-    int landlordid = Integer.parseInt(session.getAttribute("landlordid").toString());
     int houseid= 0;
 
     if(request.getParameter("hid")==null){
