@@ -65,7 +65,7 @@
             <input type="hidden" name="action" value="delete"/>
         </div>
         <div class="mybtn">
-            <button formaction="landlord-displayBookingList.jsp" type="submit">Booking</button>
+            <button formaction="admin-listbooking.jsp" type="submit">Booking</button>
         </div>
     </form>
 
