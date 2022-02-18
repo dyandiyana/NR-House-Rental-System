@@ -66,6 +66,7 @@
         </div>
         <div class="mybtn">
             <button formaction="admin-listbooking.jsp" type="submit">Booking</button>
+            <button formaction="admin-listPayment.jsp" type="submit">Payment</button>
         </div>
     </form>
 
