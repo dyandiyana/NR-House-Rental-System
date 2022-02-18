@@ -106,10 +106,10 @@ public class BookingDao {
         return rowDeleted;
     }
 
-    public void approvedbooking(int bookingid,Part f) throws SQLException {
+    public boolean approvedbooking(int bookingid,Part f) throws SQLException {
         String status="Approved";
 
-
+        boolean rowupdated = false;
         String imageFileName = f.getSubmittedFileName();
         File file = new File("src/main/webapp/images/" + imageFileName);
 
@@ -128,11 +128,15 @@ public class BookingDao {
             statement.setBinaryStream(2, fis, file.length());
             statement.setString(3, file.getName());
             statement.setInt(4, bookingid);
+
+            rowupdated = statement.executeUpdate()>0;
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return rowupdated;
     }
 
     private void printSQLException(SQLException ex) {

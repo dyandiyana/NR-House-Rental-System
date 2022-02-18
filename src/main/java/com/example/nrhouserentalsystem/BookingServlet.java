@@ -112,6 +112,8 @@ public class BookingServlet extends HttpServlet {
         response.sendRedirect("tenant-listBooking.jsp");
     }
 
+    /*######################################################( APPROVED BOOKING )#############################################################*/
+
     private void approvedbook(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 

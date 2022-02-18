@@ -90,7 +90,7 @@
                 <td colspan="2">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
                     <input type="hidden" name="action" value="approvedbooking">
-                    <button id="btnAprv" onclick="return confirm('Are you sure you wish to approved this application? Your action cannot be undone!');">Approved</button>
+                    <button id="btnAprv" type="submit" onclick="return confirm('Are you sure you wish to approved this application? Your action cannot be undone!');">Approved</button>
                 </td>
                 </form>
             </tr>
