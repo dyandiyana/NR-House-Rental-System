@@ -20,16 +20,7 @@
 <%@include file="landlord-navbar.html"%>
 
 <%
-    int houseid= 0;
-
-    if(request.getParameter("hid")==null){
-        houseid = (Integer) session.getAttribute("hid");
-    }
-    else{
-        houseid  = Integer.parseInt(request.getParameter("hid"));
-        session.setAttribute("hid", houseid);
-    }
-
+    int houseid= Integer.parseInt(session.getAttribute("houseid").toString());
 %>
 <sql:setDataSource var="ic"
                    driver="org.postgresql.Driver"
