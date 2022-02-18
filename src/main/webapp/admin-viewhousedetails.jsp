@@ -32,7 +32,15 @@
 
 <sql:query dataSource="${ic}" var="oc">
     <%
-        int jhouseid = Integer.parseInt(request.getParameter("houseid"));
+        int jhouseid = 0;
+
+        if(request.getParameter("houseid")==null){
+            jhouseid = (Integer) session.getAttribute("houseid");
+        }
+        else{
+            jhouseid = Integer.parseInt(request.getParameter("houseid"));
+            session.setAttribute("houseid", jhouseid);
+        }
     %>
     <c:set var="jhouseid" value="<%=jhouseid%>"/>
     SELECT *
@@ -59,13 +67,9 @@
 
 
     <form action="" method="post" id="theForm">
-        <div>
-            <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
-            <input type="number" id="landid" name="landid" value="${result.landlordid}" hidden/>
-            <input type="hidden" name="action" value="delete"/>
-        </div>
         <div class="mybtn">
             <button formaction="admin-listbooking.jsp" type="submit">Booking</button>
+            <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
             <button formaction="admin-listPayment.jsp" type="submit">Payment</button>
         </div>
     </form>
