@@ -69,7 +69,7 @@
     <form action="" method="post" id="theForm">
         <div class="mybtn">
             <button formaction="admin-listbooking.jsp" type="submit">Booking</button>
-            <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
+            <input type="number" name="houseid" value="${result.houseid}" hidden/>
             <button formaction="admin-listPayment.jsp" type="submit">Payment</button>
         </div>
     </form>

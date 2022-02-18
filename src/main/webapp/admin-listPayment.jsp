@@ -21,7 +21,7 @@
 <%@include file="tenant-navbar.html"%>
 
 <%
-    int houseid = Integer.parseInt(session.getAttribute("hid").toString());
+    int houseid = Integer.parseInt(request.getParameter("houseid"));
 
 %>
 <sql:setDataSource var="ic"
