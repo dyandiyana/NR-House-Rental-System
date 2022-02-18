@@ -71,10 +71,9 @@
             <td>${result.bookingdate}</td>
 
             <form method="post" action="BookingServlet" enctype="multipart/form-data">
-                <input type="hidden" name="bookingid" value="${result.bookingid}">
             <td>
                 <c:set var="status" value="${result.bookingstatus}"/>
-                <c:if test="${status=='pending'}">
+                <c:if test="${status=='Pending'}">
 
                     <input type="file" name="bookingdepo">
                     <a href="${result.bookingDepo}" onclick="window.open('${result.bookingdepo}', '_blank', 'fullscreen=yes'); return false;">${result.bookingdepo}</a>
@@ -82,25 +81,27 @@
 
                 </c:if>
             </td>
-                <td>
-                    <c:set var="status" value="${result.bookingstatus}"/>
-                    <c:if test="${status=='pending'}">
-                        <input type="file" name="bookingagreement">
-                        <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a>
 
-                    </c:if>
-                </td>
+            <td>
+                <c:set var="status" value="${result.bookingstatus}"/>
+                <c:if test="${status=='Pending'}">
+                   <input type="file" name="bookingagreement">
+                   <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a>
+
+                </c:if>
+            </td>
+
 
             <td>${result.bookingapprovaldate}</td>
             <td>${result.bookingstatus}</td>
 
             <td>
 
-                <form method="post" action="BookingServlet">
+
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
                     <input type="hidden" name="action" value="update">
                     <button type="submit" class="button button1" name="submit" >Update</button><br><br>
-                </form>
+
                 <form method="post">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
                     <input type="hidden" name="action" value="delete">
