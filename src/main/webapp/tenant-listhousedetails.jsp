@@ -53,7 +53,7 @@
     <c:set var="tenantid" value="<%=tenantid%>"/>
     SELECT count(tenantid)"total" FROM bookingdetails
     WHERE tenantid = ?
-    and bookingstatus not in ('Completed','Rejected')
+    and bookingstatus in ('Pending','Approved','In Process')
     <sql:param value="${tenantid}" />
 </sql:query>
 
