@@ -58,6 +58,18 @@
     </form>--%>
 
 
+    <form action="" method="post" id="theForm">
+        <div>
+            <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
+            <input type="number" id="landid" name="landid" value="${result.landlordid}" hidden/>
+            <input type="hidden" name="action" value="delete"/>
+        </div>
+        <div class="mybtn">
+            <button formaction="landlord-displayBookingList.jsp" type="submit">Booking</button>
+        </div>
+    </form>
+
+
 <div class="tintedbg2">
     <div class="k">
          <div class="colk">

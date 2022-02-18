@@ -162,10 +162,11 @@
           </table>
       </div>
 
+       <div id="Canceled" class="w3-container mystatus" style="display:none">
            <h2>Canceled</h2>
            <br>
            <table>
-               <div id="Canceled" class="w3-container mystatus" style="display:none">
+
                <c:forEach var="result" items="${oc.rows}">
                  <c:set var="status" value="${result.bookingstatus}"/>
                    <c:if test="${status=='Canceled'}">
@@ -189,8 +190,10 @@
                </c:forEach>
            </table>
        </div>
-
+   </div>
 </div>
+
+
     <c:forEach var="result" items="${oc.rows}">
     <div id="popDH" class="overlay">
         <div class="popup">
@@ -221,8 +224,9 @@
             </div>
             <button class="close">Close</button>
         </div>
-        </c:forEach>
-</div>
+    </div>
+    </c:forEach>
+
 
 
 <%--    <div id="popAppr" class="overlay">--%>
