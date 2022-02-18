@@ -21,7 +21,7 @@
 <%@include file="tenant-navbar.html"%>
 
 <%
-    int tenantid = Integer.parseInt(session.getAttribute("tenantid").toString());
+    int houseid = Integer.parseInt(session.getAttribute("hid").toString());
 
 %>
 <sql:setDataSource var="ic"
@@ -31,7 +31,7 @@
                    password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
 
 <sql:query dataSource="${ic}" var="oc">
-    <c:set var="clsid" value="<%=tenantid%>"/>
+    <c:set var="clsid" value="<%=houseid%>"/>
     SELECT  row_number() over () "rank", B.bookingid,b.landlordid, b.rentalstatus, h.housename, l.landlordname
     from TENANT T
     JOIN BOOKINGDETAILS B
@@ -40,6 +40,7 @@
     on B.landlordid = l.landlordid
     join housedetails h
     on l.landlordid = h.landlordid
+    WHERE h.houseid =?
     and b.rentalstatus in ('On Going','Completed')
     <sql:param value="${clsid}" />
 </sql:query>
