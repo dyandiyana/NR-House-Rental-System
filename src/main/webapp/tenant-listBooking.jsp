@@ -101,6 +101,7 @@
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
                     <input type="hidden" name="action" value="update">
                     <button type="submit" class="button button1" name="submit" >Update</button><br><br>
+            </form>
 
                 <form method="post">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
@@ -109,7 +110,7 @@
                 </form>
 
             </td>
-            </form>
+
         </tr>
         </c:forEach>
     </table>
