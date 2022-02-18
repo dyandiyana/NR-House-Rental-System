@@ -106,10 +106,10 @@
                     <c:set var="status" value="${result.bookingstatus}"/>
                     <c:if test="${status=='Approved'}">
                         <tr>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
+                            <td colspan="2">${result.bookingid}</td>
+                            <td colspan="2">${result.bookingtime}</td>
+                            <td colspan="2">${result.bookingdate}</td>
+                            <td colspan="2">${result.bookingapprovaldate}</td>
                             <td colspan="2">
                                 <button id="btnVM2">View More</button>
                             </td>
@@ -135,10 +135,10 @@
                     <c:set var="status" value="${result.bookingstatus}"/>
                     <c:if test="${status=='Completed'}">
                         <tr>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
+                            <td colspan="2">${result.bookingid}</td>
+                            <td colspan="2">${result.bookingtime}</td>
+                            <td colspan="2">${result.bookingdate}</td>
+                            <td colspan="2">${result.bookingapprovaldate}</td>
                             <td colspan="2">
                                 <button id="btnVM3">View More</button>
                             </td>
@@ -164,10 +164,10 @@
                     <c:set var="status" value="${result.bookingstatus}"/>
                     <c:if test="${status=='Canceled'}">
                         <tr>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
-                            <td colspan="2">&nbsp;</td>
+                            <td colspan="2">${result.bookingid}</td>
+                            <td colspan="2">${result.bookingtime}</td>
+                            <td colspan="2">${result.bookingdate}</td>
+                            <td colspan="2">${result.bookingapprovaldate}</td>
                             <td colspan="2">
                                 <button id="btnVM4">View More</button>
                             </td>
