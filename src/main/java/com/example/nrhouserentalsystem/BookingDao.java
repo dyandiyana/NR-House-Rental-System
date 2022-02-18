@@ -114,7 +114,7 @@ public class BookingDao {
         File file = new File("src/main/webapp/images/" + imageFileName);
 
         try (Connection connection = getConnection();
-            PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGAPPROVALDATE=localtimestamp,AGREEDOC=?,BOOKINGAGREEMENT=? WHERE BOOKINGID=?");) {
+            PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGAPPROVALDATE=current_date,AGREEDOC=?,BOOKINGAGREEMENT=? WHERE BOOKINGID=?");) {
             FileOutputStream fos = new FileOutputStream(file);
             InputStream is = f.getInputStream();
 
