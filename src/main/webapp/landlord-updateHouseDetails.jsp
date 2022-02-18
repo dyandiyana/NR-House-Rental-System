@@ -24,10 +24,8 @@
 %>
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="hsid" value="<%=hsid%>"/>
-    SELECT * from housedetails h
-    JOIN houseimages hi
-        on h.houseid = hi.houseid
-    where hi.houseid;
+    SELECT * from housedetails
+    where houseid=?
     <sql:param value="${hsid}" />
 </sql:query>
 <div class="topic">
