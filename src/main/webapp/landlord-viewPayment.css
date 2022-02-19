@@ -1,0 +1,307 @@
+*{
+    box-sizing: border-box;
+}
+.navbar {
+    overflow: hidden;
+    background-color: white;
+    font-family: Verdana,sans-serif;
+}
+
+.navbar a {
+    float: right;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    padding: 16px 16px;
+    text-decoration: none;
+}
+.navbar p {
+    float: left;
+    color: black;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 17px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 16px 16px;
+    background-color: inherit;
+    font-family: Verdana,sans-serif;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: pink;
+}
+
+.navbar a.active {
+    background-color: #666;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.container {
+    max-width:auto;
+    position: relative;
+    background: #F9F9F9;
+    padding: 25px;
+    margin:100px 100px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius:5px;
+    font-family: Verdana,sans-serif;
+}
+.container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.container h3{
+    text-align:center;
+}
+
+.button,.btns {
+    background-color:  black;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 10px 2px;
+    cursor: pointer;
+    font-family: Verdana,sans-serif;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+.button1:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #0e5d64;
+    color: white;
+}
+
+.button2:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #0e5d64;
+    color: white;
+}
+
+.btns:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #0e5d64;
+    color: white;
+}
+
+
+a{
+    text-decoration:none;
+    color:white;
+}
+input[type=text], select, textarea {
+    width: 300px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+input[type=password], select, textarea {
+    width: 300px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+.col-25 {
+    float: left;
+    width: 15%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width:40%;
+    margin-top: 6px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+table, td, th {
+    border: 1px solid #999;
+
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+    padding: 8px;
+    font-size: 13px;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+}
+.hello{
+    width:1%;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: lightblue;
+    color: white;
+}
+
+.modal-body {
+    display:inline-block;
+    padding: 40px 60px;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    color: white;
+    margin:auto 20px;
+}
+
+.modal-footer button{
+    background-color: black;
+    color:white;
+    text-align:center;
+    padding:10px 40px;
+    cursor:pointer;
+}
+
+.modal-body select,
+.modal-body option,
+.modal-body input {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-body input {
+    max-width:90px;
+    margin: auto;
+}
+
+#space{
+    width:50px;
+}
+
+#month,#space,#rent{
+    display:inline-block;
+    font-size: 17px;
+}
+
+.btns{
+    float: right;
+    margin: 20px 15px;
+    cursor: pointer;
+}

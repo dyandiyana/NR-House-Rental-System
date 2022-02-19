@@ -1,14 +1,14 @@
 package com.example.nrhouserentalsystem;
 
-import java.util.Date;
+import java.sql.Date;
 
-public class MonthlyPayment {
+public class MonthlyPayment implements java.io.Serializable {
     public int payId;
     public Date payDueDate;
     public Date payDate;
     public String payReceipt;
     public String payStatus;
-    public Float payPrice;
+    public Double payPrice;
     public  String month;
 
     public MonthlyPayment(){
@@ -55,11 +55,11 @@ public class MonthlyPayment {
         this.payStatus = payStatus;
     }
 
-    public Float getPayPrice() {
+    public Double getPayPrice() {
         return payPrice;
     }
 
-    public void setPayPrice(Float payPrice) {
+    public void setPayPrice(Double payPrice) {
         this.payPrice = payPrice;
     }
 

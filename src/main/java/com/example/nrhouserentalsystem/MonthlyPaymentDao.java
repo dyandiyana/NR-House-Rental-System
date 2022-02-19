@@ -4,24 +4,18 @@ import javax.servlet.http.Part;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import static java.lang.System.out;
-
 public class MonthlyPaymentDao {
-    String dbURL = "jdbc:oracle:thin:@localhost:1521:XE"; //ni url dri heroku database
-    String user = "RENTALSYSTEM";
-    String pass = "system";
+    String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"; //ni url dri heroku database
+    String user = "gpdkvocjaztxrw";
+    String pass = "dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5";
 
     protected Connection getConnection() {
         Connection connection = null;
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Class.forName("org.postgresql.Driver");
             connection= DriverManager.getConnection(dbURL, user, pass);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -63,4 +57,63 @@ public class MonthlyPaymentDao {
             statement.executeUpdate();
         }
     }
+
+    public void createPay(MonthlyPayment monthlyPayment, int bookingid) throws SQLException, FileNotFoundException {
+
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("INSERT INTO MONTHLYPAYMENT (PAYPRICE,MONTH,PAYDUEDATE,BOOKINGID) VALUES (?,?,?,?)");) {
+
+            statement.setDouble(1, monthlyPayment.getPayPrice());
+            statement.setString(2,monthlyPayment.getMonth());
+            statement.setDate(3, monthlyPayment.getPayDueDate());
+            statement.setInt(4,bookingid);
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+        e.printStackTrace();
+        }
+    }
+
+    public void rentComplete(int bookingid) throws SQLException, FileNotFoundException {
+
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET RENTALSTATUS='Completed' WHERE bookingid=?");) {
+            statement.setInt(1,bookingid);
+
+            statement.executeUpdate();
+        }  catch (Exception e) {
+        e.printStackTrace();
+        }
+    }
+
+    public void verifyPay(int payId) throws SQLException, FileNotFoundException {
+
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE MONTHLYPAYMENT SET PAYSTATUS='Paid' WHERE payid=?");) {
+            statement.setInt(1,payId);
+
+            statement.executeUpdate();
+        }  catch (Exception e) {
+        e.printStackTrace();
+        }
+    }
+
+    public void rejectPay(int payId) throws SQLException, FileNotFoundException {
+
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE MONTHLYPAYMENT SET PAYSTATUS='Unpaid' WHERE payid=?");) {
+            statement.setInt(1,payId);
+
+            statement.executeUpdate();
+        }  catch (Exception e) {
+         e.printStackTrace();
+        }
+    }
+
+
 }
