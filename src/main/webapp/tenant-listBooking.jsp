@@ -73,7 +73,7 @@
             <form method="post" action="BookingServlet" enctype="multipart/form-data">
             <td>
                 <c:set var="status" value="${result.bookingstatus}"/>
-                <c:if test="${status=='Approved'}">
+                <c:if test="${status=='Pending'}">
 
                     <input type="file" name="bookingdepo">
                     <a href="${result.bookingDepo}" onclick="window.open('${result.bookingdepo}', '_blank', 'fullscreen=yes'); return false;">${result.bookingdepo}</a>
@@ -84,10 +84,10 @@
 
             <td>
                 <c:set var="status" value="${result.bookingstatus}"/>
-                <c:if test="${status=='Approved'}">
+                <c:if test="${status=='Pending'}">
                    <input type="file" name="bookingagreement">
-                   <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a>
-
+                   <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>
+                    <embed src="src/main/webapp/fileDoc == ${result.bookingagreement}" type="application/pdf" width="100%" height="600px" />
                 </c:if>
             </td>
 

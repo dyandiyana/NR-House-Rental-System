@@ -22,7 +22,7 @@
 <%@include file="tenant-navbar.html"%>
 <%
     int bookingid = Integer.parseInt(request.getParameter("bookingid"));
-    int tenantid = Integer.parseInt(request.getParameter("tenantid"));
+    int landlordid = Integer.parseInt(request.getParameter("landlordid"));
 %>
 <sql:setDataSource var="ic"
                    driver="org.postgresql.Driver"
@@ -31,7 +31,7 @@
                    password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
 
 <sql:query dataSource="${ic}" var="oc">
-    SELECT  row_number() over () "rank" ,P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE, p.month
+    SELECT  row_number() over () "rank" ,P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE, p.month, l.landlordid,l.landlordname, l.landlordphoneno, h.housename, h.houseaddress
     from landlord l
     JOIN housedetails h
     on l.landlordid = h.landlordid
@@ -39,19 +39,19 @@
     on h.houseid = b.houseid
     join monthlypayment p
     on b.bookingid = p.bookingid
-    WHERE b.bookingid = ?
+    WHERE l.landlordid =?
+    and b.bookingid = ?
+    <sql:param value="<%=landlordid%>"/>
     <sql:param value="<%=bookingid%>"/>
 </sql:query>
 
 
 <sql:query dataSource="${ic}" var="ac">
-    select t.tenantname, b.bookingid, h.housename, h.houseaddress, l.landlordname, l.landlordphoneno
-    from tenant t
-    join bookingdetails b
-    on t.tenantid= b.tenantid
-    join landlord l
-    on b.landlordid = l.landlordid
+    select h.housename, h.houseaddress, l.landlordname, l.landlordphoneno
+    from bookingdetails b
     join housedetails h
+    on h.houseid = b.houseid
+    join landlord l
     on l.landlordid = h.landlordid
     where b.bookingid = ?
     <sql:param value="<%=bookingid%>"/>
@@ -64,10 +64,19 @@
 
     <div class="row">
         <div class="col-25">
-            <label>TENANT NAME</label>
+            <label>HOUSE NAME</label>
         </div>
         <div class="col-75">
-            <label>${result.tenantname}</label>
+            <label>${result.housename}</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-25">
+            <label>HOUSE ADDRESS</label>
+        </div>
+        <div class="col-75">
+            <label>${result.houseaddress}</label>
         </div>
     </div>
 
@@ -88,27 +97,6 @@
             <label>${result.landlordphoneno}</label>
         </div>
     </div>
-
-
-    <div class="row">
-        <div class="col-25">
-            <label>HOUSE NAME</label>
-        </div>
-        <div class="col-75">
-            <label>${result.housename}</label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-25">
-            <label>HOUSE ADDRESS</label>
-        </div>
-        <div class="col-75">
-            <label>${result.houseaddress}</label>
-        </div>
-    </div>
-
-
     </c:forEach>
 
 

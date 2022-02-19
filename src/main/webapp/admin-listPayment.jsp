@@ -32,7 +32,7 @@
 
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="clsid" value="<%=houseid%>"/>
-    SELECT  row_number() over () "rank", B.bookingid,b.landlordid, b.rentalstatus, h.housename, l.landlordname
+    SELECT  row_number() over () "rank", B.bookingid,b.landlordid, b.rentalstatus, t.tenantname, t.tenantid
     from TENANT T
     JOIN BOOKINGDETAILS B
     on T.TENANTID = B.TENANTID
@@ -47,17 +47,17 @@
 
 <div class="container">
     <table id = "myTable" style="text-align: center">
-        <h3>Your Rental House</h3>
+        <h3>List of tenant</h3>
         <tr>
             <th class="hello">NO.</th>
-            <th>HOUSE NAME</th>
+            <th>Tenant name</th>
             <th>RENTAL STATUS</th>
             <th>ACTION</th>
         </tr>
         <c:forEach var="result" items="${oc.rows}">
             <tr>
                 <td class="hello">${result.rank}</td>
-                <td>${result.housename}</td>
+                <td>${result.tenantname}</td>
 
                 <c:set var="status" value="${result.rentalstatus}"/>
                 <c:if test="${status=='On Going'}">
@@ -68,7 +68,7 @@
                 </c:if>
                 <form method="post">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
-                    <input type="hidden" name="landlordid" value="${result.landlordid}">
+                    <input type="hidden" name="tenantid" value="${result.tenantid}">
                     <td><button type="submit" class="button button1" name="submit" formaction="admin-viewPayment.jsp" >View More</button></td>
                 </form>
             </tr>
