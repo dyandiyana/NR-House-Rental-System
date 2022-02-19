@@ -163,68 +163,86 @@
 
 
         <br>
-        <div class="toinline">
-            <div class="thedetails">
-                <label class="tenantnum" for="NumOfTenant">Total of Tenant</label>
-                <div class="quantity">
-                    <button class="btn minus-btnNOT disabled" type="button">-</button>
-                    <input style="text-align: center" type="text" name="NumOfTenant" id="NumOfTenant" value="${result.housenotenants}">
-                    <button class="btn plus-btnNOT" type="button">+</button>
-                </div>
-            </div>
-        </div>
+        <table style="width:100%">
+            <tr>
+                <td>
+                    <label class="tenantnum" for="NumOfTenant">Total of Tenant</label>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn minus-btnNOT disabled" type="button">-</button>
+                        <input style="text-align: center" type="text" name="NumOfTenant" id="NumOfTenant" value="${result.housenotenants}">
+                        <button class="btn plus-btnNOT" type="button" >+</button>
+                    </div>
+                </td>
+            </tr>
 
 
-        <div class="toinline">
-            <div class="thedetails">
-                <div class="quantity">
-                    <img src="https://img.icons8.com/ios-glyphs/40/000000/sleeping-in-bed.png"/>
-                    <button class="btn minus-btnhotel disabled" type="button">-</button>
-                    <input style="text-align: center" type="text" name="NumOfRooms" id="NumOfRooms"  value="${result.housenoroom}">
-                    <button class="btn plus-btnhotel" type="button">+</button>
-                </div>
-            </div>
+            <tr>
+                <td>
+                    <label for="NumOfRooms">Number Of Room</label>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn minus-btnhotel disabled" type="button">-</button>
+                        <input style="text-align: center" type="text" name="NumOfRooms" id="NumOfRooms"  value="${result.housenoroom}">
+                        <button class="btn plus-btnhotel" type="button">+</button>
+                    </div>
+                </td>
+            </tr>
 
-            <div class="thedetails">
-                <div class="quantity">
-                    <img src="https://img.icons8.com/ios-glyphs/40/000000/shower-and-tub.png"/>
-                    <button class="btn minus-btnbath disabled" type="button">-</button>
-                    <input style="text-align: center" type="text" name="NumOfToilet" id="NumOfToilet" value="${result.housenotoilet}">
-                    <button class="btn plus-btnbath" type="button">+</button>
-                </div>
-            </div>
-        </div>
+            <tr>
+                <td>
+                    <label for="NumOfToilet">Number Of Toilet</label>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn minus-btnbath disabled" type="button">-</button>
+                        <input style="text-align: center" type="text" name="NumOfToilet" id="NumOfToilet" value="${result.housenotoilet}">
+                        <button class="btn plus-btnbath" type="button">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="NumOfSofa">Number Of Furniture</label>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn minus-btnsfa disabled" type="button">-</button>
+                        <input style="text-align: center" type="text" name="NumOfSofa" id="NumOfSofa" value="${result.housefurniture}">
+                        <button class="btn plus-btnsfa" type="button">+</button>
+                    </div>
+                </td>
+            </tr>
 
-        <div class="toinline">
-            <div class="thedetails">
-                <div class="quantity">
-                    <img src="https://img.icons8.com/ios-filled/40/000000/furniture.png"/>
-                    <button class="btn minus-btnsfa disabled" type="button">-</button>
-                    <input style="text-align: center" type="text" name="NumOfSofa" id="NumOfSofa" value="${result.housefurniture}"/>
-                    <button class="btn plus-btnsfa" type="button">+</button>
-                </div>
-            </div>
-
-            <div class="thedetails">
-                <div class="quantity">
-                    <td style="text-align: center"><img src="https://img.icons8.com/ios-glyphs/40/000000/washing-machine.png"/>
+            <tr>
+                <td>
+                    <label for="NumOfWM">Number Of Washing Machine</label>
+                </td>
+                <td>
+                    <div class="quantity">
                         <button class="btn minus-btnwm disabled" type="button">-</button>
-                        <input style="text-align: center" type="text" name="NumOfWM" id="NumOfWM"  value="${result.housewm}"/>
+                        <input style="text-align: center" type="text" name="NumOfWM" id="NumOfWM" value="${result.housewm}">
                         <button class="btn plus-btnwm" type="button">+</button>
-                </div>
-            </div>
-        </div>
+                    </div>
+                </td>
+            </tr>
 
-        <div class="toinline">
-            <div class="thedetails">
-                <div class="quantity">
-                    <img src="https://img.icons8.com/fluency-systems-filled/40/000000/air-conditioner.png"/>
-                    <button class="btn minus-btnac disabled" type="button">-</button>
-                    <input  style="text-align: center" type="text" name="NumOfAC" id="NumOfAC" value="${result.housenoac}"/>
-                    <button class="btn plus-btnac" type="button">+</button>
-                </div>
-            </div>
-        </div>
+            <tr>
+                <td>
+                    <label for="NumOfAC">Number Of Air Conditioner</label>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn minus-btnac disabled" type="button">-</button>
+                        <input  style="text-align: center" type="text" name="NumOfAC" id="NumOfAC" value="${result.housenoac}">
+                        <button class="btn plus-btnac" type="button">+</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
 
         <br>
         <div class="form-group col-md">
