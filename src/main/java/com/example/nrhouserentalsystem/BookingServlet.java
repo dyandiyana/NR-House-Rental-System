@@ -55,6 +55,12 @@ public class BookingServlet extends HttpServlet {
                 case "approvedbooking":
                     approvedbook(request, response);
                     break;
+                case "verifybooking":
+                    verifybook(request, response);
+                    break;
+                case "rejectbooking":
+                    rejectbook(request, response);
+                    break;
 
             }
         } catch (SQLException ex) {
@@ -111,16 +117,58 @@ public class BookingServlet extends HttpServlet {
         bd.deletebooking(bookingid);
         response.sendRedirect("tenant-listBooking.jsp");
     }
-
-    /*######################################################( APPROVED BOOKING )#############################################################*/
+    /*######################################################( LANDLORD APPROVE BOOKING )#############################################################*/
 
     private void approvedbook(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
 
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
         Part f = request.getPart("agreedoc");
+        System.out.println(f);
+
         int bookingid = Integer.parseInt(request.getParameter("bookingid"));
-        bd.approvedbooking(bookingid,f);
-        response.sendRedirect("landlord-displayBookingList.jsp");
+        int houseid = Integer.parseInt(request.getParameter("houseid"));
+        bd.approvedbooking(bookingid, f, houseid);
+
+
+        out.println("<script type=\"text/javascript\">");
+        out.println("alert('You succesfully approved this booking form!');");
+        out.println("location='landlord-displayBookingList.jsp';");
+        out.println("</script>");
+    }
+
+    /*######################################################( LANDLORD VERIFY DEPOSIT AND AGREEMENT )#############################################################*/
+
+    private void verifybook(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+        bd.verifybook(bookingid);
+
+        out.println("<script type=\"text/javascript\">");
+        out.println("alert('You succesfully verify this agreement and deposit!');");
+        out.println("location='landlord-displayBookingList.jsp';");
+        out.println("</script>");
+    }
+
+    /*######################################################( LANDLORD REJECT DEPOSIT AND AGREEMENT  )#############################################################*/
+
+    private void rejectbook(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+        bd.rejectbook(bookingid);
+
+        out.println("<script type=\"text/javascript\">");
+        out.println("alert('You succesfully reject this agreement and deposit!');");
+        out.println("location='landlord-displayBookingList.jsp';");
+        out.println("</script>");
     }
 }
 
