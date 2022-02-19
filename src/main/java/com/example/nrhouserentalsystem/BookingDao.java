@@ -106,38 +106,69 @@ public class BookingDao {
         return rowDeleted;
     }
 
-    public boolean approvedbooking(int bookingid,Part f) throws SQLException {
+    public void approvedbooking(int bookingid,Part f,int houseid) throws SQLException, FileNotFoundException {
         String status="Approved";
-
-        boolean rowupdated = false;
         String imageFileName = f.getSubmittedFileName();
-        File file = new File("src/main/webapp/images/" + imageFileName);
+        File file = new File("C:/Users/Public/LAB EXERCISE/testingapp/src/main/webapp/images/" + imageFileName);
+        System.out.println(file);
 
-        try (Connection connection = getConnection();
-            PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGAPPROVALDATE=current_date,AGREEDOC=?,BOOKINGAGREEMENT=? WHERE BOOKINGID=?");) {
-            FileOutputStream fos = new FileOutputStream(file);
+        FileOutputStream fos = new FileOutputStream(file);
+        try {
             InputStream is = f.getInputStream();
-
             byte[] data = new byte[is.available()];
             is.read(data);
             fos.write(data);
             fos.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(bookingid);
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?, AGREEDOC=?,BOOKINGAGREEMENT=?, BOOKINGAPPROVALDATE=localtimestamp WHERE BOOKINGID=?");) {
             FileInputStream fis = new FileInputStream(file);
 
             statement.setString(1, status);
             statement.setBinaryStream(2, fis, file.length());
             statement.setString(3, file.getName());
             statement.setInt(4, bookingid);
+            int row = statement.executeUpdate();
 
-            rowupdated = statement.executeUpdate()>0;
+            if (row == 1){
+                PreparedStatement statement2 = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS='Canceled' WHERE BOOKINGSTATUS='Pending' AND houseid=?");
+                statement2.setInt(1, houseid);
+                statement2.executeUpdate();
+                System.out.println("All booking that pending already canceled after one approved");
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+                PreparedStatement statement3 = connection.prepareStatement("UPDATE HOUSEDETAILS SET houseavailability='Not Available' WHERE houseid=?");
+                statement3.setInt(1, houseid);
+                statement3.executeUpdate();
+                System.out.println("House already unavailable");
+            }
         }
-        return rowupdated;
+
     }
+
+    public void verifybook(int bookingid) throws SQLException, FileNotFoundException {
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS='Completed',RENTALSTATUS='On Going' WHERE BOOKINGID=?");) {
+            statement.setInt(1, bookingid);
+            statement.executeUpdate();
+            System.out.println("booking verify success!");
+        }
+    }
+
+    public void rejectbook(int bookingid) throws SQLException, FileNotFoundException {
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS='Approved' WHERE BOOKINGID=?");) {
+            statement.setInt(1, bookingid);
+            statement.executeUpdate();
+        }
+    }
+
 
     private void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
