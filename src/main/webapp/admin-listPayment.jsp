@@ -32,7 +32,7 @@
 
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="clsid" value="<%=houseid%>"/>
-    SELECT  row_number() over () "rank", B.bookingid,b.landlordid, b.rentalstatus, t.tenantname
+    SELECT  row_number() over () "rank", B.bookingid,b.landlordid, b.rentalstatus, t.tenantname, t.tenantid
     from TENANT T
     JOIN BOOKINGDETAILS B
     on T.TENANTID = B.TENANTID
@@ -68,7 +68,7 @@
                 </c:if>
                 <form method="post">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
-                    <input type="hidden" name="landlordid" value="${result.landlordid}">
+                    <input type="hidden" name="tenantid" value="${result.tenantid}">
                     <td><button type="submit" class="button button1" name="submit" formaction="admin-viewPayment.jsp" >View More</button></td>
                 </form>
             </tr>
