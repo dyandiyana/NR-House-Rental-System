@@ -42,15 +42,14 @@
     <sql:param value="<%=location%>"/>
 </sql:query>
 
-<div style="margin-top: 10px" class="overflow-auto">
+<div class="container">
 
     <c:forEach var="result" items="${oc.rows}">
-        <c:set var="houseid" scope="application" value="${result.houseid}"/>
+        <div class="Hcont" style="height: auto">
 
+            <c:set var="houseid" scope="application" value="${result.houseid}"/>
 
-                <div class="Hcont">
-
-            <form action="TenantViewMoreHouseServlet" method="post">
+            <form  method="post">
 
                 <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
 
@@ -92,10 +91,9 @@
                 </c:if>
 
 
-                <div class="myLink">
-                    <button style="margin-left: 3%;" type="submit">View More</button>
+                <div class="MyLink">
+                    <button type="submit" formaction="tenant-listhousedetails.jsp">View More</button>
                 </div>
-
             </form>
         </div>
     </c:forEach>
@@ -117,7 +115,6 @@
         location.href = "HouseDetails.jsp";
     }
 </script>
-
 </body>
 </html>
 
