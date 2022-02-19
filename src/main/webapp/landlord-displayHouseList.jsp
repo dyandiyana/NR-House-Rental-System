@@ -17,9 +17,19 @@
 <body>
 <div class="mymenu"><%@include file="landlord-navbar.html"%></div>
 <div class="TT">
-     <p>YOUR HOUSE LIST</p>
+    <p>YOUR HOUSE LIST</p>
 </div>
 <br>
+
+<div class="C" id="Chouse">
+    <button onclick="z()">
+	 <span class="button__icon">
+	 <ion-icon name="add"></ion-icon>
+	 </span>
+        <br>
+        <span class="button__text">Create</span>
+    </button>
+</div>
 
 <sql:setDataSource var="ic" driver="org.postgresql.Driver"
                    url="jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"
@@ -37,33 +47,23 @@
 <div class="overflow-auto">
     <c:forEach var="result" items="${oc.rows}">
         <c:set var="houseid" scope="application" value="${result.houseid}"/>
-    <div class="Hcont">
-        <form action="landlord-displayMoreInfo.jsp" method="post">
-            <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
-        <div class="housepic">
-            <img src="images/${result.houseimagepic}"/>
-        </div>  <%--Nnti letak data sql using scrplet --%>
-        <div class="houseName">
-            <p><c:out value="${result.housename}"/></p>  <%--Nnti letak data sql using scrplet --%>
+        <div class="Hcont">
+            <form action="landlord-displayMoreInfo.jsp" method="post">
+                <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
+                <div class="housepic">
+                    <img src="images/${result.houseimagepic}"/>
+                </div>  <%--Nnti letak data sql using scrplet --%>
+                <div class="houseName">
+                    <p><c:out value="${result.housename}"/></p>  <%--Nnti letak data sql using scrplet --%>
+                </div>
+                <div class="myLink">
+                    <button type="submit">View More</button>
+                </div>
+            </form>
         </div>
-        <div class="myLink">
-            <button type="submit">View More</button>
-        </div>
-        </form>
-    </div>
     </c:forEach>
-    </div>
+</div>
 
-
-    <div class="C" id="Chouse">
-        <button onclick="z()">
-	 <span class="button__icon">
-	 <ion-icon name="add"></ion-icon>
-	 </span>
-            <br>
-            <span class="button__text">Create</span>
-        </button>
-    </div>
 
 </div>
 <br>

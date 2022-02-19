@@ -15,7 +15,7 @@
 </head>
 <body>
 <%
-   Date today = new Date();
+    Date today = new Date();
 
     SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
     String ddMMyyyyToday = DATE_FORMAT.format(today);
@@ -30,8 +30,8 @@
 
 <div class="tintedbg">
     <form name="HouseInfoForm" method="post" action="HouseDetailsServlet" enctype = "multipart/form-data">
-    <br/>
-    <br/>
+        <br/>
+        <br/>
         <div class="input-box">
             <div class="col">
                 <label class="datepub" for="hName">Date Publish</label>
@@ -43,13 +43,13 @@
 
         <div class="toinline">
             <div class="input-box">
-                    <label for="hName">House Name</label>
-                    <input type="text" id="hName" class="form-control" maxlength="25" name="hName" placeholder="eg: Bunglow 2 Tingkat" required>
+                <label for="hName">House Name</label>
+                <input type="text" id="hName" class="form-control" maxlength="25" name="hName" placeholder="eg: Bunglow 2 Tingkat" required>
             </div>
 
             <div class="input-box">
-                    <label for="hAddress">Address</label>
-                    <input type="text" id="hAddress" class="form-control" name="hAddress" placeholder="House Address" required>
+                <label for="hAddress">Address</label>
+                <input type="text" id="hAddress" class="form-control" name="hAddress" placeholder="House Address" required>
             </div>
         </div>
 
@@ -65,10 +65,10 @@
                 </select>
             </div>
 
-                <div class="input-box">
-                    <label for="Pricepm">Price per month (RM)</label>
-                    <input type="number" id="Pricepm" class="form-control"  name="Pricepm" placeholder="eg: 300" required>
-                </div>
+            <div class="input-box">
+                <label for="Pricepm">Price per month (RM)</label>
+                <input type="number" id="Pricepm" class="form-control"  name="Pricepm" placeholder="eg: 300" required>
+            </div>
         </div>
 
         <div class="toinline">
@@ -86,7 +86,7 @@
                 </div>
             </div>
 
-          <div class="thedetails">
+            <div class="thedetails">
                 <div class="wifi-detail">
                     <span class="thetopic">Wifi?</span>
                     <div class="category">
@@ -101,83 +101,98 @@
             </div>
         </div>
 
-
-        <br>
-        <div class="toinline">
-            <div class="thedetails">
-                <label class="tenantnum" for="NumOfTenant">Total of Tenant</label>
-                <div class="quantity">
-                    <button class="btn minus-btnNOT disabled" type="button">-</button>
-                    <input style="text-align: center" type="text" name="NumOfTenant" id="NumOfTenant" value="1">
-                    <button class="btn plus-btnNOT" type="button" >+</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="toinline">
-            <div class="thedetails">
-                <div class="quantity">
-                    <img src="https://img.icons8.com/ios-glyphs/40/000000/sleeping-in-bed.png"/>
-                    <button class="btn minus-btnhotel disabled" type="button">-</button>
-                    <input style="text-align: center" type="text" name="NumOfRooms" id="NumOfRooms"  value="1">
-                    <button class="btn plus-btnhotel" type="button">+</button>
-                </div>
-            </div>
-
-            <div class="thedetails">
+        <table style="width:100%">
+            <tr>
+                <td>
+                    <label class="tenantnum" for="NumOfTenant">Total of Tenant</label>
+                </td>
+                <td>
                     <div class="quantity">
-                      <img src="https://img.icons8.com/ios-glyphs/40/000000/shower-and-tub.png"/>
-                      <button class="btn minus-btnbath disabled" type="button">-</button>
-                      <input style="text-align: center" type="text" name="NumOfToilet" id="NumOfToilet" value="1">
-                      <button class="btn plus-btnbath" type="button">+</button>
+                        <button class="btn minus-btnNOT disabled" type="button">-</button>
+                        <input style="text-align: center" type="text" name="NumOfTenant" id="NumOfTenant" value="1">
+                        <button class="btn plus-btnNOT" type="button" >+</button>
                     </div>
-            </div>
-        </div>
+                </td>
+            </tr>
 
-        <div class="toinline">
-            <div class="thedetails">
-                <div class="quantity">
-                    <img src="https://img.icons8.com/ios-filled/40/000000/furniture.png"/>
-                    <button class="btn minus-btnsfa disabled" type="button">-</button>
-                    <input style="text-align: center" type="text" name="NumOfSofa" id="NumOfSofa" value="1">
-                    <button class="btn plus-btnsfa" type="button">+</button>
-                </div>
-            </div>
 
-            <div class="thedetails">
-                <div class="quantity">
-                    <td style="text-align: center"><img src="https://img.icons8.com/ios-glyphs/40/000000/washing-machine.png"/>
-                    <button class="btn minus-btnwm disabled" type="button">-</button>
-                    <input style="text-align: center" type="text" name="NumOfWM" id="NumOfWM" value="1">
-                    <button class="btn plus-btnwm" type="button">+</button>
-                </div>
-            </div>
-        </div>
+            <tr>
+                <td>
+                    <label for="NumOfRooms">Number Of Room</label>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn minus-btnhotel disabled" type="button">-</button>
+                        <input style="text-align: center" type="text" name="NumOfRooms" id="NumOfRooms"  value="1">
+                        <button class="btn plus-btnhotel" type="button">+</button>
+                    </div>
+                </td>
+            </tr>
 
-        <div class="toinline">
-            <div class="thedetails">
-                        <div class="quantity">
-                            <img src="https://img.icons8.com/fluency-systems-filled/40/000000/air-conditioner.png"/>
-                            <button class="btn minus-btnac disabled" type="button">-</button>
-                            <input  style="text-align: center" type="text" name="NumOfAC" id="NumOfAC" value="1">
-                            <button class="btn plus-btnac" type="button">+</button>
-                        </div>
-            </div>
-        </div>
+            <tr>
+                <td>
+                    <label for="NumOfToilet">Number Of Toilet</label>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn minus-btnbath disabled" type="button">-</button>
+                        <input style="text-align: center" type="text" name="NumOfToilet" id="NumOfToilet" value="1">
+                        <button class="btn plus-btnbath" type="button">+</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="NumOfSofa">Number Of Furniture</label>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn minus-btnsfa disabled" type="button">-</button>
+                        <input style="text-align: center" type="text" name="NumOfSofa" id="NumOfSofa" value="1">
+                        <button class="btn plus-btnsfa" type="button">+</button>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="NumOfWM">Number Of Washing Machine</label>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn minus-btnwm disabled" type="button">-</button>
+                        <input style="text-align: center" type="text" name="NumOfWM" id="NumOfWM" value="1">
+                        <button class="btn plus-btnwm" type="button">+</button>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="NumOfAC">Number Of Air Conditioner</label>
+                </td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn minus-btnac disabled" type="button">-</button>
+                        <input  style="text-align: center" type="text" name="NumOfAC" id="NumOfAC" value="1">
+                        <button class="btn plus-btnac" type="button">+</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
 
         <br>
-            <div class="form-group col-md">
-                <label for="Desc">House description:</label>
-                <br>
-                <textarea id="Desc" maxlength="255" name="Desc" rows="4" cols="50"></textarea>
-            </div>
+        <div class="form-group col-md">
+            <label for="Desc" style="font-weight: bold">House description:</label>
+            <br>
+            <textarea id="Desc" maxlength="255" name="Desc" rows="4" cols="50"></textarea>
+        </div>
 
 
         <br>
 
         <div class="file-upload-wrapper col-md">
-            <label for="hPic">House Image :</label>
+            <label for="hPic" style="font-weight: bold">House Image :</label>
             <input type="file" accept="image/*" id="hPic" name="hPic" class="file-upload"
                    data-height="300" required="required"/>
         </div>
@@ -185,13 +200,13 @@
 
         <br>
 
-    <br/>
+        <br/>
         <div class="sbt">
             <input type="hidden" name="landlordid" value="<%=landlordid%>">
             <input type="hidden" name="action" value="create">
             <button type="submit" class="block">Submit</button>
         </div>
-    <br/>
+        <br/>
     </form>
 </div>
 
@@ -455,33 +470,6 @@
 
 
 </script>
-
-<%--<%--%>
-<%--    String mytext = request.getParameter("PubDate");--%>
-
-<%--    if(mytext == null){--%>
-
-<%--    }--%>
-<%--    else{--%>
-<%--        session.setAttribute("sdid",request.getParameter("hid"));--%>
-<%--        session.setAttribute("sdid",request.getParameter("hName"));--%>
-<%--        session.setAttribute("sdid",request.getParameter("PubDate"));--%>
-<%--        session.setAttribute("sdName",request.getParameter("hAddress"));--%>
-<%--        session.setAttribute("sdEmail",request.getParameter("Pricepm"));--%>
-<%--        session.setAttribute("sdPnum",request.getParameter("hAvailability"));--%>
-<%--        session.setAttribute("sdid",request.getParameter("hWifi"));--%>
-<%--        session.setAttribute("sdName",request.getParameter("NumOfTenant"));--%>
-<%--        session.setAttribute("sdEmail",request.getParameter("NumOfRooms"));--%>
-<%--        session.setAttribute("sdPnum",request.getParameter("NumOfToilet"));--%>
-<%--        session.setAttribute("sdid",request.getParameter("NumOfAC"));--%>
-<%--        session.setAttribute("sdName",request.getParameter("NumOfSofa"));--%>
-<%--        session.setAttribute("sdEmail",request.getParameter("NumOfWM"));--%>
-<%--        session.setAttribute("sdPnum",request.getParameter("Desc"));--%>
-<%--        session.setAttribute("sdid",request.getParameter("hPic"));--%>
-<%--        session.setAttribute("sdName",request.getParameter("hAgree"));--%>
-
-<%--        out.println("session created");--%>
-<%--    }--%>
-<%--%>--%>
 </body>
 </html>
+

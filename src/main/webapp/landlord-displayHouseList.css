@@ -91,13 +91,14 @@ body {
 }
 
 
+.C{
+    margin: -20px auto;
+    text-align: center;
+}
+
 .C button{
-    position: absolute;
-    right: 10.5%;
-    bottom: -20%;
-    font-size: 15px;
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     color: #000000;
     border:none;
     border-radius: 49px;
