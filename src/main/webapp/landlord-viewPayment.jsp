@@ -19,10 +19,20 @@
 
 <body>
 
-<%@include file="tenant-navbar.html"%>
+<%@include file="landlord-navbar.html"%>
+<style>
+<%@include file="landlord-viewPayment.css"%>
+</style>
 <%
-    int bookingid = Integer.parseInt(request.getParameter("bookingid"));
-    int landlordid = Integer.parseInt(request.getParameter("landlordid"));
+    int bookingid = 0;
+    if(request.getParameter("bookingid")==null){
+        bookingid=  Integer.parseInt(session.getAttribute("bookingid").toString());
+    }else{
+        bookingid = Integer.parseInt(request.getParameter("bookingid"));
+        session.setAttribute("bookingid",bookingid);
+    }
+    System.out.println(bookingid);
+//    int tenantid = Integer.parseInt(request.getParameter("tenantid"));
 %>
 <sql:setDataSource var="ic"
                    driver="org.postgresql.Driver"
@@ -31,7 +41,7 @@
                    password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
 
 <sql:query dataSource="${ic}" var="oc">
-    SELECT  row_number() over () "rank" ,P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE, p.month, l.landlordid,l.landlordname, l.landlordphoneno, h.housename, h.houseaddress
+    SELECT  row_number() over () "rank" ,P.PAYID, P.PAYDUEDATE, P.PAYDATE, P.PAYRECEIPT, P.PAYSTATUS, P.BOOKINGID, P.PAYPRICE, p.month
     from landlord l
     JOIN housedetails h
     on l.landlordid = h.landlordid
@@ -39,19 +49,19 @@
     on h.houseid = b.houseid
     join monthlypayment p
     on b.bookingid = p.bookingid
-    WHERE l.landlordid =?
-    and b.bookingid = ?
-    <sql:param value="<%=landlordid%>"/>
+    WHERE b.bookingid = ?
     <sql:param value="<%=bookingid%>"/>
 </sql:query>
 
 
 <sql:query dataSource="${ic}" var="ac">
-    select h.housename, h.houseaddress, l.landlordname, l.landlordphoneno
-    from bookingdetails b
-    join housedetails h
-    on h.houseid = b.houseid
+    select t.tenantname, b.bookingid, h.housename, h.houseaddress, l.landlordname, l.landlordphoneno
+    from tenant t
+    join bookingdetails b
+    on t.tenantid= b.tenantid
     join landlord l
+    on b.landlordid = l.landlordid
+    join housedetails h
     on l.landlordid = h.landlordid
     where b.bookingid = ?
     <sql:param value="<%=bookingid%>"/>
@@ -64,19 +74,10 @@
 
     <div class="row">
         <div class="col-25">
-            <label>HOUSE NAME</label>
+            <label>TENANT NAME</label>
         </div>
         <div class="col-75">
-            <label>${result.housename}</label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-25">
-            <label>HOUSE ADDRESS</label>
-        </div>
-        <div class="col-75">
-            <label>${result.houseaddress}</label>
+            <label>${result.tenantname}</label>
         </div>
     </div>
 
@@ -97,7 +98,74 @@
             <label>${result.landlordphoneno}</label>
         </div>
     </div>
+
+
+    <div class="row">
+        <div class="col-25">
+            <label>HOUSE NAME</label>
+        </div>
+        <div class="col-75">
+            <label>${result.housename}</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-25">
+            <label>HOUSE ADDRESS</label>
+        </div>
+        <div class="col-75">
+            <label>${result.houseaddress}</label>
+        </div>
+    </div>
+
+    <form action="MonthlyPaymentServlet" method="post">
+        <input type="hidden" name="action" value="rentComplete"/>
+        <input type="hidden" name="bookingid" value="<%=bookingid%>"/>
+    <button class="btns">Complete</button>
+    </form>
+    <button class="btns"  id="myBtn">Create</button>
     </c:forEach>
+    <!-- The Modal -->
+<%--    <form id="myModal" class="modal">--%>
+
+<%--        <!-- Modal content -->--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--                <span class="close">&times;</span>--%>
+<%--                <h2>Create Payment</h2>--%>
+<%--            </div>--%>
+            <form action="MonthlyPaymentServlet" method="post">
+                <div class="modal-body">
+                    <label for="month">Month:</label>
+                    <select name="month" id="month">
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                    <div id=space></div>
+                    <label for="rent">Rent:</label>
+                    <input type="number" id="rent" name="rent"/>
+                    <div id=space2></div>
+                    <label for="pay">Due Date:</label>
+                    <input type="date" id="pay" name="duepay"/>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="bookingid" value="<%=bookingid%>"/>
+                    <input type="hidden" name="action" value="createPay"/>
+                    <button class="btn2" type="submit">Submit</button>
+                </div>
+            </form>
+<%--        </div>--%>
+<%--    </form>--%>
 
 
     <br><br>
@@ -105,6 +173,7 @@
         <tr>
             <th class="hello">NO.</th>
             <th>MONTH</th>
+            <th>DUE DATE</th>
             <th>PRICE</th>
             <th>STATUS</th>
             <th>RECEIPT</th>
@@ -114,39 +183,84 @@
             <tr>
                 <td class="hello">${result.rank}</td>
                 <td>${result.month}</td>
+                <td>${result.payduedate}</td>
                 <td>${result.payprice}.00</td>
 
                 <c:if test="${result.paystatus=='Unpaid'}">
                     <td style="color: red">${result.paystatus}</td>
+                </c:if>
+                <c:if test="${result.paystatus=='Pending'}">
+                    <td style="color: yellow">${result.paystatus}</td>
                 </c:if>
                 <c:if test="${result.paystatus=='Paid'}">
                     <td style="color: forestgreen">${result.paystatus}</td>
                 </c:if>
 
 
-                <form method="post" action="MonthlyPaymentServlet" enctype="multipart/form-data">
-                    <td>
+                <td>
                         <c:set var="status" value="${result.paystatus}"/>
-                        <c:if test="${status=='Unpaid'}">
+                        <c:if test="${status=='Pending'}">
                             <input type="file" name="payreceipt"><a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
                         </c:if>
-                    </td>
-                    <td>
-                        <c:if test="${result.paystatus=='Unpaid'}">
-                            <input type="hidden" name="payId" value="${result.payId}">
-                            <input type="hidden" name="action" value="update">
-                            <button type="submit"  class="button button1" name="submit" >Pay</button>
+                        <c:if test="${status=='Paid'}">
+                            <input type="file" name="payreceipt"><a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
                         </c:if>
-                    </td>
-                </form>
+                </td>
+                <td>
+                        <c:if test="${result.paystatus=='Unpaid'}">
+                            <p>Waiting for Payment</p>
+                        </c:if>
+                        <c:if test="${result.paystatus=='Pending'}">
+                            <form action="MonthlyPaymentServlet" method="post">
+                            <input type="hidden" name="payId" value="${result.payId}">
+                            <input type="hidden" name="action" value="verifyPay">
+                            <button type="submit"  class="button button1" >Verify</button>
+                            </form>
+                            <form action="MonthlyPaymentServlet" method="post">
+                                <input type="hidden" name="payId" value="${result.payId}">
+                                <input type="hidden" name="action" value="rejectPay">
+                            <button type="submit"  class="button button1">Rejected</button>
+                            </form>
+                        </c:if>
+                        <c:if test="${result.paystatus=='Paid'}">
+                            <p>None</p>
+                        </c:if>
+                </td>
             </tr>
         </c:forEach>
 
     </table>
-
-    <button type="submit" class="button button1" name="submit" style="float: left" ><a href="tenant-listPayment.jsp">Back</a></button>
+</div>
+    <button type="submit" class="button button1" name="submit" style="float: left" ><a href="landlord-listPayment.jsp">Back</a></button>
 
 
 </div>
 </body>
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </html>
