@@ -109,7 +109,7 @@ public class BookingDao {
     public void approvedbooking(int bookingid,Part f,int houseid) throws SQLException, FileNotFoundException {
         String status="Approved";
         String imageFileName = f.getSubmittedFileName();
-        File file = new File("src/main/webapp/images/" + imageFileName);
+        File file = new File("src/main/webapp/pic/" + imageFileName);
         System.out.println(file);
 
         FileOutputStream fos = new FileOutputStream(file);
