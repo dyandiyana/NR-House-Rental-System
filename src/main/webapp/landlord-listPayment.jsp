@@ -22,11 +22,11 @@
 <%@include file="landlord-navbar.html"%>
 <%
     int houseid = 0;
-    if(request.getParameter("houseid")==null){
-        houseid=  Integer.parseInt(session.getAttribute("houseid").toString());
+    if(request.getParameter("hid")==null){
+        houseid=  Integer.parseInt(session.getAttribute("hid").toString());
     }else{
-        houseid = Integer.parseInt(request.getParameter("houseid"));
-        session.setAttribute("houseid",houseid);
+        houseid = Integer.parseInt(request.getParameter("hid"));
+        session.setAttribute("hid",houseid);
     }
     System.out.println(houseid);
 //    int tenantid = Integer.parseInt(request.getParameter("tenantid"));
