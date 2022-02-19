@@ -52,11 +52,11 @@ public class BookingDao {
 
 
         String imageFileName = f.getSubmittedFileName();
-        File file = new File("NR-House-Rental-System/src/main/webapp/" + imageFileName);
+        File file = new File("gh repo clone dyandiyana/NR-House-Rental-System/src/main/webapp/" + imageFileName);
         System.out.println("my file need upload" + file);
 
         String imageFileName2 = fi.getSubmittedFileName();
-        File file2 = new File("NR-House-Rental-System/src/main/webapp/" + imageFileName2);
+        File file2 = new File("gh repo clone dyandiyana/NR-House-Rental-System/src/main/webapp/" + imageFileName2);
         //C:/Users/TOSHIBA/IdeaProjects/ICT502-NRRENTAL/src/main/webapp/dyana/
         try {
             FileOutputStream fos = new FileOutputStream(file);
