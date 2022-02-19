@@ -32,7 +32,7 @@
 
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="clsid" value="<%=houseid%>"/>
-    SELECT  row_number() over () "rank", B.bookingid,b.landlordid, b.rentalstatus, t.tenantname,
+    SELECT  row_number() over () "rank", B.bookingid,b.landlordid, b.rentalstatus, t.tenantname
     from TENANT T
     JOIN BOOKINGDETAILS B
     on T.TENANTID = B.TENANTID
