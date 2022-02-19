@@ -32,7 +32,8 @@ public class TenantDao {
 
         // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("insert into TENANT(TENANTUSERNAME,TENANTPASSWORD,TENANTNAME,TENANTEMAIL,TENANTAGE,TENANTPHONENO,TENANTGENDER) values(?,?,?,?,?,?,?)");)
+             PreparedStatement preparedStatement = connection.prepareStatement
+             ("insert into TENANT(TENANTUSERNAME,TENANTPASSWORD,TENANTNAME,TENANTEMAIL,TENANTAGE,TENANTPHONENO,TENANTGENDER) values(?,?,?,?,?,?,?)");)
         {
 
             preparedStatement.setString(1, tenant.getTenantUsername());
