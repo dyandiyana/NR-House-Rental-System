@@ -87,7 +87,7 @@
                 <c:if test="${status=='Pending'}">
                    <input type="file" name="bookingagreement">
                    <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>
-                    <a href="${result.bookingagreemen}"> click here to download the file ${result.bookingagreemen}</a>
+                    <a href="${result.bookingagreement}"> click here to download the file ${result.bookingagreement}</a>
 
                 </c:if>
             </td>
