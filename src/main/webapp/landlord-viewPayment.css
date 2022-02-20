@@ -247,7 +247,7 @@ td {
     background-color: black;
     color:white;
     text-align:center;
-    padding:10px 40px;
+    padding:15px 20px;
     cursor:pointer;
 }
 
@@ -262,6 +262,10 @@ td {
 .modal-body input {
     max-width:200px;
     margin: auto;
+    padding: 10px;
+}
+
+.modal-body select{
     padding: 10px;
 }
 
