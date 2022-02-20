@@ -117,6 +117,7 @@
             <label>${result.houseaddress}</label>
         </div>
     </div>
+    </c:forEach>
 
     <form action="MonthlyPaymentServlet" method="post">
         <input type="hidden" name="action" value="rentComplete"/>
@@ -230,7 +231,7 @@
 
     </table>
 </div>
-</c:forEach>
+
     <button type="submit" class="button button1" name="submit" style="float: left" ><a href="landlord-listPayment.jsp">Back</a></button>
 
 
