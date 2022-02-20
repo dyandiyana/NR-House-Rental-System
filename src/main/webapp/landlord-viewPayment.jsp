@@ -55,14 +55,12 @@
 
 
 <sql:query dataSource="${ic}" var="ac">
-    select t.tenantname, b.bookingid, h.housename, h.houseaddress, l.landlordname, l.landlordphoneno
+    select t.tenantname, b.bookingid, h.housename, h.houseaddress
     from tenant t
     join bookingdetails b
     on t.tenantid= b.tenantid
-    join landlord l
-    on b.landlordid = l.landlordid
     join housedetails h
-    on l.landlordid = h.landlordid
+    on b.houseid = h.houseid
     where b.bookingid = ?
     <sql:param value="<%=bookingid%>"/>
 </sql:query>
@@ -82,7 +80,7 @@
         </div>
     </div>
 
-    <div class="row">
+<%--    <div class="row">
         <div class="col-25">
             <label>LANDLORD NAME</label>
         </div>
@@ -98,7 +96,7 @@
         <div class="col-75">
             <label>${result.landlordphoneno}</label>
         </div>
-    </div>
+    </div>--%>
 
 
     <div class="row">
