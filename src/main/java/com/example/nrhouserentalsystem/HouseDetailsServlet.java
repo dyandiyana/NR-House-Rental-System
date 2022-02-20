@@ -116,6 +116,7 @@ public class HouseDetailsServlet extends HttpServlet {
 
 
         Integer landlordid = Integer.parseInt(request.getParameter("landlordid"));
+        Integer hid = Integer.parseInt(request.getParameter("hid"));
 
         Part f=request.getPart("hPic");
         String FileName=f.getSubmittedFileName();
@@ -138,6 +139,7 @@ public class HouseDetailsServlet extends HttpServlet {
 
             HouseDetails house = new HouseDetails();
 
+            house.sethID(hid);
             house.sethName(hName);
             house.sethMP(hMP);
             house.sethAddress(hAddress);
@@ -152,6 +154,8 @@ public class HouseDetailsServlet extends HttpServlet {
             house.setDesc(desc);
             house.setHlocation(hloc);
             house.setLandlordID(landlordid);
+            house.setHousepic(f);
+            house.setHousepicname(FileName);
 
             hd.updatehouse(house,f);
             response.sendRedirect("landlord-displayHouseList.jsp");
