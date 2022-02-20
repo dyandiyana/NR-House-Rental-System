@@ -55,7 +55,7 @@
 
 
 <sql:query dataSource="${ic}" var="ac">
-    select t.tenantname, b.bookingid, h.housename, h.houseaddress
+    select t.tenantname, b.bookingid, h.housename, h.houseaddress, h.houseid
     from tenant t
     join bookingdetails b
     on t.tenantid= b.tenantid
@@ -121,7 +121,7 @@
         <input type="hidden" name="action" value="rentComplete"/>
         <input type="hidden" name="bookingid" value="<%=bookingid%>"/>
         <input type="hidden" name="hid" value="${result.houseid}"/>
-    <button class="btns">Complete</button>
+    <button  class="btns">Complete</button>
     </form>
     <button class="btns"  id="myBtn">Create</button>
     </c:forEach>
