@@ -64,12 +64,15 @@ public class HouseDetailsServlet extends HttpServlet {
 
         String appPath = getServletContext().getRealPath("");
         Part f = request.getPart("hPic");
-        String host = request.getScheme()+ "://" + request.getHeader("nrhouserental-isp551.herokuapp.com")+"/";
+        String host = request.getScheme()+ "://" + request.getAttribute("nrhouserental-isp551.herokuapp.com")+"/";
         String imageFileName = f.getSubmittedFileName();
         String urlPathforDB=host + "pic/" + imageFileName;
         String savePath = appPath + "pic" + File.separator + imageFileName;
         new File(appPath + "pic").mkdir();
         f.write(savePath);
+
+        https://nrhouserental-isp551.herokuapp.com/
+        http://null/pic/ANNOTATED BIBLIOGRAPHY TEST ELC550 (WAN NUR ATHIRAH_2021114019).pdf
 
         try {
 
