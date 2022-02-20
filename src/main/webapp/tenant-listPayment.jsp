@@ -36,10 +36,8 @@
 from TENANT T
 JOIN BOOKINGDETAILS B
     on T.TENANTID = B.TENANTID
-    join landlord l
-    on B.landlordid = l.landlordid
     join housedetails h
-    on l.landlordid = h.landlordid
+    on b.houseid = h.houseid
     WHERE T.TENANTID =?
     and b.rentalstatus in ('On Going','Completed')
     <sql:param value="${clsid}" />
