@@ -77,15 +77,14 @@
 
                     <input type="file" name="bookingdepo">
                     <a href="${result.bookingDepo}" onclick="window.open('${result.bookingdepo}', '_blank', 'fullscreen=yes'); return false;">${result.bookingdepo}</a>
-
-
                 </c:if>
+
                 <c:if test="${status=='In Process'}">
-
-                    <input type="file" name="bookingdepo">
                     <a href="${result.bookingDepo}" onclick="window.open('${result.bookingdepo}', '_blank', 'fullscreen=yes'); return false;">${result.bookingdepo}</a>
+                </c:if>
 
-
+                <c:if test="${status=='Completed'}">
+                    <a href="${result.bookingDepo}" onclick="window.open('${result.bookingdepo}', '_blank', 'fullscreen=yes'); return false;">${result.bookingdepo}</a>
                 </c:if>
             </td>
 
@@ -94,7 +93,16 @@
                 <c:if test="${status=='Approved'}">
                    <input type="file" name="bookingagreement">
                    <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>
-                    <embed src="src/main/webapp/fileDoc == ${result.bookingagreement}" type="application/pdf" width="100%" height="600px" />
+                </c:if>
+
+                <c:if test="${status=='In Process'}">
+                    <input type="file" name="bookingagreement">
+                    <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>
+                </c:if>
+
+                <c:if test="${status=='Completed'}">
+                    <input type="file" name="bookingagreement">
+                    <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>
                 </c:if>
             </td>
 
