@@ -75,7 +75,7 @@
                 <c:set var="status" value="${result.bookingstatus}"/>
                 <c:if test="${status=='Approved'}">
 
-                    <input type="file" name="bookingdepo" data-height="300" required="required">
+                    <input type="file" name="bookingdepo" data-height="300">
                     <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a>
                 </c:if>
 
@@ -91,7 +91,7 @@
             <td>
                 <c:set var="status" value="${result.bookingstatus}"/>
                 <c:if test="${status=='Approved'}">
-                   <input type="file" name="bookingagreement" data-height="300" required="required">
+                   <input type="file" name="bookingagreement" data-height="300">
 <%--                   <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>--%>
                     <a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a>
                 </c:if>

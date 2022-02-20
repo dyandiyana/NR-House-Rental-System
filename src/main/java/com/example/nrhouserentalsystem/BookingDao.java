@@ -48,25 +48,23 @@ public class BookingDao {
             printSQLException(e);
         }
     }
-    public void update(String imageFileName,String urlPathforDB, String imageFileName2,String urlPathforDB2,int bookingid) throws SQLException, FileNotFoundException {
+    public void update(String imageFileName,String urlPathforDB,int bookingid) throws SQLException, FileNotFoundException {
 
-        if(imageFileName2!= null) {
             String status = "In Process";
             try (Connection connection = getConnection();
-                 PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGDEPO=?,DEPODOCPATH=?,BOOKINGAGREEMENT=?,AGREEDOCPATH=? WHERE BOOKINGID=?");) {
+                 PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGDEPO=?,DEPODOCPATH=? WHERE BOOKINGID=?");) {
                 statement.setString(1, status);
                 statement.setString(2, imageFileName);
                 statement.setString(3, urlPathforDB);
-                statement.setString(4, imageFileName2);
-                statement.setString(5, urlPathforDB2);
-                statement.setInt(6, bookingid);
+//                statement.setString(4, imageFileName2);
+//                statement.setString(5, urlPathforDB2);
+                statement.setInt(4, bookingid);
 
                 statement.executeUpdate();
             }catch (SQLException e) {
                 printSQLException(e);
             }
         }
-    }
 
     public boolean cancelbooking(int bookingid,int houseid) throws SQLException {
         boolean rowDeleted;
