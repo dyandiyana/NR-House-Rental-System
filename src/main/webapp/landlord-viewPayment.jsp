@@ -136,7 +136,7 @@
    </c:if>
     </c:forEach>
     <!-- The Modal -->
-    <form id="myModal" class="modal">
+    <form id="myModal" class="modal" action="MonthlyPaymentServlet" method="post">
 
         <!-- Modal content -->
         <div class="modal-content">
@@ -144,7 +144,6 @@
                 <span class="close">&times;</span>
                 <h2>Create Payment</h2>
             </div>
-            <form action="MonthlyPaymentServlet" method="post">
                 <div class="modal-body">
                     <label for="month">Month:</label>
                     <select name="month" id="month" required>
@@ -173,7 +172,6 @@
                     <input type="hidden" name="action" value="createPay"/>
                     <button class="btn2" type="submit">Submit</button>
                 </div>
-            </form>
         </div>
     </form>
 
