@@ -208,10 +208,10 @@
                 <td>
                         <c:set var="status" value="${result.paystatus}"/>
                         <c:if test="${status=='Pending'}">
-                            <a href="fileDoc/${result.payreceipt}">${result.payreceipt}</a>
+                            <a style="color: black" href="fileDoc/${result.payreceipt}">${result.payreceipt}</a>
                         </c:if>
                         <c:if test="${status=='Paid'}">
-                            <a href="fileDoc/${result.payreceipt}">${result.payreceipt}</a>
+                            <a style="color: black" href="fileDoc/${result.payreceipt}">${result.payreceipt}</a>
                         </c:if>
                 </td>
                 <td>
