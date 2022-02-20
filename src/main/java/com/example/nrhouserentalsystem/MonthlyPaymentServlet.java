@@ -112,9 +112,9 @@ public class MonthlyPaymentServlet extends HttpServlet {
 
 
         int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+        int hid = Integer.parseInt(request.getParameter("hid"));
 
-
-        md.rentComplete(bookingid);
+        md.rentComplete(bookingid,hid);
         response.sendRedirect("landlord-listPayment.jsp");
     }
 

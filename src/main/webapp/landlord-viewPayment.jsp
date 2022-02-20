@@ -116,14 +116,15 @@
             <label>${result.houseaddress}</label>
         </div>
     </div>
-    </c:forEach>
 
     <form action="MonthlyPaymentServlet" method="post">
         <input type="hidden" name="action" value="rentComplete"/>
         <input type="hidden" name="bookingid" value="<%=bookingid%>"/>
+        <input type="hidden" name="hid" value="${result.houseid}"/>
     <button class="btns">Complete</button>
     </form>
     <button class="btns"  id="myBtn">Create</button>
+    </c:forEach>
     <!-- The Modal -->
 <%--    <form id="myModal" class="modal">--%>
 

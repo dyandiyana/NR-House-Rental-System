@@ -76,7 +76,7 @@ public class MonthlyPaymentDao {
         }
     }
 
-    public void rentComplete(int bookingid) throws SQLException, FileNotFoundException {
+    public void rentComplete(int bookingid,int hid) throws SQLException, FileNotFoundException {
 
 
         try (Connection connection = getConnection();
@@ -86,6 +86,15 @@ public class MonthlyPaymentDao {
             statement.executeUpdate();
         }  catch (Exception e) {
         e.printStackTrace();
+        }
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE HOUSEDETAILS SET HOUSEAVAILABILITY='Available' WHERE houseid=?");) {
+            statement.setInt(1,hid);
+
+            statement.executeUpdate();
+        }  catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
