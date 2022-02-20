@@ -80,23 +80,23 @@
         </div>
     </div>
 
-<%--    <div class="row">
-        <div class="col-25">
-            <label>LANDLORD NAME</label>
-        </div>
-        <div class="col-75">
-            <label>${result.landlordname}</label>
-        </div>
-    </div>
+<%--   <div class="row">--%>
+<%--        <div class="col-25">--%>
+<%--            <label>LANDLORD NAME</label>--%>
+<%--        </div>--%>
+<%--        <div class="col-75">--%>
+<%--            <label>${result.landlordname}</label>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 
-    <div class="row">
-        <div class="col-25">
-            <label>LANDLORD PHONE NO</label>
-        </div>
-        <div class="col-75">
-            <label>${result.landlordphoneno}</label>
-        </div>
-    </div>--%>
+<%--    <div class="row">--%>
+<%--        <div class="col-25">--%>
+<%--            <label>LANDLORD PHONE NO</label>--%>
+<%--        </div>--%>
+<%--        <div class="col-75">--%>
+<%--            <label>${result.landlordphoneno}</label>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 
 
     <div class="row">
@@ -117,6 +117,7 @@
         </div>
     </div>
 
+   <c:if test="${result.rentalstatus =='On Going'}">
     <form action="MonthlyPaymentServlet" method="post">
         <input type="hidden" name="action" value="rentComplete"/>
         <input type="hidden" name="bookingid" value="<%=bookingid%>"/>
@@ -124,16 +125,17 @@
     <button  class="btns">Complete</button>
     </form>
     <button class="btns"  id="myBtn">Create</button>
+   </c:if>
     </c:forEach>
     <!-- The Modal -->
-<%--    <form id="myModal" class="modal">--%>
+    <form id="myModal" class="modal">
 
-<%--        <!-- Modal content -->--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <span class="close">&times;</span>--%>
-<%--                <h2>Create Payment</h2>--%>
-<%--            </div>--%>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Create Payment</h2>
+            </div>
             <form action="MonthlyPaymentServlet" method="post">
                 <div class="modal-body">
                     <label for="month">Month:</label>
@@ -164,8 +166,8 @@
                     <button class="btn2" type="submit">Submit</button>
                 </div>
             </form>
-<%--        </div>--%>
-<%--    </form>--%>
+        </div>
+    </form>
 
 
     <br><br>
