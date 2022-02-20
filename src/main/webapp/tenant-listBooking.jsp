@@ -120,7 +120,7 @@
                     <button type="submit" class="button button1" name="submit" >Update</button><br><br>
                     </c:if>
             </form>
-            <c:if test="${status=!'Canceled'}">
+            <c:if test="${status!='Canceled'}">
                 <form method="post">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
                     <input type="hidden" name="action" value="cancel">
