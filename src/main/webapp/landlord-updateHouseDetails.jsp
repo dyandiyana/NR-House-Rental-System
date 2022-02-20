@@ -262,9 +262,9 @@
         <a href="#">${result.houseimagepic}</a>
 
 
-
-        <a style="color: black" href="pic/${result.houseimagepic}" onclick="window.open('pic/${result.houseimagepic}', '_blank', 'fullscreen=yes'); return false;">${result.houseimagepic}</a>
-        <img src="pic/${result.houseimagepic}">
+        <iframe src="pic/${result.houseimagepic}" width="100%" height="500px"></iframe>
+<%--        <a style="color: black" href="pic/${result.houseimagepic}" onclick="window.open('pic/${result.houseimagepic}', '_blank', 'fullscreen=yes'); return false;">${result.houseimagepic}</a>--%>
+<%--        <img src="pic/${result.houseimagepic}">--%>
         <br>
 
         <br/>
