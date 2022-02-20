@@ -240,7 +240,7 @@ td {
 .modal-footer {
     padding: 2px 16px;
     color: white;
-    margin:auto 20px;
+    margin:auto 30px;
 }
 
 .modal-footer button{
@@ -260,8 +260,9 @@ td {
 }
 
 .modal-body input {
-    max-width:150px;
+    max-width:200px;
     margin: auto;
+    padding: 10px;
 }
 
 #space,#space2{
