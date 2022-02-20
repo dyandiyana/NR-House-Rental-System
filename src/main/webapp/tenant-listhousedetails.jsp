@@ -47,34 +47,6 @@
     }
     int tenantid = Integer.parseInt(session.getAttribute("tenantid").toString());
 
-
-
-
-    Class.forName("org.postgresql.Driver"); // ni stay
-    String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"; //ni url dri heroku database
-    String user = "gpdkvocjaztxrw"; //ni user dri heroku database
-    String pass = "dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"; //ni password dri heroku database
-    Connection conn = DriverManager.getConnection(dbURL, user, pass);
-    int total = 0;
-    try {
-
-
-        PreparedStatement st = conn.prepareStatement("SELECT count(tenantid)  FROM bookingdetails WHERE tenantid = ? and bookingstatus in ('Pending','Approved','In Process')");
-        st.setInt(1, tenantid);
-
-        ResultSet res = st.getResultSet();
-
-        while (res.next()) {
-            total = res.getInt(1);
-        }
-    }catch (Exception e){
-        e.printStackTrace();
-    }
-
-
-
-
-
 %>
 
 
@@ -115,14 +87,7 @@
                 <input type="hidden" name="action" value="create">
             </div>
             <div class="mybtn">
-                <%
-                    if(total < 3){
-                %>
-                        <button formaction="BookingServlet" onclick="return confirm('Confirm book this rental house?');" type="submit">Book Now</button>
-                <%
-                    }
-                %>
-
+                 <button formaction="BookingServlet" onclick="return confirm('Confirm book this rental house?');" type="submit">Book Now</button>
             </div>
         </form>
 
