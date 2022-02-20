@@ -42,9 +42,6 @@ public class HouseDetailsServlet extends HttpServlet {
                 case "update":
                     updatehouse(request, response);
                     break;
-                case "delete":
-                    deletehouse(request, response);
-                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -61,8 +58,18 @@ public class HouseDetailsServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+//        Part f = request.getPart("hPic");
+//        String FileName=f.getSubmittedFileName();
+
+
+        String appPath = getServletContext().getRealPath("");
         Part f = request.getPart("hPic");
-        String FileName=f.getSubmittedFileName();
+        String host = request.getScheme()+ "://" + request.getHeader("nrhouserental-isp551.herokuapp.com")+"/";
+        String imageFileName = f.getSubmittedFileName();
+        String urlPathforDB=host + "pic/" + imageFileName;
+        String savePath = appPath + "pic" + File.separator + imageFileName;
+        new File(appPath + "pic").mkdir();
+        f.write(savePath);
 
         try {
 
@@ -97,8 +104,9 @@ public class HouseDetailsServlet extends HttpServlet {
             house.setDesc(desc);
             house.setHlocation(hloc);
             house.setLandlordID(landlordid);
-            house.setHousepic(f);
-            house.setHousepicname(FileName);
+//            house.setHousepic(f);
+            house.setHousepicname(imageFileName);
+            house.setFilepath(urlPathforDB);
 
 
             hd.createhouse(house);
@@ -124,6 +132,8 @@ public class HouseDetailsServlet extends HttpServlet {
 
         Part f=request.getPart("hPic");
         String FileName=f.getSubmittedFileName();
+
+
 
         try{
 
@@ -160,8 +170,9 @@ public class HouseDetailsServlet extends HttpServlet {
             house.setLandlordID(landlordid);
             house.setHousepic(f);
             house.setHousepicname(FileName);
+//            house.setFilepath(urlPathforDB);
 
-            hd.updatehouse(house,f);
+            hd.updatehouse(house, f);
             response.sendRedirect("landlord-displayHouseList.jsp");
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Your details succesfully updated.');");
@@ -173,20 +184,4 @@ public class HouseDetailsServlet extends HttpServlet {
         }
     }
 
-    private void deletehouse(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-
-        int hids = Integer.parseInt(request.getParameter("hid"));
-        int landid = Integer.parseInt(request.getParameter("landid"));
-
-        hd.deletehouse(hids,landid);
-
-        out.println("<script type=\"text/javascript\">");
-        out.println("alert('Your details succesfully deleted!.');");
-        out.println("location='landlord-displayHouseList.jsp';");
-        out.println("</script>");
-    }
 }

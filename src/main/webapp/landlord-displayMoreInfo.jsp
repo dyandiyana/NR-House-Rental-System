@@ -54,7 +54,6 @@
                 <button formaction="landlord-listPayment.jsp" type="submit">Payment</button>
                 <button formaction="landlord-displayBookingList.jsp" type="submit">Booking</button>
                 <button formaction="landlord-updateHouseDetails.jsp" type="submit">Edit</button>
-                <button type="submit" formaction="HouseDetailsServlet" onclick="return confirm('Are you sure you wish to delete? Your action cannot be undone!');">Delete</button>
             </div>
         </form>
 

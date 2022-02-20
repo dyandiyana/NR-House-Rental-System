@@ -23,12 +23,13 @@ public class HouseDetails  implements java.io.Serializable {
     public Integer LandlordID;
     public Part housepic;
     public String housepicname;
+    public String filepath;
 
     public HouseDetails() {
 
     }
 
-    public HouseDetails(Integer hID, String hName, Double hMP, String hAddress, Date hPublishDate, String hAvailability, Integer hNoTenants, Integer hNoRoom, Integer hNoToilet, Integer hNoAC, String hWifi, Integer hFurniture, Integer hWM, String desc, String hlocation, Integer landlordID, Part housepic, String housepicname) {
+    public HouseDetails(Integer hID, String hName, Double hMP, String hAddress, Date hPublishDate, String hAvailability, Integer hNoTenants, Integer hNoRoom, Integer hNoToilet, Integer hNoAC, String hWifi, Integer hFurniture, Integer hWM, String desc, String hlocation, Integer landlordID, Part housepic, String housepicname, String filepath) {
         this.hID = hID;
         this.hName = hName;
         this.hMP = hMP;
@@ -47,6 +48,7 @@ public class HouseDetails  implements java.io.Serializable {
         LandlordID = landlordID;
         this.housepic = housepic;
         this.housepicname = housepicname;
+        this.filepath = filepath;
     }
 
     public Integer gethID() {
@@ -191,6 +193,14 @@ public class HouseDetails  implements java.io.Serializable {
 
     public void setHousepicname(String housepicname) {
         this.housepicname = housepicname;
+    }
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
     }
 }
 
