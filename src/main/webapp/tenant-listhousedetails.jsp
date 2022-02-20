@@ -87,11 +87,11 @@
                 <input type="hidden" name="action" value="create">
             </div>
             <div class="mybtn">
-                <%--<c:forEach var="result" items="${ac.rows}">
+                <c:forEach var="result" items="${ac.rows}">
                     <c:if test="${result.total < 3}">
                         <button formaction="BookingServlet" onclick="return confirm('Confirm book this rental house?');" type="submit">Book Now</button>
                     </c:if>
-                </c:forEach>--%>
+                </c:forEach>
             </div>
         </form>
 
