@@ -36,15 +36,32 @@
                    user="gpdkvocjaztxrw"
                    password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
 
+
+
+
+
+<%
+    int jhouseid = 0;
+
+    if(request.getParameter("hid")==null){
+        jhouseid = (Integer) session.getAttribute("hid");
+    }
+    else{
+        jhouseid = Integer.parseInt(request.getParameter("hid"));
+        session.setAttribute("hid", jhouseid);
+    }
+%>
+
 <sql:query dataSource="${ic}" var="oc">
-    <%
-        int jhouseid = Integer.parseInt(request.getParameter("hid"));
-    %>
-    <c:set var="jhouseid" value="<%=jhouseid%>"/>
-    SELECT * FROM HOUSEDETAILS
-    WHERE HOUSEID=?
-    <sql:param value="${jhouseid}" />
+    SELECT * FROM housedetails
+    WHERE houseid=?
+    <sql:param value="<%=jhouseid%>" />
 </sql:query>
+
+
+
+
+
 
 <sql:query dataSource="${ic}" var="ac">
     <%
@@ -70,11 +87,11 @@
                 <input type="hidden" name="action" value="create">
             </div>
             <div class="mybtn">
-                <c:forEach var="result" items="${ac.rows}">
+                <%--<c:forEach var="result" items="${ac.rows}">
                     <c:if test="${result.total < 3}">
                         <button formaction="BookingServlet" onclick="return confirm('Confirm book this rental house?');" type="submit">Book Now</button>
                     </c:if>
-                </c:forEach>
+                </c:forEach>--%>
             </div>
         </form>
 
