@@ -93,14 +93,29 @@
 
 
             <td>${result.bookingapprovaldate}</td>
-            <td>${result.bookingstatus}</td>
+
+                <c:if test="${status=='Pending'}">
+                    <td>${result.bookingstatus}</td>
+                </c:if>
+                <c:if test="${status=='Approved'}">
+                <td style="color: forestgreen">${result.bookingstatus}</td>
+                </c:if>
+                <c:if test="${status=='In Process'}">
+                    <td style="color: orangered">${result.bookingstatus}</td>
+                </c:if>
+                <c:if test="${status=='Completed'}">
+                    <td style="color: blue">${result.bookingstatus}</td>
+                </c:if>
+
 
             <td>
 
 
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
+                    <c:if test="${status=='Approved'}">
                     <input type="hidden" name="action" value="update">
                     <button type="submit" class="button button1" name="submit" >Update</button><br><br>
+                    </c:if>
             </form>
 
                 <form method="post">
