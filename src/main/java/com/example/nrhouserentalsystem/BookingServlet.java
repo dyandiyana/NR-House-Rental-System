@@ -46,8 +46,8 @@ public class BookingServlet extends HttpServlet {
                 case "create":
                     create(request, response);
                     break;
-                case "update":
-                    update(request, response);
+                case "depo":
+                    depo(request, response);
                     break;
                 case "agree":
                     agree(request, response);
@@ -100,7 +100,7 @@ public class BookingServlet extends HttpServlet {
     /*######################################################( UPDATE )#############################################################*/
 
 
-    private void update(HttpServletRequest request, HttpServletResponse response)
+    private void depo(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int bookingId = Integer.parseInt(request.getParameter("bookingid"));
 
@@ -123,7 +123,7 @@ public class BookingServlet extends HttpServlet {
 //        f.write(savePath2);
 
 //        bd.update(imageFileName,urlPathforDB,imageFileName2,urlPathforDB2,bookingId);
-        bd.update(imageFileName,urlPathforDB,bookingId);
+        bd.depo(imageFileName,urlPathforDB,bookingId);
         response.sendRedirect("tenant-listBooking.jsp");
     }
 

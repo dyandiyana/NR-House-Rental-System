@@ -82,7 +82,7 @@
                     <form method="post" action="BookingServlet" enctype="multipart/form-data">
                         <input type="hidden" name="bookingid" value="${result.bookingid}">
                 <c:if test="${status=='Approved'}">
-                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" name="action" value="depo">
                     <button type="submit" class="button button1" name="submit" >Update</button><br><br>
                 </c:if>
                 </form>

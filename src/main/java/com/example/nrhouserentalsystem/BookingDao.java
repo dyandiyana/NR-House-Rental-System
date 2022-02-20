@@ -48,7 +48,7 @@ public class BookingDao {
             printSQLException(e);
         }
     }
-    public void update(String imageFileName,String urlPathforDB,int bookingid) throws SQLException, FileNotFoundException {
+    public void depo(String imageFileName,String urlPathforDB,int bookingid) throws SQLException, FileNotFoundException {
 
             //String status = "In Process";
             try (Connection connection = getConnection();
