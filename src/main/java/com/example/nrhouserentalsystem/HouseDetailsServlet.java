@@ -103,6 +103,10 @@ public class HouseDetailsServlet extends HttpServlet {
 
             hd.createhouse(house);
             response.sendRedirect("landlord-displayHouseList.jsp");
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Your details succesfully create a house.');");
+            out.println("location='landlord-displayHouseList.jsp';");
+            out.println("</script>");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -159,15 +163,14 @@ public class HouseDetailsServlet extends HttpServlet {
 
             hd.updatehouse(house,f);
             response.sendRedirect("landlord-displayHouseList.jsp");
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Your details succesfully updated.');");
+            out.println("location='landlord-displayHouseList.jsp';");
+            out.println("</script>");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        out.println("<script type=\"text/javascript\">");
-        out.println("alert('Your details succesfully updated.');");
-        out.println("location='landlord-displayHouseList.jsp';");
-        out.println("</script>");
     }
 
     private void deletehouse(HttpServletRequest request, HttpServletResponse response)
