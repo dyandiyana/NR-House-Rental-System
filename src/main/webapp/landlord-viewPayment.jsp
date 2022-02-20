@@ -124,7 +124,6 @@
     <button class="btns">Complete</button>
     </form>
     <button class="btns"  id="myBtn">Create</button>
-    </c:forEach>
     <!-- The Modal -->
 <%--    <form id="myModal" class="modal">--%>
 
@@ -231,6 +230,7 @@
 
     </table>
 </div>
+</c:forEach>
     <button type="submit" class="button button1" name="submit" style="float: left" ><a href="landlord-listPayment.jsp">Back</a></button>
 
 
