@@ -90,10 +90,10 @@ public class MonthlyPaymentDao {
         }
 
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE HOUSEDETAILS SET HOUSEAVAILABILITY='Available' WHERE houseid=?");) {
-            statement.setInt(1,hid);
+             PreparedStatement statement2 = connection.prepareStatement("UPDATE HOUSEDETAILS SET HOUSEAVAILABILITY='Available' WHERE houseid=?");) {
+            statement2.setInt(1,hid);
 
-            statement.executeUpdate();
+            statement2.executeUpdate();
         }  catch (Exception e) {
             e.printStackTrace();
         }

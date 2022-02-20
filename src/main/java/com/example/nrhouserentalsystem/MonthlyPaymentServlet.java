@@ -110,12 +110,15 @@ public class MonthlyPaymentServlet extends HttpServlet {
     private void rentComplete(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException, ParseException {
 
+        try {
+            int bookingid = Integer.parseInt(request.getParameter("bookingid"));
+            int hid = Integer.parseInt(request.getParameter("hid"));
 
-        int bookingid = Integer.parseInt(request.getParameter("bookingid"));
-        int hid = Integer.parseInt(request.getParameter("hid"));
-
-        md.rentComplete(bookingid,hid);
-        response.sendRedirect("landlord-listPayment.jsp");
+            md.rentComplete(bookingid, hid);
+            response.sendRedirect("landlord-listPayment.jsp");
+        } catch (Exception e) {
+        e.printStackTrace();
+       }
     }
 
     private void verifyPay(HttpServletRequest request, HttpServletResponse response)
