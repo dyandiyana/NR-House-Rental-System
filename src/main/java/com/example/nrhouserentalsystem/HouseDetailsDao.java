@@ -82,75 +82,43 @@ public class HouseDetailsDao {
 
     public void updatehouse(HouseDetails house, Part f) throws SQLException, IOException {
 
-        if (house.getHousepic() != null) {
+        File file = new File("src/main/webapp/pic/"+ house.getHousepicname());
+        try{
+            FileOutputStream fos = new FileOutputStream(file);
+            InputStream is = house.getHousepic().getInputStream();
 
-            File file = new File("src/main/webapp/pic/"+ house.getHousepicname());
-            try{
-                FileOutputStream fos = new FileOutputStream(file);
-                InputStream is = house.getHousepic().getInputStream();
+            byte[] data=new byte[is.available()];
+            is.read(data);
+            fos.write(data);
+            fos.close();
 
-                byte[] data=new byte[is.available()];
-                is.read(data);
-                fos.write(data);
-                fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-                try (Connection connection = getConnection();
-                     PreparedStatement ps = connection.prepareStatement("UPDATE housedetails SET housename=?,housemonthlyprice=?,houseaddress=?,houselocation=?,housepublishdate=localtimestamp,houseavailability=?,housenotenants=?,housenoroom=?,housenotoilet=?,housenoac=?,housewifi=?,housefurniture=?,housewm=?,housedescription=?, housepic=?,houseimagepic=?,landlordid=?  WHERE houseid = ?");)
-                {
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement("UPDATE housedetails SET housename=?,housemonthlyprice=?,houseaddress=?,houselocation=?,housepublishdate=localtimestamp,houseavailability=?,housenotenants=?,housenoroom=?,housenotoilet=?,housenoac=?,housewifi=?,housefurniture=?,housewm=?,housedescription=?,landlordid=?  WHERE houseid = ?");)
+        {
 
-                    FileInputStream fis = new FileInputStream(file);
-                    ps.setString(1, house.gethName());
-                    ps.setDouble(2, house.gethMP());
-                    ps.setString(3, house.gethAddress());
-                    ps.setString(4, house.getHlocation());
-                    ps.setString(5, house.gethAvailability());
-                    ps.setInt(6, house.gethNoTenants());
-                    ps.setInt(7, house.gethNoRoom());
-                    ps.setInt(8, house.gethNoToilet());
-                    ps.setInt(9, house.gethNoAC());
-                    ps.setString(10, house.gethWifi());
-                    ps.setInt(11, house.gethFurniture());
-                    ps.setInt(12, house.gethWM());
-                    ps.setString(13, house.getDesc());
-                    ps.setBinaryStream(14, fis, file.length());
-                    ps.setString(15, file.getName());
-                    ps.setInt(16, house.getLandlordID());
-                    ps.setInt(17, house.gethID());
+            ps.setString(1, house.gethName());
+            ps.setDouble(2, house.gethMP());
+            ps.setString(3, house.gethAddress());
+            ps.setString(4, house.getHlocation());
+            ps.setString(5, house.gethAvailability());
+            ps.setInt(6, house.gethNoTenants());
+            ps.setInt(7, house.gethNoRoom());
+            ps.setInt(8, house.gethNoToilet());
+            ps.setInt(9, house.gethNoAC());
+            ps.setString(10, house.gethWifi());
+            ps.setInt(11, house.gethFurniture());
+            ps.setInt(12, house.gethWM());
+            ps.setString(13, house.getDesc());
+            ps.setInt(14, house.getLandlordID());
+            ps.setInt(15, house.gethID());
+            ps.executeUpdate();
 
-                    ps.executeUpdate();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }else{
-
-            try (Connection connection = getConnection();
-                 PreparedStatement ps = connection.prepareStatement("UPDATE housedetails SET housename=?,housemonthlyprice=?,houseaddress=?,houselocation=?,housepublishdate=localtimestamp,houseavailability=?,housenotenants=?,housenoroom=?,housenotoilet=?,housenoac=?,housewifi=?,housefurniture=?,housewm=?,housedescription=?,landlordid=?  WHERE houseid = ?");)
-            {
-
-                ps.setString(1, house.gethName());
-                ps.setDouble(2, house.gethMP());
-                ps.setString(3, house.gethAddress());
-                ps.setString(4, house.getHlocation());
-                ps.setString(5, house.gethAvailability());
-                ps.setInt(6, house.gethNoTenants());
-                ps.setInt(7, house.gethNoRoom());
-                ps.setInt(8, house.gethNoToilet());
-                ps.setInt(9, house.gethNoAC());
-                ps.setString(10, house.gethWifi());
-                ps.setInt(11, house.gethFurniture());
-                ps.setInt(12, house.gethWM());
-                ps.setString(13, house.getDesc());
-                ps.setInt(14, house.getLandlordID());
-                ps.setInt(15, house.gethID());
-                ps.executeUpdate();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
