@@ -70,7 +70,7 @@
             <td>${result.bookingtime}</td>
             <td>${result.bookingdate}</td>
 
-
+            <form method="post" action="BookingServlet" enctype="multipart/form-data">
 
                 <td>
                 <c:set var="status" value="${result.bookingstatus}"/>
@@ -81,7 +81,6 @@
                 </c:if>
                     <form method="post" action="BookingServlet" enctype="multipart/form-data">
                 <input type="hidden" name="bookingid" value="${result.bookingid}">
-
                 <c:if test="${status=='Approved'}">
                     <input type="hidden" name="action" value="update">
                     <button type="submit" class="button button1" name="submit" >Update</button><br><br>
@@ -148,6 +147,7 @@
 
 
 
+            </form>
             <c:if test="${status!='Canceled'}">
                 <form method="post">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
