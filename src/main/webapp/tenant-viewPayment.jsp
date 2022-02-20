@@ -119,6 +119,9 @@
             <c:if test="${result.paystatus=='Unpaid'}">
             <td style="color: red">${result.paystatus}</td>
             </c:if>
+            <c:if test="${result.paystatus=='Pending'}">
+                <td style="color: red">${result.paystatus}</td>
+            </c:if>
             <c:if test="${result.paystatus=='Paid'}">
             <td style="color: forestgreen">${result.paystatus}</td>
             </c:if>
@@ -130,7 +133,7 @@
                     <c:if test="${status=='Unpaid'}">
                     <input type="file" name="payreceipt"><a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
                     </c:if>
-                    <c:if test="${status=='In Process'}">
+                    <c:if test="${status=='Pending'}">
                         <a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
                     </c:if>
                     <c:if test="${status=='Paid'}">
