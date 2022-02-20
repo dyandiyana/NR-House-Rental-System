@@ -260,7 +260,11 @@
                    data-height="300"/>
         </div>
         <a href="#">${result.houseimagepic}</a>
-        <img src="${result.housepath}">
+
+
+
+
+        <img src="pic/${result.houseimagepic}">
 
 
         <br>
