@@ -7,6 +7,10 @@
 --%>
 
 <%@ page import="java.util.Date" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
 
 <!--BOOTSTRAP JS-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,15 +34,6 @@
 
 <%@include file="tenant-navbar.html"%>
 
-<sql:setDataSource var="ic"
-                   driver="org.postgresql.Driver"
-                   url="jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"
-                   user="gpdkvocjaztxrw"
-                   password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
-
-
-
-
 
 <%
     int jhouseid = 0;
@@ -50,7 +45,45 @@
         jhouseid = Integer.parseInt(request.getParameter("hid"));
         session.setAttribute("hid", jhouseid);
     }
+    int tenantid = Integer.parseInt(session.getAttribute("tenantid").toString());
+
+
+
+
+    Class.forName("org.postgresql.Driver"); // ni stay
+    String dbURL = "jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"; //ni url dri heroku database
+    String user = "gpdkvocjaztxrw"; //ni user dri heroku database
+    String pass = "dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"; //ni password dri heroku database
+    Connection conn = DriverManager.getConnection(dbURL, user, pass);
+    int total = 0;
+    try {
+
+
+        PreparedStatement st = conn.prepareStatement("SELECT count(tenantid)  FROM bookingdetails WHERE tenantid = ? and bookingstatus in ('Pending','Approved','In Process')");
+        st.setInt(1, tenantid);
+
+        ResultSet res = st.getResultSet();
+
+        while (res.next()) {
+            total = res.getInt(1);
+        }
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+
+
+
+
+
 %>
+
+
+<sql:setDataSource var="ic"
+                   driver="org.postgresql.Driver"
+                   url="jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"
+                   user="gpdkvocjaztxrw"
+                   password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
+
 
 <sql:query dataSource="${ic}" var="oc">
     SELECT * FROM housedetails
@@ -61,12 +94,7 @@
 
 
 
-
-
 <sql:query dataSource="${ic}" var="ac">
-    <%
-        int tenantid = Integer.parseInt(session.getAttribute("tenantid").toString());
-    %>
     <c:set var="tenantid" value="<%=tenantid%>"/>
     SELECT count(tenantid)"total" FROM bookingdetails
     WHERE tenantid = ?
@@ -87,11 +115,14 @@
                 <input type="hidden" name="action" value="create">
             </div>
             <div class="mybtn">
-                <c:forEach var="result" items="${ac.rows}">
-                    <c:if test="${result.total < 3}">
+                <%
+                    if(total < 3){
+                %>
                         <button formaction="BookingServlet" onclick="return confirm('Confirm book this rental house?');" type="submit">Book Now</button>
-                    </c:if>
-                </c:forEach>
+                <%
+                    }
+                %>
+
             </div>
         </form>
 
