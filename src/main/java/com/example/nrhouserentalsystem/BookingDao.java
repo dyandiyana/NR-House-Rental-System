@@ -50,7 +50,7 @@ public class BookingDao {
     }
     public void update(Part f,Part fi,int bookingid) throws SQLException, FileNotFoundException {
 
-
+        String status="In Process";
         String imageFileName = f.getSubmittedFileName();
         File file = new File("src/main/webapp/fileDoc/" + imageFileName);
         System.out.println("my file need upload" + file);
@@ -80,15 +80,16 @@ public class BookingDao {
 
 
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGDEPO=?,DEPODOC=?,BOOKINGAGREEMENT=?,AGREEDOC=? WHERE BOOKINGID=?");) {
+             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGDEPO=?,DEPODOC=?,BOOKINGAGREEMENT=?,AGREEDOC=? WHERE BOOKINGID=?");) {
             FileInputStream fis = new FileInputStream(file);
             FileInputStream fis2 = new FileInputStream(file2);
-            statement.setBinaryStream(2, fis, file.length());
-            statement.setString(1, file.getName());
+            statement.setString(1, status);
+            statement.setBinaryStream(3, fis, file.length());
+            statement.setString(2, file.getName());
 
-            statement.setBinaryStream(4, fis2, file2.length());
-            statement.setString(3, file2.getName());
-            statement.setInt(5,bookingid);
+            statement.setBinaryStream(5, fis2, file2.length());
+            statement.setString(4, file2.getName());
+            statement.setInt(6,bookingid);
 
             statement.executeUpdate();
         }
