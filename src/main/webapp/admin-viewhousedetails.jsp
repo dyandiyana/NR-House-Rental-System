@@ -116,17 +116,11 @@
                     </tr>
                     <tr>
                         <td colspan="2">House Availability</td>
-                        <td colspan="3">${result.HOUSEAVAILIBILITY}</td>
+                        <td colspan="3">${result.houseavailability}</td>
                     </tr>
                     <tr>
                         <td colspan="2">Wifi Availability</td>
-                        <c:set var = "wifiAv" value = "${result.HOUSEWIFI}"/>
-                        <c:if test = "${wifiAv == 'Yes'}">
-                        <td colspan="3">Available</td>
-                        </c:if>
-                        <c:if test = "${wifiAv == 'No'}">
-                        <td colspan="3">Not Available</td>
-                        </c:if>
+                        <td colspan="3">${result.housewifi}</td>
                     </tr>
                     <tr>
                         <td style="text-align: center"><img src="https://img.icons8.com/ios-glyphs/40/000000/sleeping-in-bed.png"/></td>
