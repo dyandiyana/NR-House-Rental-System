@@ -122,7 +122,7 @@
 
 
             </td>
-            </form>
+
 
             <td>${result.bookingapprovaldate}</td>
 
@@ -147,7 +147,7 @@
 
 
 
-
+            </form>
             <c:if test="${status!='Canceled'}">
                 <form method="post">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
