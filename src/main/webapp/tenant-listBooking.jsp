@@ -107,7 +107,7 @@
                     <td style="color: blue">${result.bookingstatus}</td>
                 </c:if>
                 <c:if test="${status=='Canceled'}">
-                    <td style="color: blue">${result.bookingstatus}</td>
+                    <td style="color: red">${result.bookingstatus}</td>
                 </c:if>
 
 
