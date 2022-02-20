@@ -30,7 +30,7 @@ public class MonthlyPaymentDao {
 
 
         String imageFileName = f.getSubmittedFileName();
-        File file = new File("C:/Users/TOSHIBA/IdeaProjects/ICT502-NRRENTAL/src/main/webapp/dyana/" + imageFileName);
+        File file = new File("src/main/webapp/fileDoc/" + imageFileName);
         System.out.println("my file need upload" + file);
 
         try {

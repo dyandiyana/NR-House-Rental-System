@@ -52,12 +52,11 @@ public class BookingDao {
 
 
         String imageFileName = f.getSubmittedFileName();
-        File file = new File("src/main/webapp/fileDoc" + imageFileName);
+        File file = new File("src/main/webapp/fileDoc/" + imageFileName);
         System.out.println("my file need upload" + file);
 
         String imageFileName2 = fi.getSubmittedFileName();
-        File file2 = new File("src/main/webapp/fileDoc" + imageFileName2);
-        //C:/Users/TOSHIBA/IdeaProjects/ICT502-NRRENTAL/src/main/webapp/dyana/
+        File file2 = new File("src/main/webapp/fileDoc/" + imageFileName2);
         try {
             FileOutputStream fos = new FileOutputStream(file);
             InputStream is = f.getInputStream();
