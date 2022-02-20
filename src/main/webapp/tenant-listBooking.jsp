@@ -71,13 +71,20 @@
             <td>${result.bookingdate}</td>
 
             <form method="post" action="BookingServlet" enctype="multipart/form-data">
-            <td>
+                <form method="post" action="BookingServlet" enctype="multipart/form-data">
+                <td>
                 <c:set var="status" value="${result.bookingstatus}"/>
                 <c:if test="${status=='Approved'}">
 
                     <input type="file" name="bookingdepo" data-height="300" required="required">
                     <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a>
                 </c:if>
+                <input type="hidden" name="bookingid" value="${result.bookingid}">
+                <c:if test="${status=='Approved'}">
+                    <input type="hidden" name="action" value="update">
+                    <button type="submit" class="button button1" name="submit" >Update</button><br><br>
+                </c:if>
+            </form>
 
                 <c:if test="${status=='In Process'}">
                     <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a>
@@ -87,7 +94,6 @@
                     <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a>
                 </c:if>
             </td>
-            <form method="post" action="BookingServlet" enctype="multipart/form-data">
             <td>
                 <c:set var="status" value="${result.bookingstatus}"/>
                 <c:if test="${status=='Approved'}">
@@ -95,13 +101,6 @@
 <%--                   <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>--%>
                     <a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a>
                 </c:if>
-
-                    <input type="hidden" name="bookingid" value="${result.bookingid}">
-                    <c:if test="${status=='Approved'}">
-                    <input type="hidden" name="action" value="update">
-                    <button type="submit" class="button button1" name="submit" >Update</button><br><br>
-                    </c:if>
-            </form>
 
                 <c:if test="${status=='In Process'}">
                     <a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a>
