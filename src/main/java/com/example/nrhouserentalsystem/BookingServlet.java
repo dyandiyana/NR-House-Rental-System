@@ -101,10 +101,9 @@ public class BookingServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         int bookingId = Integer.parseInt(request.getParameter("bookingid"));
 
-        request.setAttribute("thiss", "nrhouserental-isp551.herokuapp.com");
         String appPath = getServletContext().getRealPath("");
         Part f = request.getPart("bookingdepo");
-        String host = request.getScheme()+ "://" + request.getAttribute("thiss")+"/";
+        String host = request.getScheme()+ "://" + request.getHeader("nrhouserental-isp551.herokuapp.com")+"/";
         String imageFileName = f.getSubmittedFileName();
         String urlPathforDB=host + "fileDoc/" + imageFileName;
         String savePath = appPath + "fileDoc" + File.separator + imageFileName;
@@ -113,7 +112,7 @@ public class BookingServlet extends HttpServlet {
 
         String appPath2 = getServletContext().getRealPath("");
         Part fi = request.getPart("bookingagreement");
-        String host2 = request.getScheme()+ "://" + request.getAttribute("thiss")+"/";
+        String host2 = request.getScheme()+ "://" + request.getHeader("nrhouserental-isp551.herokuapp.com")+"/";
         String imageFileName2 = fi.getSubmittedFileName();
         String urlPathforDB2=host2 + "fileDoc/" + imageFileName2;
         String savePath2 = appPath2 + "fileDoc" + File.separator + imageFileName2;
