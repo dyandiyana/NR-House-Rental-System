@@ -55,7 +55,7 @@
 
 
 <sql:query dataSource="${ic}" var="ac">
-    select t.tenantname, b.bookingid, h.housename, h.houseaddress, h.houseid
+    select t.tenantname, b.bookingid, h.housename, h.houseaddress, h.houseid, b.rentalstatus
     from tenant t
     join bookingdetails b
     on t.tenantid= b.tenantid
