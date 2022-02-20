@@ -80,6 +80,13 @@
 
 
                 </c:if>
+                <c:if test="${status=='In Process'}">
+
+                    <input type="file" name="bookingdepo">
+                    <a href="${result.bookingDepo}" onclick="window.open('${result.bookingdepo}', '_blank', 'fullscreen=yes'); return false;">${result.bookingdepo}</a>
+
+
+                </c:if>
             </td>
 
             <td>
