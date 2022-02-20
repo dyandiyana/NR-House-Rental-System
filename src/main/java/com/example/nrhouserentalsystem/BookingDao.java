@@ -98,7 +98,7 @@ public class BookingDao {
     public boolean deletebooking(int bookingid) throws SQLException {
         boolean rowDeleted;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("delete from BOOKINGDETAILS where BOOKINGID=?");) {
+             PreparedStatement statement = connection.prepareStatement("update BOOKINGDETAILS set bookingstatus = 'Cancel' where BOOKINGID=?");) {
             statement.setInt(1, bookingid);
             rowDeleted = statement.executeUpdate() > 0;
 

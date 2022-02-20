@@ -105,8 +105,8 @@
 
                 <form method="post">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
-                    <input type="hidden" name="action" value="delete">
-                <button type="submit" class="button button1" name="submit" onclick="return confirm('Confirm delete Booking? House name: <c:out value="${result.housename}"/>');" formaction="BookingServlet">Delete</button><br><br>
+                    <input type="hidden" name="action" value="cancel">
+                <button type="submit" class="button button1" name="submit" onclick="return confirm('Confirm delete Booking? House name: <c:out value="${result.housename}"/>');" formaction="BookingServlet">Cancel</button><br><br>
                 </form>
 
             </td>
