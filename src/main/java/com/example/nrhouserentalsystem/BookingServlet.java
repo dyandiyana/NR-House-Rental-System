@@ -135,7 +135,7 @@ public class BookingServlet extends HttpServlet {
         int bookingId = Integer.parseInt(request.getParameter("bookingid"));
 
         String appPath = getServletContext().getRealPath("");
-        Part f = request.getPart("agreement");
+        Part f = request.getPart("bookingagreement");
         String host = request.getScheme()+ "://" + request.getHeader("nrhouserental-isp551.herokuapp.com")+"/";
         String imageFileName = f.getSubmittedFileName();
         String urlPathforDB=host + "fileDoc/" + imageFileName;
