@@ -69,7 +69,7 @@ public class BookingDao {
 
         String status = "In Process";
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET bookingstatus=?,BOOKINGDEPO=?,DEPODOCPATH=? WHERE BOOKINGID=?");) {
+             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET bookingstatus=?,BOOKINGAGREEMENT=?,AGREEDOCPATH=? WHERE BOOKINGID=?");) {
             statement.setString(1, status);
             statement.setString(2, imageFileName);
             statement.setString(3, urlPathforDB);
