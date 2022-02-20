@@ -33,7 +33,7 @@
 </div>
 <c:forEach var="result" items="${oc.rows}">
 <div class="tintedbg">
-    <form name="HouseInfoForm" method="post" action="LAupdateHouseDetailsServlet" onsubmit="return confirm('Are you really wish to update?');"  enctype = "multipart/form-data">
+    <form name="HouseInfoForm" method="post" action="HouseDetailsServlet" onsubmit="return confirm('Are you really wish to update?');"  enctype = "multipart/form-data">
         <br/>
         <input type="number" name="hid" value="${result.houseid}" hidden>
         <%--        <input type="text" name="houseid" value="<%=resultSet.getString("id") %>">--%>

@@ -1,5 +1,6 @@
 package com.example.nrhouserentalsystem;
 
+import javax.servlet.http.Part;
 import java.util.Date;
 
 
@@ -20,12 +21,14 @@ public class HouseDetails  implements java.io.Serializable {
     public String desc;
     public String hlocation;
     public Integer LandlordID;
+    public Part housepic;
+    public String housepicname;
 
     public HouseDetails() {
 
     }
 
-    public HouseDetails(Integer hID, String hName, Double hMP, String hAddress, Date hPublishDate, String hAvailability, Integer hNoTenants, Integer hNoRoom, Integer hNoToilet, Integer hNoAC, String hWifi, Integer hFurniture, Integer hWM, String desc, String hlocation, Integer landlordID) {
+    public HouseDetails(Integer hID, String hName, Double hMP, String hAddress, Date hPublishDate, String hAvailability, Integer hNoTenants, Integer hNoRoom, Integer hNoToilet, Integer hNoAC, String hWifi, Integer hFurniture, Integer hWM, String desc, String hlocation, Integer landlordID, Part housepic, String housepicname) {
         this.hID = hID;
         this.hName = hName;
         this.hMP = hMP;
@@ -42,6 +45,8 @@ public class HouseDetails  implements java.io.Serializable {
         this.desc = desc;
         this.hlocation = hlocation;
         LandlordID = landlordID;
+        this.housepic = housepic;
+        this.housepicname = housepicname;
     }
 
     public Integer gethID() {
@@ -170,6 +175,22 @@ public class HouseDetails  implements java.io.Serializable {
 
     public void setLandlordID(Integer landlordID) {
         LandlordID = landlordID;
+    }
+
+    public Part getHousepic() {
+        return housepic;
+    }
+
+    public void setHousepic(Part housepic) {
+        this.housepic = housepic;
+    }
+
+    public String getHousepicname() {
+        return housepicname;
+    }
+
+    public void setHousepicname(String housepicname) {
+        this.housepicname = housepicname;
     }
 }
 
