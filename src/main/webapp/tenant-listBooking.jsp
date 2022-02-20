@@ -101,7 +101,7 @@
                 <td style="color: forestgreen">${result.bookingstatus}</td>
                 </c:if>
                 <c:if test="${status=='In Process'}">
-                    <td style="color: orangered">${result.bookingstatus}</td>
+                    <td style="color: orange">${result.bookingstatus}</td>
                 </c:if>
                 <c:if test="${status=='Completed'}">
                     <td style="color: blue">${result.bookingstatus}</td>
