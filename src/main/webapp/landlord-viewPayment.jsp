@@ -68,10 +68,11 @@
 </sql:query>
 
 
-<c:forEach var="result" items="${ac.rows}">
-<div class="container">
-    <h3>MONTHLY PAYMENT</h3>
 
+<div class="container">
+
+    <h3>MONTHLY PAYMENT</h3>
+    <c:forEach var="result" items="${ac.rows}">
     <div class="row">
         <div class="col-25">
             <label>TENANT NAME</label>
