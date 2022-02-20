@@ -190,7 +190,7 @@
                     <td style="color: red">${result.paystatus}</td>
                 </c:if>
                 <c:if test="${result.paystatus=='Pending'}">
-                    <td style="color: yellow">${result.paystatus}</td>
+                    <td style="color: black">${result.paystatus}</td>
                 </c:if>
                 <c:if test="${result.paystatus=='Paid'}">
                     <td style="color: forestgreen">${result.paystatus}</td>
