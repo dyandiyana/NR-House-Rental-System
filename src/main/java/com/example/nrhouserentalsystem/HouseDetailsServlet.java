@@ -176,5 +176,10 @@ public class HouseDetailsServlet extends HttpServlet {
         int landid = Integer.parseInt(request.getParameter("landid"));
 
         hd.deletehouse(hids,landid);
+
+        out.println("<script type=\"text/javascript\">");
+        out.println("alert('Your details succesfully deleted!.');");
+        out.println("location='landlord-displayHouseList.jsp';");
+        out.println("</script>");
     }
 }
