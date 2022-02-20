@@ -64,7 +64,7 @@ public class HouseDetailsServlet extends HttpServlet {
 
         String appPath = getServletContext().getRealPath("");
         Part f = request.getPart("hPic");
-        String host = request.getScheme()+ "://" + request.getAttribute("this")+"/";
+        String host = request.getScheme()+ "://" + request.getAttribute("thiss")+"/";
         String imageFileName = f.getSubmittedFileName();
         String urlPathforDB=host + "pic/" + imageFileName;
         String savePath = appPath + "pic" + File.separator + imageFileName;
