@@ -32,14 +32,12 @@
 
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="clsid" value="<%=houseid%>"/>
-    SELECT  row_number() over () "rank", B.bookingid,b.landlordid, b.rentalstatus, t.tenantname, t.tenantid
+    SELECT  row_number() over () "rank", B.bookingid,b.landlordid, b.rentalstatus, t.tenantname, t.tenantid, h.houseid
     from TENANT T
     JOIN BOOKINGDETAILS B
     on T.TENANTID = B.TENANTID
-    join landlord l
-    on B.landlordid = l.landlordid
     join housedetails h
-    on l.landlordid = h.landlordid
+    on b.houseid = h.houseid
     WHERE h.houseid =?
     and b.rentalstatus in ('On Going','Completed')
     <sql:param value="${clsid}" />
