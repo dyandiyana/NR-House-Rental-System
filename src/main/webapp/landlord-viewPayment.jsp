@@ -139,7 +139,7 @@
             <form action="MonthlyPaymentServlet" method="post">
                 <div class="modal-body">
                     <label for="month">Month:</label>
-                    <select name="month" id="month">
+                    <select name="month" id="month" required>
                         <option value="January">January</option>
                         <option value="February">February</option>
                         <option value="March">March</option>
@@ -155,10 +155,10 @@
                     </select>
                     <div id=space></div>
                     <label for="rent">Rent:</label>
-                    <input type="number" id="rent" name="rent"/>
+                    <input type="number" id="rent" name="rent" required/>
                     <div id=space2></div>
                     <label for="pay">Due Date:</label>
-                    <input type="date" id="pay" name="duepay"/>
+                    <input type="date" id="pay" name="duepay" required/>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="bookingid" value="<%=bookingid%>"/>
