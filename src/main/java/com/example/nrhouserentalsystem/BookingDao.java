@@ -71,11 +71,11 @@ public class BookingDao {
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET bookingstatus=?,BOOKINGDEPO=?,DEPODOCPATH=? WHERE BOOKINGID=?");) {
             statement.setString(1, status);
-            statement.setString(1, imageFileName);
-            statement.setString(2, urlPathforDB);
+            statement.setString(2, imageFileName);
+            statement.setString(3, urlPathforDB);
 //                statement.setString(4, imageFileName2);
 //                statement.setString(5, urlPathforDB2);
-            statement.setInt(3, bookingid);
+            statement.setInt(4, bookingid);
 
             statement.executeUpdate();
         }catch (SQLException e) {
