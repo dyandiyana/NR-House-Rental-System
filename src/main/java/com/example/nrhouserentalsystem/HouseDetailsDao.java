@@ -39,23 +39,23 @@ public class HouseDetailsDao {
 
         // try-with-resource statement will auto close the connection.
 
-        File file = new File("src/main/webapp/pic/"+ house.getHousepicname());
-        try{
-            FileOutputStream fos = new FileOutputStream(file);
-            InputStream is = house.getHousepic().getInputStream();
-
-            byte[] data=new byte[is.available()];
-            is.read(data);
-            fos.write(data);
-            fos.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+//        File file = new File("src/main/webapp/pic/"+ house.getHousepicname());
+//        try{
+//            FileOutputStream fos = new FileOutputStream(file);
+//            InputStream is = house.getHousepic().getInputStream();
+//
+//            byte[] data=new byte[is.available()];
+//            is.read(data);
+//            fos.write(data);
+//            fos.close();
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
 
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("insert into housedetails(housename,housemonthlyprice,houseaddress,houselocation,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,landlordid,housepic,houseimagepic) values(?,?,?,?,localtimestamp,?,?,?,?,?,?,?,?,?,?,?,?)");)
+             PreparedStatement ps = connection.prepareStatement("insert into housedetails(housename,housemonthlyprice,houseaddress,houselocation,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,landlordid,houseimagepic,housepath) values(?,?,?,?,localtimestamp,?,?,?,?,?,?,?,?,?,?,?,?)");)
         {
-            FileInputStream fis = new FileInputStream(file);
+//            FileInputStream fis = new FileInputStream(file);
             ps.setString(1, house.gethName());
             ps.setDouble(2, house.gethMP());
             ps.setString(3, house.gethAddress());
@@ -70,8 +70,10 @@ public class HouseDetailsDao {
             ps.setInt(12, house.gethWM());
             ps.setString(13, house.getDesc());
             ps.setInt(14, house.getLandlordID());
-            ps.setBinaryStream(15, fis, file.length());
-            ps.setString(16, file.getName());
+            ps.setString(15, house.getHousepicname());
+            ps.setString(16, house.getFilepath());
+//            ps.setBinaryStream(15, fis, file.length());
+//            ps.setString(16, file.getName());
             ps.executeUpdate();
 
         } catch (Exception e) {
@@ -122,14 +124,4 @@ public class HouseDetailsDao {
         }
     }
 
-    public void deletehouse(Integer houseid, Integer landid) throws SQLException, IOException {
-        try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("DELETE FROM housedetails WHERE houseid = ?");)
-        {
-            ps.setInt(1,houseid);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 }
