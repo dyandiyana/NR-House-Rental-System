@@ -50,21 +50,38 @@ public class BookingDao {
     }
     public void update(String imageFileName,String urlPathforDB,int bookingid) throws SQLException, FileNotFoundException {
 
-            String status = "In Process";
+            //String status = "In Process";
             try (Connection connection = getConnection();
-                 PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGDEPO=?,DEPODOCPATH=? WHERE BOOKINGID=?");) {
-                statement.setString(1, status);
-                statement.setString(2, imageFileName);
-                statement.setString(3, urlPathforDB);
+                 PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGDEPO=?,DEPODOCPATH=? WHERE BOOKINGID=?");) {
+                //statement.setString(1, status);
+                statement.setString(1, imageFileName);
+                statement.setString(2, urlPathforDB);
 //                statement.setString(4, imageFileName2);
 //                statement.setString(5, urlPathforDB2);
-                statement.setInt(4, bookingid);
+                statement.setInt(3, bookingid);
 
                 statement.executeUpdate();
             }catch (SQLException e) {
                 printSQLException(e);
             }
         }
+    public void agree(String imageFileName,String urlPathforDB,int bookingid) throws SQLException, FileNotFoundException {
+
+        String status = "In Process";
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET bookingstatus=?,BOOKINGDEPO=?,DEPODOCPATH=? WHERE BOOKINGID=?");) {
+            statement.setString(1, status);
+            statement.setString(1, imageFileName);
+            statement.setString(2, urlPathforDB);
+//                statement.setString(4, imageFileName2);
+//                statement.setString(5, urlPathforDB2);
+            statement.setInt(3, bookingid);
+
+            statement.executeUpdate();
+        }catch (SQLException e) {
+            printSQLException(e);
+        }
+    }
 
     public boolean cancelbooking(int bookingid,int houseid) throws SQLException {
         boolean rowDeleted;

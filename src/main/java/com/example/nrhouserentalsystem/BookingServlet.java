@@ -49,6 +49,9 @@ public class BookingServlet extends HttpServlet {
                 case "update":
                     update(request, response);
                     break;
+                case "agree":
+                    agree(request, response);
+                    break;
                 case "cancel":
                     cancel(request, response);
                     break;
@@ -103,6 +106,36 @@ public class BookingServlet extends HttpServlet {
 
         String appPath = getServletContext().getRealPath("");
         Part f = request.getPart("bookingdepo");
+        String host = request.getScheme()+ "://" + request.getHeader("nrhouserental-isp551.herokuapp.com")+"/";
+        String imageFileName = f.getSubmittedFileName();
+        String urlPathforDB=host + "fileDoc/" + imageFileName;
+        String savePath = appPath + "fileDoc" + File.separator + imageFileName;
+        new File(appPath + "fileDoc").mkdir();
+        f.write(savePath);
+
+//        String appPath2 = getServletContext().getRealPath("");
+//        Part fi = request.getPart("bookingagreement");
+//        String host2 = request.getScheme()+ "://" + request.getHeader("nrhouserental-isp551.herokuapp.com")+"/";
+//        String imageFileName2 = fi.getSubmittedFileName();
+//        String urlPathforDB2 =host2 + "fileDoc/" + imageFileName2;
+//        String savePath2 = appPath2 + "fileDoc" + File.separator + imageFileName2;
+//        new File(appPath2 + "fileDoc").mkdir();
+//        f.write(savePath2);
+
+//        bd.update(imageFileName,urlPathforDB,imageFileName2,urlPathforDB2,bookingId);
+        bd.update(imageFileName,urlPathforDB,bookingId);
+        response.sendRedirect("tenant-listBooking.jsp");
+    }
+
+    /*######################################################( UPDATE )#############################################################*/
+
+
+    private void agree(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int bookingId = Integer.parseInt(request.getParameter("bookingid"));
+
+        String appPath = getServletContext().getRealPath("");
+        Part f = request.getPart("agreement");
         String host = request.getScheme()+ "://" + request.getHeader("nrhouserental-isp551.herokuapp.com")+"/";
         String imageFileName = f.getSubmittedFileName();
         String urlPathforDB=host + "fileDoc/" + imageFileName;
