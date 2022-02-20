@@ -17,7 +17,7 @@
 
 <body>
 
-<form action="LandlordSignupServlet" method="post">
+<form action="LandlordServlet" method="post">
     <div class="container">
         <h2>LANDLORD SIGN UP</h2>
         <div class="row">
