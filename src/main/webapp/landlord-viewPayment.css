@@ -260,15 +260,15 @@ td {
 }
 
 .modal-body input {
-    max-width:90px;
+    max-width:150px;
     margin: auto;
 }
 
-#space{
+#space,#space2{
     width:50px;
 }
 
-#month,#space,#rent{
+#month,#space,#space2,#rent,#pay{
     display:inline-block;
     font-size: 17px;
 }

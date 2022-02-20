@@ -164,6 +164,7 @@
                     <div id=space></div>
                     <label for="rent">Rent:</label>
                     <input type="number" id="rent" name="rent" required/>
+                    <div id=space2></div>
                     <label for="pay">Due Date:</label>
                     <input type="date" value="<%=Today%>" min="<%=Today%>" id="pay" name="duepay" required/>
                 </div>
