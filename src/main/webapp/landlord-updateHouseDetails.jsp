@@ -246,7 +246,7 @@
 
         <br>
         <div class="form-group col-md">
-            <label for="Desc">House description:</label>
+            <label for="Desc" style="font-weight: bold">House description:</label>
             <br>
             <textarea id="Desc" maxlength="255" name="Desc" rows="4" cols="50">${result.housedescription}</textarea>
         </div>
@@ -255,12 +255,11 @@
         <br>
 
         <div class="file-upload-wrapper col-md">
-            <label for="hPic">House Image :</label>
+            <label for="hPic" style="font-weight: bold">House Image :</label>
             <input type="file" accept="image/*" id="hPic" name="hPic" class="file-upload"
                    data-height="300"/>
         </div>
-        <button>${result.houseimagespic}</button><button><i class="material-icons w3-xlarge">close</i></button>
-        <input type="hidden" name="action" value="updHouse"/>
+        <a href="#">${result.houseimagepic}</a>
 
 
         <br>

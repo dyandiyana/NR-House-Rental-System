@@ -71,7 +71,7 @@ public class HouseDetailsDao {
         }
 
 
-        File file = new File("src/main/webapp/images/"+ hi.getHousepicname());
+        File file = new File("src/main/webapp/pic/"+ hi.getHousepicname());
         try{
             FileOutputStream fos = new FileOutputStream(file);
             InputStream is = hi.getHousepic().getInputStream();
@@ -86,14 +86,14 @@ public class HouseDetailsDao {
         }
 
         try (Connection connection = getConnection();
-             PreparedStatement ps2 = connection.prepareStatement("insert into houseimages(houseid,housepic,houseimagespic) values(?,?,?)");)
+             PreparedStatement ps2 = connection.prepareStatement("insert into houseimages(houseid,housepic,houseimagepic) values(?,?,?)");)
         {
             FileInputStream fis = new FileInputStream(file);
             ps2.setInt(1, idhouse);
             ps2.setBinaryStream(2, fis, file.length());
             ps2.setString(3, file.getName());
-            ps2.executeUpdate();
 
+            int row = ps2.executeUpdate();
         }
 
 
@@ -101,6 +101,7 @@ public class HouseDetailsDao {
             e.printStackTrace();
         }
     }
+
 
     public void updatehouse(HouseDetails house, Part f,Integer landid) throws SQLException, IOException {
 
@@ -140,7 +141,7 @@ public class HouseDetailsDao {
         }
 
         String FileName=f.getSubmittedFileName();
-        File file = new File("src/main/webapp/images/"+ FileName);
+        File file = new File("src/main/webapp/pic/"+ FileName);
         FileOutputStream fos = new FileOutputStream(file);
         InputStream is = f.getInputStream();
 
@@ -166,10 +167,9 @@ public class HouseDetailsDao {
 
     public void deletehouse(Integer houseid, Integer landid) throws SQLException, IOException {
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("DELETE FROM housedetails WHERE houseid = ? AND landlordid= ?");)
+             PreparedStatement ps = connection.prepareStatement("DELETE FROM housedetails WHERE houseid = ?");)
         {
             ps.setInt(1,houseid);
-            ps.setInt(1,landid);
         } catch (Exception e) {
             e.printStackTrace();
         }

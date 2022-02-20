@@ -177,7 +177,3 @@ stack-top {
     height: 1cm;
     padding: 5px 10px;
 }
-
-.Cancelbtn:hover{
-    background-color: darkred;
-}
