@@ -1,24 +1,6 @@
 *{
     box-sizing: border-box;
 }
-.navbar {
-    overflow: hidden;
-    background-color: white;
-    font-family: Verdana,sans-serif;
-}
-
-.navbar a {
-    float: right;
-    font-size: 16px;
-    color: black;
-    text-align: center;
-    padding: 16px 16px;
-    text-decoration: none;
-}
-.navbar p {
-    float: left;
-    color: black;
-}
 
 .dropdown {
     float: right;
@@ -42,7 +24,7 @@
 
 .navbar a.active {
     background-color: #666;
-    color: black;
+    color: white;
 }
 
 .dropdown-content {
