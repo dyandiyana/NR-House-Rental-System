@@ -49,8 +49,8 @@ public class BookingServlet extends HttpServlet {
                 case "update":
                     update(request, response);
                     break;
-                case "delete":
-                    delete(request, response);
+                case "cancel":
+                    cancel(request, response);
                     break;
                 case "approvedbooking":
                     approvedbook(request, response);
@@ -109,12 +109,12 @@ public class BookingServlet extends HttpServlet {
         bd.update(f, fi, bookingId);
         response.sendRedirect("tenant-listBooking.jsp");
     }
-    /*######################################################( DELETE )#############################################################*/
+    /*######################################################( CANCEL )#############################################################*/
 
-    private void delete(HttpServletRequest request, HttpServletResponse response)
+    private void cancel(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
         int bookingid = Integer.parseInt(request.getParameter("bookingid"));
-        bd.deletebooking(bookingid);
+        bd.cancelbooking(bookingid);
         response.sendRedirect("tenant-listBooking.jsp");
     }
     /*######################################################( LANDLORD APPROVE BOOKING )#############################################################*/
