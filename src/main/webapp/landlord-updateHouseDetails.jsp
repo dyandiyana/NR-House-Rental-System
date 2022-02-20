@@ -256,17 +256,15 @@
 
         <div class="file-upload-wrapper col-md">
             <label for="hPic" style="font-weight: bold">House Image :</label>
-            <input type="file" accept="image/*" id="hPic" name="hPic" class="file-upload"
+            <input type="file" id="hPic" name="hPic" class="file-upload"
                    data-height="300"/>
         </div>
         <a href="#">${result.houseimagepic}</a>
 
 
 
-
+        <a style="color: black" href="pic/${result.houseimagepic}" onclick="window.open('pic/${result.houseimagepic}', '_blank', 'fullscreen=yes'); return false;">${result.houseimagepic}</a>
         <img src="pic/${result.houseimagepic}">
-
-
         <br>
 
         <br/>
