@@ -1,3 +1,5 @@
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%--
@@ -21,6 +23,7 @@
 <body>
 <%@include file="landlord-navbar.html"%>
 <%
+
     int houseid = 0;
     if(request.getParameter("hid")==null){
         houseid=  Integer.parseInt(session.getAttribute("hid").toString());

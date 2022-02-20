@@ -1,3 +1,5 @@
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%--
@@ -24,6 +26,12 @@
 <%@include file="landlord-viewPayment.css"%>
 </style>
 <%
+
+    Date today = new Date();
+
+    SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
+    String Today = DATE_FORMAT.format(today);
+
     int bookingid = 0;
     if(request.getParameter("bookingid")==null){
         bookingid=  Integer.parseInt(session.getAttribute("bookingid").toString());
@@ -156,9 +164,8 @@
                     <div id=space></div>
                     <label for="rent">Rent:</label>
                     <input type="number" id="rent" name="rent" required/>
-                    <div id=space2></div>
                     <label for="pay">Due Date:</label>
-                    <input type="date" id="pay" name="duepay" required/>
+                    <input type="date" value="<%=Today%>" min="<%=Today%>" id="pay" name="duepay" required/>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="bookingid" value="<%=bookingid%>"/>
