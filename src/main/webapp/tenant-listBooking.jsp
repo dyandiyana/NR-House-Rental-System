@@ -96,12 +96,10 @@
                 </c:if>
 
                 <c:if test="${status=='In Process'}">
-                    <input type="file" name="bookingagreement">
                     <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>
                 </c:if>
 
                 <c:if test="${status=='Completed'}">
-                    <input type="file" name="bookingagreement">
                     <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>
                 </c:if>
             </td>
@@ -138,6 +136,7 @@
             <c:if test="${status!='Canceled'}">
                 <form method="post">
                     <input type="hidden" name="bookingid" value="${result.bookingid}">
+                    <input type="hidden" name="houseid" value="${result.houseid}">
                     <input type="hidden" name="action" value="cancel">
                     <button type="submit" class="button button1" name="submit" onclick="return confirm('Confirm cancel Booking? House name: <c:out value="${result.housename}"/>');" formaction="BookingServlet">Cancel</button><br><br>
                 </form>

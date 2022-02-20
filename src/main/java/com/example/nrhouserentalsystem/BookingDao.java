@@ -95,13 +95,16 @@ public class BookingDao {
         }
     }
 
-    public boolean cancelbooking(int bookingid) throws SQLException {
+    public boolean cancelbooking(int bookingid,int houseid) throws SQLException {
         boolean rowDeleted;
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement("update BOOKINGDETAILS set bookingstatus = 'Canceled' where BOOKINGID=?");) {
             statement.setInt(1, bookingid);
             rowDeleted = statement.executeUpdate() > 0;
 
+            PreparedStatement statement3 = connection.prepareStatement("UPDATE HOUSEDETAILS SET houseavailability='Available' WHERE houseid=?");
+            statement3.setInt(1, houseid);
+            statement3.executeUpdate();
         }
         return rowDeleted;
     }

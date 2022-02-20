@@ -114,7 +114,8 @@ public class BookingServlet extends HttpServlet {
     private void cancel(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
         int bookingid = Integer.parseInt(request.getParameter("bookingid"));
-        bd.cancelbooking(bookingid);
+        int houseid = Integer.parseInt(request.getParameter("houseid"));
+        bd.cancelbooking(bookingid,houseid);
         response.sendRedirect("tenant-listBooking.jsp");
     }
     /*######################################################( LANDLORD APPROVE BOOKING )#############################################################*/
