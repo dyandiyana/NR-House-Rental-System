@@ -69,15 +69,7 @@ public class AdminServlet extends HttpServlet {
         String Password = request.getParameter("adminpassword");
         String Name = request.getParameter("adminname");
         String Email = request.getParameter("adminemail");
-        int supervisorid = 0;
 
-        if(request.getParameter("supervisorid")==null)
-        {
-
-        }
-        else {
-            supervisorid = Integer.parseInt(request.getParameter("supervisorid"));
-        }
         Admin admin = new Admin();
 
         admin.setUsername(username);
