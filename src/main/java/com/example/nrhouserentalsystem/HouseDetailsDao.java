@@ -35,22 +35,7 @@ public class HouseDetailsDao {
     }
 
 
-    public void createhouse(HouseDetails house) throws SQLException, IOException {
-
-        // try-with-resource statement will auto close the connection.
-
-//        File file = new File("src/main/webapp/pic/"+ house.getHousepicname());
-//        try{
-//            FileOutputStream fos = new FileOutputStream(file);
-//            InputStream is = house.getHousepic().getInputStream();
-//
-//            byte[] data=new byte[is.available()];
-//            is.read(data);
-//            fos.write(data);
-//            fos.close();
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+    public void createhouse(HouseDetails house,String imageFileName,String urlPathforDB) throws SQLException, IOException {
 
         try (Connection connection = getConnection();
              PreparedStatement ps = connection.prepareStatement("insert into housedetails(housename,housemonthlyprice,houseaddress,houselocation,housepublishdate,houseavailability,housenotenants,housenoroom,housenotoilet,housenoac,housewifi,housefurniture,housewm,housedescription,landlordid,houseimagepic,housepath) values(?,?,?,?,localtimestamp,?,?,?,?,?,?,?,?,?,?,?,?)");)
@@ -70,8 +55,8 @@ public class HouseDetailsDao {
             ps.setInt(12, house.gethWM());
             ps.setString(13, house.getDesc());
             ps.setInt(14, house.getLandlordID());
-            ps.setString(15, house.getHousepicname());
-            ps.setString(16, house.getFilepath());
+            ps.setString(15,imageFileName);
+            ps.setString(16, urlPathforDB);
 //            ps.setBinaryStream(15, fis, file.length());
 //            ps.setString(16, file.getName());
             ps.executeUpdate();
@@ -82,24 +67,10 @@ public class HouseDetailsDao {
     }
 
 
-    public void updatehouse(HouseDetails house, Part f) throws SQLException, IOException {
-
-        File file = new File("src/main/webapp/pic/"+ house.getHousepicname());
-        try{
-            FileOutputStream fos = new FileOutputStream(file);
-            InputStream is = house.getHousepic().getInputStream();
-
-            byte[] data=new byte[is.available()];
-            is.read(data);
-            fos.write(data);
-            fos.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void updatehouse(HouseDetails house,String imageFileName,String urlPathforDB) throws SQLException, IOException {
 
         try (Connection connection = getConnection();
-             PreparedStatement ps = connection.prepareStatement("UPDATE housedetails SET housename=?,housemonthlyprice=?,houseaddress=?,houselocation=?,housepublishdate=localtimestamp,houseavailability=?,housenotenants=?,housenoroom=?,housenotoilet=?,housenoac=?,housewifi=?,housefurniture=?,housewm=?,housedescription=?,landlordid=?  WHERE houseid = ?");)
+             PreparedStatement ps = connection.prepareStatement("UPDATE housedetails SET housename=?,housemonthlyprice=?,houseaddress=?,houselocation=?,housepublishdate=localtimestamp,houseavailability=?,housenotenants=?,housenoroom=?,housenotoilet=?,housenoac=?,housewifi=?,housefurniture=?,housewm=?,housedescription=?,houseimagepic=?,housepath=?,landlordid=?  WHERE houseid = ?");)
         {
 
             ps.setString(1, house.gethName());
@@ -115,8 +86,10 @@ public class HouseDetailsDao {
             ps.setInt(11, house.gethFurniture());
             ps.setInt(12, house.gethWM());
             ps.setString(13, house.getDesc());
-            ps.setInt(14, house.getLandlordID());
-            ps.setInt(15, house.gethID());
+            ps.setString(14,imageFileName);
+            ps.setString(15, urlPathforDB);
+            ps.setInt(16, house.getLandlordID());
+            ps.setInt(17, house.gethID());
             ps.executeUpdate();
 
         } catch (Exception e) {

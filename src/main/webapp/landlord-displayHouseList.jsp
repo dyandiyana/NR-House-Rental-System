@@ -58,7 +58,7 @@
             <form action="landlord-displayMoreInfo.jsp" method="post">
                 <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
                 <div class="housepic">
-                    <img src="images/${result.houseimagepic}"/>
+                    <img src="pic/${result.houseimagepic}"/>
                 </div>  <%--Nnti letak data sql using scrplet --%>
                 <div class="houseName">
                     <p><c:out value="${result.housename}"/></p>  <%--Nnti letak data sql using scrplet --%>

@@ -99,14 +99,28 @@ public class BookingServlet extends HttpServlet {
 
     private void update(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-
-
-        Part f = request.getPart("bookingdepo");
-        Part fi = request.getPart("bookingagreement");
         int bookingId = Integer.parseInt(request.getParameter("bookingid"));
 
+        request.setAttribute("thiss", "nrhouserental-isp551.herokuapp.com");
+        String appPath = getServletContext().getRealPath("");
+        Part f = request.getPart("bookingdepo");
+        String host = request.getScheme()+ "://" + request.getAttribute("thiss")+"/";
+        String imageFileName = f.getSubmittedFileName();
+        String urlPathforDB=host + "fileDoc/" + imageFileName;
+        String savePath = appPath + "fileDoc" + File.separator + imageFileName;
+        new File(appPath + "fileDoc").mkdir();
+        f.write(savePath);
 
-        bd.update(f, fi, bookingId);
+        String appPath2 = getServletContext().getRealPath("");
+        Part fi = request.getPart("bookingagreement");
+        String host2 = request.getScheme()+ "://" + request.getAttribute("thiss")+"/";
+        String imageFileName2 = fi.getSubmittedFileName();
+        String urlPathforDB2=host2 + "fileDoc/" + imageFileName2;
+        String savePath2 = appPath2 + "fileDoc" + File.separator + imageFileName2;
+        new File(appPath2 + "fileDoc").mkdir();
+        f.write(savePath2);
+
+        bd.update(imageFileName,urlPathforDB,imageFileName2,urlPathforDB2,bookingId);
         response.sendRedirect("tenant-listBooking.jsp");
     }
     /*######################################################( CANCEL )#############################################################*/
@@ -126,12 +140,20 @@ public class BookingServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        request.setAttribute("thiss", "nrhouserental-isp551.herokuapp.com");
+        String appPath = getServletContext().getRealPath("");
         Part f = request.getPart("agreedoc");
+        String host = request.getScheme()+ "://" + request.getAttribute("thiss")+"/";
+        String imageFileName = f.getSubmittedFileName();
+        String urlPathforDB=host + "fileDoc/" + imageFileName;
+        String savePath = appPath + "fileDoc" + File.separator + imageFileName;
+        new File(appPath + "fileDoc").mkdir();
+        f.write(savePath);
         System.out.println(f);
 
         int bookingid = Integer.parseInt(request.getParameter("bookingid"));
         int houseid = Integer.parseInt(request.getParameter("houseid"));
-        bd.approvedbooking(bookingid, f, houseid);
+        bd.approvedbooking(bookingid, imageFileName,urlPathforDB, houseid);
 
 
         out.println("<script type=\"text/javascript\">");

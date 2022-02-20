@@ -54,7 +54,7 @@
                 <input type="number" id="hid" name="hid" value="${result.houseid}" hidden/>
 
                 <div class="housepic">
-                    <img src="images/${result.housepicname}"/>
+                    <img src="pic/${result.houseimagepic}"/>
                 </div>  <%--Nnti letak data sql using scrplet --%>
 
                 <div class="houseName">

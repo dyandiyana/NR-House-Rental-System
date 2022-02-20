@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -66,11 +67,19 @@ public class MonthlyPaymentServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
 
 
+        request.setAttribute("thiss", "nrhouserental-isp551.herokuapp.com");
+        String appPath = getServletContext().getRealPath("");
         Part f = request.getPart("payreceipt");
+        String host = request.getScheme()+ "://" + request.getAttribute("thiss")+"/";
+        String imageFileName = f.getSubmittedFileName();
+        String urlPathforDB=host + "fileDoc/" + imageFileName;
+        String savePath = appPath + "fileDoc" + File.separator + imageFileName;
+        new File(appPath + "fileDoc").mkdir();
+        f.write(savePath);
 
         int payId = Integer.parseInt(request.getParameter("payId"));
 
-        md.update(f,payId);
+        md.update(imageFileName,urlPathforDB,payId);
         response.sendRedirect("tenant-listPayment.jsp");
     }
 

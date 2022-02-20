@@ -259,15 +259,8 @@
             <input type="file" id="hPic" name="hPic" class="file-upload"
                    data-height="300"/>
         </div>
-        <a href="${result.houseimagepic}">${result.houseimagepic}</a>
 
-        <a href="http://nrhouserental-isp551.herokuapp.com/pic/${result.houseimagepic}">${result.houseimagepic}</a>
-
-
-        <iframe src="http://nrhouserental-isp551.herokuapp.com/pic/${result.houseimagepic}" width="100%" height="500px"></iframe>
-<%--        <a style="color: black" href="pic/${result.houseimagepic}" onclick="window.open('pic/${result.houseimagepic}', '_blank', 'fullscreen=yes'); return false;">${result.houseimagepic}</a>--%>
-<%--        <img src="pic/${result.houseimagepic}">--%>
-        <br>
+        <a href="pic/${result.houseimagepic}">${result.houseimagepic}</a>
 
         <br/>
         <div class="sbt">

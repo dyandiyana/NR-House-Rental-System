@@ -21,15 +21,12 @@ public class HouseDetails  implements java.io.Serializable {
     public String desc;
     public String hlocation;
     public Integer LandlordID;
-    public Part housepic;
-    public String housepicname;
-    public String filepath;
 
     public HouseDetails() {
 
     }
 
-    public HouseDetails(Integer hID, String hName, Double hMP, String hAddress, Date hPublishDate, String hAvailability, Integer hNoTenants, Integer hNoRoom, Integer hNoToilet, Integer hNoAC, String hWifi, Integer hFurniture, Integer hWM, String desc, String hlocation, Integer landlordID, Part housepic, String housepicname, String filepath) {
+    public HouseDetails(Integer hID, String hName, Double hMP, String hAddress, Date hPublishDate, String hAvailability, Integer hNoTenants, Integer hNoRoom, Integer hNoToilet, Integer hNoAC, String hWifi, Integer hFurniture, Integer hWM, String desc, String hlocation, Integer landlordID) {
         this.hID = hID;
         this.hName = hName;
         this.hMP = hMP;
@@ -46,9 +43,6 @@ public class HouseDetails  implements java.io.Serializable {
         this.desc = desc;
         this.hlocation = hlocation;
         LandlordID = landlordID;
-        this.housepic = housepic;
-        this.housepicname = housepicname;
-        this.filepath = filepath;
     }
 
     public Integer gethID() {
@@ -177,30 +171,6 @@ public class HouseDetails  implements java.io.Serializable {
 
     public void setLandlordID(Integer landlordID) {
         LandlordID = landlordID;
-    }
-
-    public Part getHousepic() {
-        return housepic;
-    }
-
-    public void setHousepic(Part housepic) {
-        this.housepic = housepic;
-    }
-
-    public String getHousepicname() {
-        return housepicname;
-    }
-
-    public void setHousepicname(String housepicname) {
-        this.housepicname = housepicname;
-    }
-
-    public String getFilepath() {
-        return filepath;
-    }
-
-    public void setFilepath(String filepath) {
-        this.filepath = filepath;
     }
 }
 

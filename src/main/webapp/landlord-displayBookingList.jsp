@@ -192,7 +192,7 @@
                             <td colspan="2">${result.tenantphoneno}</td>
                             <td colspan="2">${result.tenantgender}</td>
                             <td colspan="2">${result.bookingapprovaldate}</td>
-                            <td colspan="2"><a href="#">${result.bookingagreement}</a></td>
+                            <td colspan="2"><a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a></td>
                         </tr>
                     </c:if>
                 </c:forEach>
@@ -233,8 +233,8 @@
                             <td colspan="2">${result.tenantphoneno}</td>
                             <td colspan="2">${result.tenantgender}</td>
                             <td colspan="2">${result.bookingapprovaldate}</td>
-                            <td colspan="2"><a href="#">${result.bookingagreement}</a></td>
-                            <td colspan="2"><a href="#">${result.bookingdepo}</a></td>
+                            <td colspan="2"><a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a></td>
+                            <td colspan="2"><a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a></td>
                             <td colspan="2">
                                 <form action="BookingServlet" method="post">
                                     <input type="hidden" name="bookingid" value="${result.bookingid}">
@@ -284,8 +284,8 @@
                             <td colspan="2">${result.tenantphoneno}</td>
                             <td colspan="2">${result.tenantgender}</td>
                             <td colspan="2">${result.bookingapprovaldate}</td>
-                            <td colspan="2"><a href="#">${result.bookingagreement}</a></td>
-                            <td colspan="2"><a href="#">${result.bookingdepo}</a></td>
+                            <td colspan="2"><a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a></td>
+                            <td colspan="2"><a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a></td>
                         </tr>
                     </c:if>
                 </c:forEach>

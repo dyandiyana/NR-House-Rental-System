@@ -26,34 +26,16 @@ public class MonthlyPaymentDao {
         }
         return connection;
     }
-    public void update(Part f, int payid) throws SQLException, FileNotFoundException {
+    public void update(String imageFileName,String urlPathforDB,int payId) throws SQLException, FileNotFoundException {
 
         String status="Pending";
-        String imageFileName = f.getSubmittedFileName();
-        File file = new File("src/main/webapp/fileDoc/" + imageFileName);
-        System.out.println("my file need upload" + file);
-
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            InputStream is = f.getInputStream();
-
-            byte[] data = new byte[is.available()];
-            is.read(data);
-            fos.write(data);
-            fos.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
 
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE MONTHLYPAYMENT SET PAYSTATUS=?,PAYRECEIPT=?,PAYDOC=? WHERE PAYID=?");) {
-            FileInputStream fis = new FileInputStream(file);
+             PreparedStatement statement = connection.prepareStatement("UPDATE MONTHLYPAYMENT SET PAYSTATUS=?,PAYRECEIPT=?,PAYDOCPATH=? WHERE PAYID=?");) {
             statement.setString(1, status);
-            statement.setBinaryStream(3, fis, file.length());
-            statement.setString(2, file.getName());
-            statement.setInt(4,payid);
+            statement.setString(2, imageFileName);
+            statement.setString(3, urlPathforDB);
+            statement.setInt(4,payId);
 
             statement.executeUpdate();
         }

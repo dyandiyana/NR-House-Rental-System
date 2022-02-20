@@ -48,47 +48,16 @@ public class BookingDao {
             printSQLException(e);
         }
     }
-    public void update(Part f,Part fi,int bookingid) throws SQLException, FileNotFoundException {
+    public void update(String imageFileName,String urlPathforDB, String imageFileName2,String urlPathforDB2,int bookingid) throws SQLException, FileNotFoundException {
 
         String status="In Process";
-        String imageFileName = f.getSubmittedFileName();
-        File file = new File("src/main/webapp/fileDoc/" + imageFileName);
-        System.out.println("my file need upload" + file);
-
-        String imageFileName2 = fi.getSubmittedFileName();
-        File file2 = new File("src/main/webapp/fileDoc/" + imageFileName2);
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            InputStream is = f.getInputStream();
-
-            byte[] data = new byte[is.available()];
-            is.read(data);
-            fos.write(data);
-            fos.close();
-
-            FileOutputStream fos2 = new FileOutputStream(file2);
-            InputStream is2 = fi.getInputStream();
-
-            byte[] data2 = new byte[is2.available()];
-            is2.read(data2);
-            fos2.write(data2);
-            fos2.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGDEPO=?,DEPODOC=?,BOOKINGAGREEMENT=?,AGREEDOC=? WHERE BOOKINGID=?");) {
-            FileInputStream fis = new FileInputStream(file);
-            FileInputStream fis2 = new FileInputStream(file2);
+             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGDEPO=?,DEPODOCPATH=?,BOOKINGAGREEMENT=?,AGREEDOCPATH=? WHERE BOOKINGID=?");) {
             statement.setString(1, status);
-            statement.setBinaryStream(3, fis, file.length());
-            statement.setString(2, file.getName());
-
-            statement.setBinaryStream(5, fis2, file2.length());
-            statement.setString(4, file2.getName());
+            statement.setString(2, urlPathforDB);
+            statement.setString(3, imageFileName);
+            statement.setString(4, urlPathforDB2);
+            statement.setString(5, imageFileName2);
             statement.setInt(6,bookingid);
 
             statement.executeUpdate();
@@ -109,32 +78,15 @@ public class BookingDao {
         return rowDeleted;
     }
 
-    public void approvedbooking(int bookingid,Part f,int houseid) throws SQLException, FileNotFoundException {
+    public void approvedbooking(int bookingid,String imageFileName, String urlPathforDB,int houseid) throws SQLException, FileNotFoundException {
         String status="Approved";
-        String imageFileName = f.getSubmittedFileName();
-        File file = new File("src/main/webapp/pic/" + imageFileName);
-        System.out.println(file);
-
-        FileOutputStream fos = new FileOutputStream(file);
-        try {
-            InputStream is = f.getInputStream();
-            byte[] data = new byte[is.available()];
-            is.read(data);
-            fos.write(data);
-            fos.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(bookingid);
 
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?, AGREEDOC=?,BOOKINGAGREEMENT=?, BOOKINGAPPROVALDATE=localtimestamp WHERE BOOKINGID=?");) {
-            FileInputStream fis = new FileInputStream(file);
+             PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGSTATUS=?,BOOKINGAGREEMENT=?, AGREEDOCPATH=?, BOOKINGAPPROVALDATE=localtimestamp WHERE BOOKINGID=?");) {
 
             statement.setString(1, status);
-            statement.setBinaryStream(2, fis, file.length());
-            statement.setString(3, file.getName());
+            statement.setString(2, imageFileName);
+            statement.setString(3, urlPathforDB);
             statement.setInt(4, bookingid);
             int row = statement.executeUpdate();
 

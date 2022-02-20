@@ -58,10 +58,7 @@ public class HouseDetailsServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-//        Part f = request.getPart("hPic");
-//        String FileName=f.getSubmittedFileName();
         request.setAttribute("thiss", "nrhouserental-isp551.herokuapp.com");
-
         String appPath = getServletContext().getRealPath("");
         Part f = request.getPart("hPic");
         String host = request.getScheme()+ "://" + request.getAttribute("thiss")+"/";
@@ -71,8 +68,6 @@ public class HouseDetailsServlet extends HttpServlet {
         new File(appPath + "pic").mkdir();
         f.write(savePath);
 
-        https://nrhouserental-isp551.herokuapp.com/
-        http://null/pic/ANNOTATED BIBLIOGRAPHY TEST ELC550 (WAN NUR ATHIRAH_2021114019).pdf
 
         try {
 
@@ -107,12 +102,8 @@ public class HouseDetailsServlet extends HttpServlet {
             house.setDesc(desc);
             house.setHlocation(hloc);
             house.setLandlordID(landlordid);
-//            house.setHousepic(f);
-            house.setHousepicname(imageFileName);
-            house.setFilepath(urlPathforDB);
 
-
-            hd.createhouse(house);
+            hd.createhouse(house,imageFileName,urlPathforDB);
             response.sendRedirect("landlord-displayHouseList.jsp");
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Your details succesfully create a house.');");
@@ -129,14 +120,18 @@ public class HouseDetailsServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        request.setAttribute("thiss", "nrhouserental-isp551.herokuapp.com");
+        String appPath = getServletContext().getRealPath("");
+        Part f = request.getPart("hPic");
+        String host = request.getScheme()+ "://" + request.getAttribute("thiss")+"/";
+        String imageFileName = f.getSubmittedFileName();
+        String urlPathforDB=host + "pic/" + imageFileName;
+        String savePath = appPath + "pic" + File.separator + imageFileName;
+        new File(appPath + "pic").mkdir();
+        f.write(savePath);
 
         Integer landlordid = Integer.parseInt(request.getParameter("landlordid"));
         Integer hid = Integer.parseInt(request.getParameter("hid"));
-
-        Part f=request.getPart("hPic");
-        String FileName=f.getSubmittedFileName();
-
-
 
         try{
 
@@ -171,11 +166,8 @@ public class HouseDetailsServlet extends HttpServlet {
             house.setDesc(desc);
             house.setHlocation(hloc);
             house.setLandlordID(landlordid);
-            house.setHousepic(f);
-            house.setHousepicname(FileName);
-//            house.setFilepath(urlPathforDB);
 
-            hd.updatehouse(house, f);
+            hd.updatehouse(house,imageFileName,urlPathforDB);
             response.sendRedirect("landlord-displayHouseList.jsp");
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Your details succesfully updated.');");

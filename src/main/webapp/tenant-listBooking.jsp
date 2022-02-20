@@ -76,15 +76,15 @@
                 <c:if test="${status=='Approved'}">
 
                     <input type="file" name="bookingdepo">
-                    <a href="${result.bookingDepo}" onclick="window.open('${result.bookingdepo}', '_blank', 'fullscreen=yes'); return false;">${result.bookingdepo}</a>
+                    <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a>
                 </c:if>
 
                 <c:if test="${status=='In Process'}">
-                    <a href="${result.bookingDepo}" onclick="window.open('${result.bookingdepo}', '_blank', 'fullscreen=yes'); return false;">${result.bookingdepo}</a>
+                    <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a>
                 </c:if>
 
                 <c:if test="${status=='Completed'}">
-                    <a href="${result.bookingDepo}" onclick="window.open('${result.bookingdepo}', '_blank', 'fullscreen=yes'); return false;">${result.bookingdepo}</a>
+                    <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a>
                 </c:if>
             </td>
 
@@ -92,15 +92,16 @@
                 <c:set var="status" value="${result.bookingstatus}"/>
                 <c:if test="${status=='Approved'}">
                    <input type="file" name="bookingagreement">
-                   <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>
+<%--                   <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>--%>
+                    <a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a>
                 </c:if>
 
                 <c:if test="${status=='In Process'}">
-                    <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>
+                    <a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a>
                 </c:if>
 
                 <c:if test="${status=='Completed'}">
-                    <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>
+                    <a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a>
                 </c:if>
             </td>
 

@@ -131,13 +131,13 @@
                 <td>
                     <c:set var="status" value="${result.paystatus}"/>
                     <c:if test="${status=='Unpaid'}">
-                    <input type="file" name="payreceipt"><a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
+                    <input type="file" name="payreceipt"><a href="fileDoc/${result.payreceipt}">${result.payreceipt}</a>
                     </c:if>
                     <c:if test="${status=='Pending'}">
-                        <a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
+                        <a href="fileDoc/${result.payreceipt}">${result.payreceipt}</a>
                     </c:if>
                     <c:if test="${status=='Paid'}">
-                        <a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
+                        <a href="fileDoc/${result.payreceipt}">${result.payreceipt}</a>
                     </c:if>
                 </td>
                 <td>
