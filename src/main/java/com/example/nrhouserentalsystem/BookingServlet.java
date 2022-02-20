@@ -153,7 +153,7 @@ public class BookingServlet extends HttpServlet {
 //        f.write(savePath2);
 
 //        bd.update(imageFileName,urlPathforDB,imageFileName2,urlPathforDB2,bookingId);
-        bd.update(imageFileName,urlPathforDB,bookingId);
+        bd.agree(imageFileName,urlPathforDB,bookingId);
         response.sendRedirect("tenant-listBooking.jsp");
     }
     /*######################################################( CANCEL )#############################################################*/
