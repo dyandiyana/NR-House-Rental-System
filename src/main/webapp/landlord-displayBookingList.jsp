@@ -201,7 +201,7 @@
 
 
         <div id="Inpro" class="w3-container mystatus" style="display:none">
-            <h2>In process</h2>
+            <h2>In Process</h2>
             <br>
             <h5 style="color: red"> * Reminder : Please make sure the deposit and agreement are already confirm before proceed.</h5>
             <br>
@@ -222,7 +222,7 @@
                 </tr>
                 <c:forEach var="result" items="${oc.rows}">
                     <c:set var="status" value="${result.bookingstatus}"/>
-                    <c:if test="${status=='In process'}">
+                    <c:if test="${status=='In Process'}">
                         <tr>
                             <td colspan="2">${result.bookingid}</td>
                             <td colspan="2">${result.bookingtime}</td>
