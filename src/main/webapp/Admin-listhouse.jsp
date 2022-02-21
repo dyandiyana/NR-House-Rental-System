@@ -121,7 +121,7 @@
 
 
 
-          <div class="housepic"></div>
+          <div class="housepic"><img src="pic/${result.houseimagepic}"></div>
           <div class="houseName"></div>
 
 
