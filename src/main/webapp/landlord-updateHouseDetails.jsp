@@ -123,10 +123,10 @@
                     <c:if test = "${houseAv == 'Not Available'}">
                         <div class="category">
                         <span class="c2">
-                            <input class="c1" type="radio" name="hAvailability"  value="Available" checked>Available
+                            <input class="c1" type="radio" name="hAvailability"  value="Available">Available
                         </span>
                             <span class="c2">
-                            <input class="c1" type="radio" name="hAvailability"  value="Not Available">Not Available
+                            <input class="c1" type="radio" name="hAvailability"  value="Not Available" checked>Not Available
                         </span>
                         </div>
                     </c:if>
