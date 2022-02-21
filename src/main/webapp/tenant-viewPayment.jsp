@@ -114,7 +114,7 @@
         <tr>
             <td class="hello">${result.rank}</td>
             <td>${result.month}</td>
-            <td>${result.payprice}.00</td>
+            <td>${result.payprice}</td>
 
             <c:if test="${result.paystatus=='Unpaid'}">
             <td style="color: red">${result.paystatus}</td>
