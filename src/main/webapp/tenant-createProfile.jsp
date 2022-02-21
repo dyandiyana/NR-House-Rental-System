@@ -60,7 +60,7 @@
             <div class="col-75">
                 <input type="radio" id="male" name="tenantgender"  value="Male">
                 <label for="male">MALE</label><br>
-                <input type="radio" id="female" name="tenantgender" value="Male">
+                <input type="radio" id="female" name="tenantgender" value="Female">
                 <label for="female">FEMALE</label>
             </div>
         </div>
