@@ -100,7 +100,7 @@
         </div>
         <input type="hidden" name="action"  value="delete">
         <button type="submit"  class="button button1" name="submit" onclick="form.action='landlord-updateProfile.jsp'"  onclick="return confirm('Confirm update your profile?');">UPDATE</button>
-        <button type="submit" class="button button1" name="submit" form.action="LandlordServlet" onclick="return confirm('Confirm delete your profile?');" >DELETE</button>
+        <button type="submit" class="button button1" name="submit" formaction="LandlordServlet" onclick="return confirm('Confirm delete your profile?');" >DELETE</button>
 
 
     </div>
