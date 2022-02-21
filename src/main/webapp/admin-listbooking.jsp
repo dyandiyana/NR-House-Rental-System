@@ -17,7 +17,7 @@
     <title>Tenancy Booking Application</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <body>
-<%@include file="landlord-navbar.html"%>
+<%@include file="admin-navbar.html"%>
 
 <%
     int houseid= Integer.parseInt(session.getAttribute("houseid").toString());
