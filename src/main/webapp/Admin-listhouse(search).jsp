@@ -105,7 +105,7 @@
 
 
   <c:forEach var="result" items="${oc.rows}">
-  <div class="Hcont" >
+  <div class="Hcont" style="height: auto">
 
     <form action="" method="">
 
