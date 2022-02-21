@@ -94,11 +94,7 @@ public class MonthlyPaymentServlet extends HttpServlet {
         String Month = request.getParameter("month");
         int bookingid = Integer.parseInt(request.getParameter("bookingid"));
         Date duedate = Date.valueOf(request.getParameter("duepay"));
-//
-//        String startDateStr = request.getParameter("duedate");
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        Date startDate = (Date) sdf.parse(startDateStr);
-//        System.out.println(startDate);
+
         MonthlyPayment mp = new MonthlyPayment();
 
         mp.setPayDueDate(duedate);
