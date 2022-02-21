@@ -20,7 +20,7 @@
 <%@include file="admin-navbar.html"%>
 <form action="AdminServlet" method="post">
 
-<div class="container">
+<div class="container" style="height: auto">
     <h3>MY PROFILE</h3>
 
     <input type="number" name="adminid"  value="${adminid}" hidden>
