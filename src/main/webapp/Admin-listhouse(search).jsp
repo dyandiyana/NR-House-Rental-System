@@ -139,16 +139,19 @@
 
 
 
-            <c:set var="status" value="${result.houseavailability}"/>
-            <c:if test ="${status == Yes}">
-              <p class="status">Available</p>
-            </c:if>
-            <c:if test ="${status == No}">
-              <p class="status">Not Available</p>
-            </c:if>
+                <c:set var="status" value="${result.houseavailability}"/>
+              <c:if test ="${status == 'Available'}">
+      <p class="status">Available</p>
+      </c:if>
+      <c:if test ="${status == 'Not Available'}">
+        <p class="status" style="color: red; margin-bottom: 0%; padding-bottom: 0%;">Not Available</p>
+      </c:if>
 
       <br>
-      <button formaction="admin-viewhousedetails.jsp"> View More </button>
+      <div class="MyLink">
+        <button formaction="admin-viewhousedetails.jsp" >View more</button>
+      </div>
+
 
 
     </form>
