@@ -87,7 +87,7 @@ a:active { color: black; text-decoration: none; }
 
 
 
-.housepic{
+.housepic img{
     width: 230px;
     height: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
