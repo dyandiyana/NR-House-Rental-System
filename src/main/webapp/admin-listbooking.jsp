@@ -199,7 +199,7 @@
 
                 <c:forEach var="result" items="${oc.rows}">
                     <c:set var="status" value="${result.bookingstatus}"/>
-                    <c:if test="${status=='Canceled'}">
+                    <c:if test="${status=='Completed'}">
                         <tr>
                             <td colspan="2">${result.bookingid}</td>
                             <td colspan="2">${result.bookingtime}</td>
