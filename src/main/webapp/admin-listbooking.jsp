@@ -54,6 +54,7 @@
 <div class="container">
     <div class="w3-sidebar w3-bar-block w3-light-grey w3-card" style="width:130px">
         <button class="w3-bar-item w3-button tablink" onclick="opentab(event, 'NewApp')">New Application</button>
+        <button class="w3-bar-item w3-button tablink" onclick="opentab(event, 'Approv')">Approved</button>
         <button class="w3-bar-item w3-button tablink" onclick="opentab(event, 'Inpro')">In process</button>
         <button class="w3-bar-item w3-button tablink" onclick="opentab(event, 'Completed')">Completed</button>
         <button class="w3-bar-item w3-button tablink" onclick="opentab(event, 'Canceled')">Canceled</button>
@@ -69,9 +70,11 @@
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Agreement</td>
-                        <span class="popuptext" id="note">A Simple Popup!</span></td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Name</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Age</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Email</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Phone Num</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Gender</td>
                 </tr>
                 <c:forEach var="result" items="${oc.rows}">
                     <c:set var="status" value="${result.bookingstatus}"/>
@@ -80,9 +83,11 @@
                             <td colspan="2">${result.bookingid}</td>
                             <td colspan="2">${result.bookingtime}</td>
                             <td colspan="2">${result.bookingdate}</td>
-                            <td colspan="2">
-                                <button id="btnVM1">View More</button>
-                            </td>
+                            <td colspan="2">${result.tenantname}</td>
+                            <td colspan="2">${result.tenantage}</td>
+                            <td colspan="2">${result.tenantemail}</td>
+                            <td colspan="2">${result.tenantphoneno}</td>
+                            <td colspan="2">${result.tenantgender}</td>
 
                         </tr>
                     </c:if>
@@ -90,16 +95,21 @@
             </table>
         </div>
 
-        <div id="Inpro" class="w3-container mystatus" style="display:none">
-            <h2>In process</h2>
+        <div id="Approv" class="w3-container mystatus" style="display:none">
+            <h2>Approved</h2>
             <br>
             <table>
                 <tr>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Name</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Age</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Email</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Phone Num</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Gender</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Approval Date</td>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Agreement</td>
 
                 </tr>
                 <c:forEach var="result" items="${oc.rows}">
@@ -109,10 +119,52 @@
                             <td colspan="2">${result.bookingid}</td>
                             <td colspan="2">${result.bookingtime}</td>
                             <td colspan="2">${result.bookingdate}</td>
+                            <td colspan="2">${result.tenantname}</td>
+                            <td colspan="2">${result.tenantage}</td>
+                            <td colspan="2">${result.tenantemail}</td>
+                            <td colspan="2">${result.tenantphoneno}</td>
+                            <td colspan="2">${result.tenantgender}</td>
                             <td colspan="2">${result.bookingapprovaldate}</td>
-                            <td colspan="2">
-                                <button id="btnVM2">View More</button>
-                            </td>
+                            <td colspan="2"><a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a></td>
+                        </tr>
+                    </c:if>
+                </c:forEach>
+            </table>
+        </div>
+
+        <div id="Inpro" class="w3-container mystatus" style="display:none">
+            <h2>In Process</h2>
+            <br>
+            <table>
+                <tr>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Name</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Age</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Email</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Phone Num</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Gender</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Approval Date</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Agreement</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Deposit</td>
+                </tr>
+
+                <c:forEach var="result" items="${oc.rows}">
+                    <c:set var="status" value="${result.bookingstatus}"/>
+                    <c:if test="${status=='In Process'}">
+                        <tr>
+                            <td colspan="2">${result.bookingid}</td>
+                            <td colspan="2">${result.bookingtime}</td>
+                            <td colspan="2">${result.bookingdate}</td>
+                            <td colspan="2">${result.tenantname}</td>
+                            <td colspan="2">${result.tenantage}</td>
+                            <td colspan="2">${result.tenantemail}</td>
+                            <td colspan="2">${result.tenantphoneno}</td>
+                            <td colspan="2">${result.tenantgender}</td>
+                            <td colspan="2">${result.bookingapprovaldate}</td>
+                            <td colspan="2"><a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a></td>
+                            <td colspan="2"><a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a></td>
                         </tr>
                     </c:if>
                 </c:forEach>
@@ -127,37 +179,14 @@
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Name</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Age</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Email</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Phone Num</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Gender</td>
                     <td colspan="2" style="background-color: black; color:#f44336;">Booking Approval Date</td>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
-                </tr>
-
-                <c:forEach var="result" items="${oc.rows}">
-                    <c:set var="status" value="${result.bookingstatus}"/>
-                    <c:if test="${status=='Completed'}">
-                        <tr>
-                            <td colspan="2">${result.bookingid}</td>
-                            <td colspan="2">${result.bookingtime}</td>
-                            <td colspan="2">${result.bookingdate}</td>
-                            <td colspan="2">${result.bookingapprovaldate}</td>
-                            <td colspan="2">
-                                <button id="btnVM3">View More</button>
-                            </td>
-                        </tr>
-                    </c:if>
-                </c:forEach>
-            </table>
-        </div>
-
-        <div id="Canceled" class="w3-container mystatus" style="display:none">
-            <h2>Canceled</h2>
-            <br>
-            <table>
-                <tr>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Approval Date</td>
-                    <td colspan="2" style="background-color: black; color:#f44336;">Tenancy Details</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Agreement</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Deposit</td>
                 </tr>
 
                 <c:forEach var="result" items="${oc.rows}">
@@ -167,15 +196,55 @@
                             <td colspan="2">${result.bookingid}</td>
                             <td colspan="2">${result.bookingtime}</td>
                             <td colspan="2">${result.bookingdate}</td>
+                            <td colspan="2">${result.tenantname}</td>
+                            <td colspan="2">${result.tenantage}</td>
+                            <td colspan="2">${result.tenantemail}</td>
+                            <td colspan="2">${result.tenantphoneno}</td>
+                            <td colspan="2">${result.tenantgender}</td>
                             <td colspan="2">${result.bookingapprovaldate}</td>
-                            <td colspan="2">
-                                <button id="btnVM4">View More</button>
-                            </td>
+                            <td colspan="2"><a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a></td>
+                            <td colspan="2"><a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a></td>
                         </tr>
                     </c:if>
                 </c:forEach>
             </table>
         </div>
+
+
+
+        <div id="Canceled" class="w3-container mystatus" style="display:none">
+            <h2>Canceled</h2>
+            <br>
+            <table>
+                <tr>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking ID</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Time</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Booking Date</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Name</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Age</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Email</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Phone Num</td>
+                    <td colspan="2" style="background-color: black; color:#f44336;">Tenant  Gender</td>
+                </tr>
+                <c:forEach var="result" items="${oc.rows}">
+                    <c:set var="status" value="${result.bookingstatus}"/>
+                    <c:if test="${status=='Canceled'}">
+                        <tr>
+                            <td colspan="2">${result.bookingid}</td>
+                            <td colspan="2">${result.bookingtime}</td>
+                            <td colspan="2">${result.bookingdate}</td>
+                            <td colspan="2">${result.tenantname}</td>
+                            <td colspan="2">${result.tenantage}</td>
+                            <td colspan="2">${result.tenantemail}</td>
+                            <td colspan="2">${result.tenantphoneno}</td>
+                            <td colspan="2">${result.tenantgender}</td>
+                        </tr>
+                    </c:if>
+                </c:forEach>
+            </table>
+        </div>
+
+
     </div>
 </div>
 
@@ -251,50 +320,16 @@
             evt.currentTarget.className += " w3-red";
         }
 
-        //pop up Tenant Details
-        var modal = document.getElementById("popDH");
-        var btnVM1 = document.getElementById("btnVM1");
-        var btnVM2 = document.getElementById("btnVM2");
-        var btnVM3 = document.getElementById("btnVM3");
-        var btnVM4 = document.getElementById("btnVM4");
-        var a = document.getElementsByClassName("close")[0];
-
-        btnVM1.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // btnVM2.onclick = function() {
-        //     modal.style.display = "block";
-        // }
-        // btnVM3.onclick = function() {
-        //     modal.style.display = "block";
-        // }
-        // btnVM4.onclick = function() {
-        //     modal.style.display = "block";
-        // }
-
-        a.onclick = function() {
-            modal.style.display = "none";
-        }
 
         //hover question mark on action table
-        function popnote1() {
-            var note1 = document.getElementById("note");
-            note1.classList.toggle("show");
+        function popnote() {
+            alert("PLEASE READ : \n1. You can choose only one booking form to approved.  \n2. The rest of booking will be canceled automatically.  \n3. Your house status will automatically be 'Not Available'!");
         }
 
-        //popApproval
-        // var appr = document.getElementById("popAppr");
-        // var apprbtn = document.getElementById("btnAprv");
-        // var apprclose = document.getElementsByClassName("close2")[0];
-        //
-        // apprbtn.onclick = function() {
-        //     appr.style.display = "block";
-        // }
-        //
-        // apprclose.onclick = function() {
-        //     appr.style.display = "none";
-        // }
+        function popnote1() {
+            alert("PLEASE READ : \n1. Your tenant will include this booking form with agreement and deposit within a week. \n2.You can choose either to verify or reject the booking after confirm the deposit and booking agreement.");
+        }
+
 
 
     </script>
