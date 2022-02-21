@@ -45,14 +45,12 @@
 
 
 <sql:query dataSource="${ic}" var="ac">
-    select t.tenantname, b.bookingid, h.housename, h.houseaddress, l.landlordname, l.landlordphoneno
+    select t.tenantname, b.bookingid, h.housename, h.houseaddress, h.houseid, b.rentalstatus
     from tenant t
     join bookingdetails b
     on t.tenantid= b.tenantid
-    join landlord l
-    on b.landlordid = l.landlordid
     join housedetails h
-    on l.landlordid = h.landlordid
+    on b.houseid = h.houseid
     where b.bookingid = ?
     <sql:param value="<%=bookingid%>"/>
 </sql:query>
@@ -68,24 +66,6 @@
         </div>
         <div class="col-75">
             <label>${result.tenantname}</label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-25">
-            <label>LANDLORD NAME</label>
-        </div>
-        <div class="col-75">
-            <label>${result.landlordname}</label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-25">
-            <label>LANDLORD PHONE NO</label>
-        </div>
-        <div class="col-75">
-            <label>${result.landlordphoneno}</label>
         </div>
     </div>
 
@@ -120,37 +100,42 @@
             <th>PRICE</th>
             <th>STATUS</th>
             <th>RECEIPT</th>
-            <th>ACTION</th>
         </tr>
         <c:forEach var="result" items="${oc.rows}">
             <tr>
                 <td class="hello">${result.rank}</td>
                 <td>${result.month}</td>
-                <td>${result.payprice}.00</td>
+                <td>${result.payprice}</td>
+
 
                 <c:if test="${result.paystatus=='Unpaid'}">
                     <td style="color: red">${result.paystatus}</td>
+                </c:if>
+                <c:if test="${result.paystatus=='Pending'}">
+                    <td style="color: black">${result.paystatus}</td>
                 </c:if>
                 <c:if test="${result.paystatus=='Paid'}">
                     <td style="color: forestgreen">${result.paystatus}</td>
                 </c:if>
 
 
-                <form method="post" action="MonthlyPaymentServlet" enctype="multipart/form-data">
-                    <td>
-                        <c:set var="status" value="${result.paystatus}"/>
-                        <c:if test="${status=='Unpaid'}">
-                            <input type="file" name="payreceipt"><a href="${result.payreceipt}" onclick="window.open('${result.payreceipt}', '_blank', 'fullscreen=yes'); return false;">${result.payreceipt}</a>
-                        </c:if>
-                    </td>
-                    <td>
-                        <c:if test="${result.paystatus=='Unpaid'}">
-                            <input type="hidden" name="payId" value="${result.payId}">
-                            <input type="hidden" name="action" value="update">
-                            <button type="submit"  class="button button1" name="submit" >Pay</button>
-                        </c:if>
-                    </td>
-                </form>
+                <td>
+                    <c:set var="status" value="${result.paystatus}"/>
+                    <c:if test="${status=='Pending'}">
+                        <a style="color: black" href="fileDoc/${result.payreceipt}">${result.payreceipt}</a>
+                    </c:if>
+                    <c:if test="${status=='Paid'}">
+                        <a style="color: black" href="fileDoc/${result.payreceipt}">${result.payreceipt}</a>
+                    </c:if>
+                </td>
+                <td>
+                    <c:if test="${result.paystatus=='Unpaid'}">
+                        <p>Waiting for Payment</p>
+                    </c:if>
+                    <c:if test="${result.paystatus=='Paid'}">
+                        <p>None</p>
+                    </c:if>
+                </td>
             </tr>
         </c:forEach>
 
