@@ -133,7 +133,17 @@ public class BookingServlet extends HttpServlet {
         new File(appPath + "fileDoc").mkdir();
         f.write(savePath);
 
-        bd.agree(imageFileName,urlPathforDB,bookingId);
+        String appPath2 = getServletContext().getRealPath("");
+        Part fi = request.getPart("bookingagreement");
+        String host2 = request.getScheme()+ "://" + request.getHeader("nrhouserental-isp551.herokuapp.com")+"/";
+        String imageFileName2 = fi.getSubmittedFileName();
+        String urlPathforDB2 =host2 + "fileDoc/" + imageFileName2;
+        String savePath2 = appPath2 + "fileDoc" + File.separator + imageFileName2;
+        new File(appPath2 + "fileDoc").mkdir();
+        fi.write(savePath2);
+
+        bd.agree(imageFileName,urlPathforDB,imageFileName2,urlPathforDB2,bookingId);
+ //       bd.agree(imageFileName,urlPathforDB,bookingId);
         response.sendRedirect("tenant-listBooking.jsp");
     }
     /*######################################################( CANCEL )#############################################################*/
