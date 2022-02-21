@@ -63,18 +63,12 @@ a:active { color: black; text-decoration: none; }
     margin-top:5%;
     margin-left: 19px;
     padding:20px;
+
+
     display: flex;
     align-items:baseline;
     justify-content: center;
     flex-wrap: wrap;
-
-}
-
-.housepic img{
-    width: 39cm;
-    height: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border-radius: 10px;
 
 }
 
@@ -92,6 +86,14 @@ a:active { color: black; text-decoration: none; }
 }
 
 
+
+.housepic img{
+    width: 230px;
+    height: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 10px;
+
+}
 
 .houseName{
 
