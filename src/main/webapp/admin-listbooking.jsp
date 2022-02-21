@@ -39,10 +39,18 @@
     WHERE H.houseid = ?
     <sql:param value="${hid}" />
 </sql:query>
+<sql:query dataSource="${ic}" var="ac">
+    <c:set var="hid" value="<%=houseid%>"/>
+    SELECT  * from housedetails
+    WHERE houseid = ?
+    <sql:param value="${hid}" />
+</sql:query>
 
 <div class="titlebg">
     <fieldset>
-        <legend>${result.housename}</legend>
+        <c:forEach var="result" items="${ac.rows}">
+            <legend>${result.housename}</legend>
+        </c:forEach>
         <div class="htopic">
             <h1>TENANCY BOOKING APPLICATION</h1>
         </div>
