@@ -18,6 +18,17 @@
 <body>
 
 <%@include file="admin-navbar.html"%>
+
+<%
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setHeader("Expires", "0");
+
+    if(session.getAttribute("adminid")==null)
+        response.sendRedirect("admin-login.jsp");
+
+%>
 <form action="AdminServlet" method="post">
 
 <div class="container" style="height: auto">

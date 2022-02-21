@@ -13,7 +13,10 @@
 
     <a class="icon" href="tenant-homepage.jsp" >UITM NR RENTAL SYSTEM</a>
 
-    <a href="tenant-login.jsp" ><i class="fa fa-sign-out"></i></a>
+    <form >
+        <input type="hidden" name="action" value="logout">
+        <button style="background-color: transparent; border: none; padding-left: 15px; display: inline-block; position: relative; text-align: center;"type="submit" formaction="TenantServlet">LOGOUT</button>
+    </form>
     <a href="tenant-viewProfile.jsp">PROFILE</a>
 
     <a href="tenant-listPayment.jsp" >PAYMENT</a>

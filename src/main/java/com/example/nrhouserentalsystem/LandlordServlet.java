@@ -24,6 +24,11 @@ public class LandlordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
+        session.removeAttribute("landlordid");
+        session.invalidate();
+        response.sendRedirect("landlord-login.jsp");
+
     }
 
     @Override

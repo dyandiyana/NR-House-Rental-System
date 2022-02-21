@@ -23,6 +23,11 @@ public class TenantServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
+        session.removeAttribute("tenantid");
+        session.invalidate();
+        response.sendRedirect("tenant-login.jsp");
+
     }
 
     @Override

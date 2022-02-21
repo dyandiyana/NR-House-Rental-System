@@ -24,6 +24,15 @@
 <%@include file="landlord-navbar.html"%>
 <%
 
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setHeader("Expires", "0");
+
+    if(session.getAttribute("landlordid")==null)
+        response.sendRedirect("landlord-login.jsp");
+
+
     int houseid = 0;
     if(request.getParameter("hid")==null){
         houseid=  Integer.parseInt(session.getAttribute("hid").toString());

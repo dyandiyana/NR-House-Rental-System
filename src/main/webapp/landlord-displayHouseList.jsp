@@ -15,6 +15,15 @@
     <title>House List Page</title>
 </head>
 <body>
+
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setHeader("Expires", "0");
+
+    if(session.getAttribute("landlordid")==null)
+        response.sendRedirect("landlord-login.jsp");
+%>
 <div class="mymenu"><%@include file="landlord-navbar.html"%></div>
 <div class="TT">
     <p>YOUR HOUSE LIST</p>

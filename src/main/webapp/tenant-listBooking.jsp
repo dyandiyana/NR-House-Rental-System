@@ -22,6 +22,15 @@
 <%@include file="tenant-navbar.html"%>
 
 <%
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setHeader("Expires", "0");
+
+    if(session.getAttribute("tenantid")==null)
+        response.sendRedirect("tenant-login.jsp");
+
+
     int tenantid = Integer.parseInt(session.getAttribute("tenantid").toString());
     System.out.println(tenantid);
 %>

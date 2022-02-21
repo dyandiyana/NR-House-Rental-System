@@ -15,6 +15,16 @@
 </head>
 <body>
 <%
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setHeader("Expires", "0");
+
+    if(session.getAttribute("landlordid")==null)
+        response.sendRedirect("landlord-login.jsp");
+
+
+
     Date today = new Date();
 
     SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
