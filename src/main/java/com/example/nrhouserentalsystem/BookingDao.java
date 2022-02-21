@@ -50,14 +50,12 @@ public class BookingDao {
     }
     public void depo(String imageFileName,String urlPathforDB,int bookingid) throws SQLException, FileNotFoundException {
 
-            //String status = "In Process";
+
             try (Connection connection = getConnection();
                  PreparedStatement statement = connection.prepareStatement("UPDATE BOOKINGDETAILS SET BOOKINGDEPO=?,DEPODOCPATH=? WHERE BOOKINGID=?");) {
-                //statement.setString(1, status);
+
                 statement.setString(1, imageFileName);
                 statement.setString(2, urlPathforDB);
-//                statement.setString(4, imageFileName2);
-//                statement.setString(5, urlPathforDB2);
                 statement.setInt(3, bookingid);
 
                 statement.executeUpdate();
@@ -73,8 +71,6 @@ public class BookingDao {
             statement.setString(1, status);
             statement.setString(2, imageFileName);
             statement.setString(3, urlPathforDB);
-//                statement.setString(4, imageFileName2);
-//                statement.setString(5, urlPathforDB2);
             statement.setInt(4, bookingid);
 
             statement.executeUpdate();
