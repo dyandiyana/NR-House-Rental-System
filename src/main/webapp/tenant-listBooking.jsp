@@ -77,13 +77,13 @@
                 <c:if test="${status=='Approved'}">
 
                     <input type="file" name="bookingdepo" data-height="300" required="required">
-                    <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a>
+                    <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a><br><br>
                 </c:if>
                     <form method="post" action="BookingServlet" enctype="multipart/form-data">
                         <input type="hidden" name="bookingid" value="${result.bookingid}">
                 <c:if test="${status=='Approved'}">
                     <input type="hidden" name="action" value="depo">
-                    <button type="submit" class="button button1" name="submit" >Update</button><br><br>
+                    <button type="submit" class="button button1" name="submit" >Update</button>
                 </c:if>
                 </form>
 
@@ -101,15 +101,14 @@
                 <c:set var="status" value="${result.bookingstatus}"/>
                 <c:if test="${status=='Approved'}">
                    <input type="file" name="bookingagreement" data-height="300" required="required">
-<%--                   <a href="${result.bookingagreement}" onclick="window.open('${result.bookingagreement}', '_blank', 'fullscreen=yes'); return false;">${result.bookingagreement}</a><br><br>--%>
-                    <a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a>
+                    <a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a><br><br>
                 </c:if>
 
 
                 <input type="hidden" name="bookingid" value="${result.bookingid}">
                 <c:if test="${status=='Approved'}">
                 <input type="hidden" name="action" value="agree">
-                <button type="submit" class="button button1" name="submit" >Update</button><br><br>
+                <button type="submit" class="button button1" name="submit" >Update</button>
                 </c:if>
                 </form>
 
