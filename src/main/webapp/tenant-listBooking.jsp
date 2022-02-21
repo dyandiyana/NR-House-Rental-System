@@ -79,13 +79,13 @@
                     <input type="file" name="bookingdepo" data-height="300" required="required">
                     <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a>
                 </c:if>
-                   <%-- <form method="post" action="BookingServlet" enctype="multipart/form-data">
+                    <form method="post" action="BookingServlet" enctype="multipart/form-data">
                         <input type="hidden" name="bookingid" value="${result.bookingid}">
                 <c:if test="${status=='Approved'}">
                     <input type="hidden" name="action" value="depo">
                     <button type="submit" class="button button1" name="submit" >Update</button><br><br>
                 </c:if>
-                </form>--%>
+                </form>
 
                 <c:if test="${status=='In Process'}">
                     <a href="fileDoc/${result.bookingdepo}">${result.bookingdepo}</a>
@@ -97,7 +97,7 @@
             </td>
 
             <td>
-               <%-- <form method="post" action="BookingServlet" enctype="multipart/form-data">--%>
+                <form method="post" action="BookingServlet" enctype="multipart/form-data">
                 <c:set var="status" value="${result.bookingstatus}"/>
                 <c:if test="${status=='Approved'}">
                    <input type="file" name="bookingagreement" data-height="300" required="required">
@@ -106,12 +106,12 @@
                 </c:if>
 
 
- <%--               <input type="hidden" name="bookingid" value="${result.bookingid}">
+                <input type="hidden" name="bookingid" value="${result.bookingid}">
                 <c:if test="${status=='Approved'}">
                 <input type="hidden" name="action" value="agree">
                 <button type="submit" class="button button1" name="submit" >Update</button><br><br>
                 </c:if>
-                </form>--%>
+                </form>
 
                 <c:if test="${status=='In Process'}">
                     <a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a>
@@ -146,11 +146,7 @@
 
             <td>
 
-                <input type="hidden" name="bookingid" value="${result.bookingid}">
-                <c:if test="${status=='Approved'}">
-                <input type="hidden" name="action" value="agree">
-                <button type="submit" class="button button1" name="submit" >Update</button><br><br>
-                </c:if>
+
 
             </form>
             <c:if test="${status!='Canceled'}">
