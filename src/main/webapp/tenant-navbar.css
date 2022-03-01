@@ -25,6 +25,15 @@
 
 }
 
+.navbar form button {
+    float: right;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding:16px 2px;
+
+}
+
 
 
 .dropdwn {
