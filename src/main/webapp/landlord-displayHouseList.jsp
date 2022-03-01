@@ -45,14 +45,8 @@
                    user = "gpdkvocjaztxrw"
                    password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
 <%
-    int landlordid = 0;
-    if(request.getParameter("landlordid")==null){
-        landlordid=  Integer.parseInt(session.getAttribute("landlordid").toString());
-    }else{
-        landlordid = Integer.parseInt(request.getParameter("landlordid"));
-        session.setAttribute("landlordid",landlordid);
-    }
-    System.out.println(landlordid);
+    int landlordid=  Integer.parseInt(session.getAttribute("landlordid").toString());
+
 %>
 <sql:query dataSource="${ic}" var="oc">
     <c:set var="houseid" value="<%=landlordid%>"/>
