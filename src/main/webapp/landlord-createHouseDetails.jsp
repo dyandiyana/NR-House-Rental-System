@@ -220,7 +220,7 @@
 
         <br/>
         <div class="sbt">
-            <input type="hidden" name="landlordid" value="<%=landlordid%>">
+            <input type="hidden" name="landlordid" value="${landlordid}">
             <input type="hidden" name="action" value="create">
             <button type="submit" class="block">Submit</button>
         </div>
