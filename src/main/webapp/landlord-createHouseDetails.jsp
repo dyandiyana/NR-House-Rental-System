@@ -29,14 +29,6 @@
 
     SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
     String ddMMyyyyToday = DATE_FORMAT.format(today);
-    int landlordid = 0;
-    if(request.getParameter("landlordid")==null){
-        landlordid=  Integer.parseInt(session.getAttribute("landlordid").toString());
-    }else{
-        landlordid = Integer.parseInt(request.getParameter("landlordid"));
-        session.setAttribute("landlordid",landlordid);
-    }
-    System.out.println(landlordid);
 //    int tenantid = Integer.parseInt(request.getParameter("tenantid"));
 
 
