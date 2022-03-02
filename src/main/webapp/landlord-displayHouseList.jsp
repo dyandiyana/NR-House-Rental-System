@@ -44,14 +44,9 @@
                    url="jdbc:postgresql://ec2-34-194-171-47.compute-1.amazonaws.com/dcb70s908sasfa"
                    user = "gpdkvocjaztxrw"
                    password="dceb52b9fa471dce9048a701a0f88b7d4dee9e9ca420a48101baa31d0e68def5"/>
-<%
-    int landlordid=  Integer.parseInt(session.getAttribute("landlordid").toString());
-
-%>
 <sql:query dataSource="${ic}" var="oc">
-    <c:set var="houseid" value="<%=landlordid%>"/>
     select * from housedetails where landlordid=?
-    <sql:param value="<%=landlordid%>" />
+    <sql:param value="${landlordid}" />
 </sql:query>
 
 <div class="overflow-auto">
