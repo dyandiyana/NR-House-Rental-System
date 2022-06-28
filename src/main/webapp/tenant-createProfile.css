@@ -72,7 +72,7 @@ input[type=text], select, textarea {
     border-radius: 4px;
     resize: vertical;
 }
-input[type=password], select, textarea {
+input[type=password], input[type=number], select, textarea {
     width: 300px;
     padding: 12px;
     border: 1px solid #ccc;
