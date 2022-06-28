@@ -66,7 +66,7 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="number" name="landlordPhoneNo" placeholder="Enter your phone number" value="">
+                <input type="number" pattern="[789][0-9]{9}" name="landlordPhoneNo" placeholder="Enter your phone number" value="">
             </div>
         </div>
         <div class="row">
