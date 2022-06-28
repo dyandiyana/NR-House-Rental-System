@@ -58,7 +58,7 @@
                 <label style="">AGE</label>
             </div>
             <div class="col-75">
-                <input type="text" name="landlordAge" placeholder="Enter your age" value="">
+                <input type="number" name="landlordAge" placeholder="Enter your age" value="">
             </div>
         </div>
         <div class="row">
@@ -66,7 +66,7 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="text" name="landlordPhoneNo" placeholder="Enter your phone number" value="">
+                <input type="number" name="landlordPhoneNo" placeholder="Enter your phone number" value="">
             </div>
         </div>
         <div class="row">
