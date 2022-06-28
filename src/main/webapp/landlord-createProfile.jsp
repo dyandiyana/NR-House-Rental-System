@@ -25,7 +25,7 @@
                 <label style="">USERNAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="landlordUsername" placeholder="Enter your username" value="">
+                <input type="text" name="landlordUsername" placeholder="Enter your username" value="" required>
             </div>
         </div>
         <div class="row">
@@ -33,7 +33,7 @@
                 <label>PASSWORD</label>
             </div>
             <div class="col-75">
-                <input type="password" name="landlordPassword" placeholder="Enter your password" value="">
+                <input type="password" name="landlordPassword" placeholder="Enter your password" value="" required>
             </div>
         </div>
         <div class="row">
@@ -41,7 +41,7 @@
                 <label style="">FULL NAME</label>
             </div>
             <div class="col-75">
-                <input type="text" name="landlordName" placeholder="Enter your full name" value="">
+                <input type="text" name="landlordName" placeholder="Enter your full name" value="" required>
             </div>
         </div>
         <div class="row">
@@ -49,7 +49,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="landlordEmail" placeholder="Enter your email" value="">
+                <input type="text" name="landlordEmail" placeholder="Enter your email" value="" required>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
                 <label style="">AGE</label>
             </div>
             <div class="col-75">
-                <input type="number" name="landlordAge" placeholder="Enter your age" value="">
+                <input type="number" name="landlordAge" placeholder="Enter your age" value="" required>
             </div>
         </div>
         <div class="row">
@@ -66,7 +66,7 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="number" pattern="[789][0-9]{9}" name="landlordPhoneNo" placeholder="Enter your phone number" value="">
+                <input type="number" name="landlordPhoneNo" placeholder="Enter your phone number" value="" required>
             </div>
         </div>
         <div class="row">
