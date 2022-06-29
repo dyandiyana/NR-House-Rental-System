@@ -73,7 +73,15 @@ public class HouseDetailsServlet extends HttpServlet {
 
 
             String hName = request.getParameter("hName");
-            Double hMP = Double.parseDouble(request.getParameter("Pricepm"));
+            String price = request.getParameter("Pricepm");
+            Double hMP = 0.0;
+
+            if (price instanceof String)
+            out.println("Please enter number for monthly price");
+
+            else
+            { hMP = Double.parseDouble(price);}
+
             String hAddress = request.getParameter("hAddress");
             String hloc = request.getParameter("hloc");
             String hAvailability = request.getParameter("hAvailability");
