@@ -65,7 +65,7 @@ a{
     text-decoration:none;
     color:white;
 }
-input[type=text], select, textarea {
+input[type=text], input[type=number],input[type=tel], input[type=email],input[type=number],select, textarea {
     width: 300px;
     padding: 12px;
     border: 1px solid #ccc;

@@ -73,7 +73,7 @@ input[type=text], select, textarea {
     resize: vertical;
 }
 
-input[type=password], input[type=number], input[type=email],input[type=number], select, textarea {
+input[type=password],input[type=tel], input[type=number], input[type=email],input[type=number], select, textarea {
     width: 300px;
     padding: 12px;
     border: 1px solid #ccc;
