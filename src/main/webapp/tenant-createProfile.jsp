@@ -50,7 +50,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantemail" placeholder="Enter your email" value="">
+                <input type="email" name="tenantemail" placeholder="Enter your email" value="">
             </div>
         </div>
         <div class="row">
