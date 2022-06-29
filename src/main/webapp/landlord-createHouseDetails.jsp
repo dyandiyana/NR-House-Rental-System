@@ -77,7 +77,7 @@
 
             <div class="input-box">
                 <label for="Pricepm">Price per month (RM)</label>
-                <input type="number" id="Pricepm" class="form-control"  name="Pricepm" placeholder="eg: 300" required>
+                <input type="text" id="Pricepm" class="form-control"  name="Pricepm" placeholder="eg: 300" required>
             </div>
         </div>
 
