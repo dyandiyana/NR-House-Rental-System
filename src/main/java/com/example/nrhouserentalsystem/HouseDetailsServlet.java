@@ -73,14 +73,7 @@ public class HouseDetailsServlet extends HttpServlet {
 
 
             String hName = request.getParameter("hName");
-            String price = request.getParameter("Pricepm");
-            Double hMP = 0.0;
-
-            if (price instanceof String)
-            out.print("<html><body><h1>Please enter number for monthly price<h1/><body/><html/>");
-            else
-            { hMP = Double.parseDouble(price);
-
+            Double hMP = Double.parseDouble(request.getParameter("Pricepm"));
             String hAddress = request.getParameter("hAddress");
             String hloc = request.getParameter("hloc");
             String hAvailability = request.getParameter("hAvailability");
@@ -115,7 +108,7 @@ public class HouseDetailsServlet extends HttpServlet {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Your details succesfully create a house.');");
             out.println("location='landlord-displayHouseList.jsp';");
-            out.println("</script>");}
+            out.println("</script>");
 
         } catch (Exception e) {
             e.printStackTrace();
