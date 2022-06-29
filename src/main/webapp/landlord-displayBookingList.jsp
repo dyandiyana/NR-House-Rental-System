@@ -159,7 +159,7 @@
                             <td colspan="2">${result.tenantphoneno}</td>
                             <td colspan="2">${result.tenantgender}</td>
                             <form action="BookingServlet" method="post" enctype = "multipart/form-data">
-                                <td colspan="2"><input type="file" name="agreedoc" data-height="300" required="required"></td>
+                                <td colspan="2"><input type="file" name="agreedoc"  accept="application/pdf" data-height="300" required="required"></td>
                                 <td colspan="2">
                                     <input type="hidden" name="bookingid" value="${result.bookingid}">
                                     <input type="hidden" name="houseid" value="<%=houseid%>">
