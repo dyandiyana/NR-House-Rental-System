@@ -78,7 +78,6 @@ public class HouseDetailsServlet extends HttpServlet {
 
             if (price instanceof String)
             out.println("Please enter number for monthly price");
-
             else
             { hMP = Double.parseDouble(price);}
 
