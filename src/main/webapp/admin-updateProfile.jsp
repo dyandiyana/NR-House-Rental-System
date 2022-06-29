@@ -61,7 +61,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="adminemail" value="${adminemail}">
+                <input type="email" name="adminemail" value="${adminemail}">
             </div>
         </div>
 

@@ -59,7 +59,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantemail"  value="${tenant.tenantEmail}">
+                <input type="email" name="tenantemail"  value="${tenant.tenantEmail}">
             </div>
         </div>
         <div class="row">
@@ -94,7 +94,7 @@
                 <label style="">AGE</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantage" value="${tenant.tenantAge}">
+                <input type="number" name="tenantage" value="${tenant.tenantAge}">
             </div>
         </div>
         <div class="row">
@@ -102,7 +102,7 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="text" name="tenantphoneno" value="${tenant.tenantPhoneNo}">
+                <input type="tel" name="tenantphoneno" pattern="^(\+?6?01)[0-46-9]-*[0-9]{7,8}$" value="${tenant.tenantPhoneNo}">
             </div>
         </div>
 

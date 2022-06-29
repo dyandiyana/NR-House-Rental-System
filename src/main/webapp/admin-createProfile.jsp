@@ -53,7 +53,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="adminemail" placeholder="Enter your email" value="">
+                <input type="email" name="adminemail" placeholder="Enter your email" value="">
             </div>
         </div>
 

@@ -81,7 +81,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="landlordemail"  value="${result.landlordemail}">
+                <input type="email" name="landlordemail"  value="${result.landlordemail}">
             </div>
         </div>
 
@@ -90,7 +90,7 @@
                 <label style="">AGE</label>
             </div>
             <div class="col-75">
-                <input type="text" name="landlordage" value="${result.landlordage}">
+                <input type="number" name="landlordage" value="${result.landlordage}">
             </div>
         </div>
         <div class="row">
@@ -98,7 +98,7 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="text" name="landlordPhoneNo"  value="${result.landlordphoneno}">
+                <input type="tel" name="landlordPhoneNo" pattern="^(\+?6?01)[0-46-9]-*[0-9]{7,8}$" value="${result.landlordphoneno}">
             </div>
         </div>
         <div class="row">

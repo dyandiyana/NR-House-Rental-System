@@ -49,7 +49,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="landlordEmail" placeholder="Enter your email" value="" required>
+                <input type="email" name="landlordEmail" placeholder="Enter your email" value="" required>
             </div>
         </div>
 
@@ -66,7 +66,7 @@
                 <label style="">PHONE NUMBER</label>
             </div>
             <div class="col-75">
-                <input type="number" name="landlordPhoneNo" placeholder="Enter your phone number" value="" required>
+                <input type="tel" pattern="^(\+?6?01)[0-46-9]-*[0-9]{7,8}$" name="landlordPhoneNo" placeholder="Enter your phone number" value="" required>
             </div>
         </div>
         <div class="row">
