@@ -49,7 +49,7 @@
                 <label>EMAIL</label>
             </div>
             <div class="col-75">
-                <input type="text" name="landlordEmail" placeholder="Enter your email" value="" required>
+                <input type="email" name="landlordEmail" placeholder="Enter your email" value="" required>
             </div>
         </div>
 
