@@ -109,7 +109,7 @@
                 <form method="post" action="BookingServlet" enctype="multipart/form-data">
                 <c:set var="status" value="${result.bookingstatus}"/>
                 <c:if test="${status=='Approved'}">
-                   <input type="file" name="bookingagreement" data-height="300" required="required">
+                   <input type="file" name="bookingagreement"  accept="application/pdf" data-height="300" required="required">
                     <a href="fileDoc/${result.bookingagreement}">${result.bookingagreement}</a><br><br>
                 </c:if>
 
